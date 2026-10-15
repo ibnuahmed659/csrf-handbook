@@ -1,0 +1,81 @@
+/* ==========================================================================
+   responsive.css — mobile-first adaptations and off-canvas navigation
+   ========================================================================== */
+
+/* ---- large-desktop: keep everything ---- */
+@media (max-width: 1300px) {
+  :root { --sidebar-w: 280px; --onthispage-w: 230px; }
+}
+
+/* ---- laptop: drop the right-hand "on this page" rail ---- */
+@media (max-width: 1180px) {
+  .layout { grid-template-columns: var(--sidebar-w) minmax(0, 1fr); }
+  .onthispage-aside { display: none; }
+  #toc-toggle { display: inline-flex; }
+  .content > * { max-width: 820px; }
+}
+
+/* ---- tablet & below: sidebar becomes an off-canvas drawer ---- */
+@media (max-width: 992px) {
+  :root { --sidebar-w: 300px; }
+  .layout { grid-template-columns: minmax(0, 1fr); }
+  #menu-toggle { display: inline-flex; }
+
+  .sidebar {
+    position: fixed; top: var(--header-h); left: 0; bottom: 0; width: var(--sidebar-w);
+    z-index: 1050; transform: translateX(-102%);
+    transition: transform var(--transition); box-shadow: var(--shadow-lg);
+    border-right: 1px solid var(--c-border);
+  }
+  .sidebar.is-open { transform: translateX(0); }
+  .content { padding-top: var(--sp-6); }
+
+  /* on this page floater when toggled */
+  .onthispage-aside {
+    display: block; position: fixed; top: var(--header-h); right: 0; bottom: 0;
+    width: min(320px, 86vw); z-index: 1050; background: var(--c-surface);
+    border-left: 1px solid var(--c-border); transform: translateX(102%);
+    transition: transform var(--transition); box-shadow: var(--shadow-lg);
+  }
+  .onthispage-aside.is-open { transform: translateX(0); }
+}
+
+/* ---- phones ---- */
+@media (max-width: 640px) {
+  :root { --fs-base: 1rem; --header-h: 58px; }
+  .search-btn__text { display: none; }
+  .search-btn { padding: 0 .6rem; }
+  .brand__text { font-size: .95rem; }
+
+  .content { padding-left: 1rem; padding-right: 1rem; }
+  .hero__actions { flex-direction: column; align-items: stretch; }
+  .hero__actions .btn { justify-content: center; }
+
+  .pager { grid-template-columns: 1fr; }
+  .pager__link--next { text-align: left; align-items: flex-start; }
+
+  .section-title { font-size: 1.3rem; }
+  .doc-table { min-width: 520px; }
+  .code-block { font-size: .8rem; }
+  .part-grid { grid-template-columns: 1fr; }
+}
+
+/* ---- wide screens: a touch more air ---- */
+@media (min-width: 1680px) {
+  :root { --content-w: 820px; }
+}
+
+/* ---- print ---- */
+@media print {
+  .site-header, .sidebar, .onthispage-aside, .back-to-top, .reading-progress,
+  .pager, .copy-btn, .search-modal { display: none !important; }
+  .layout { display: block; }
+  .content { padding: 0; }
+  body { background: #fff; color: #000; }
+  .code-panel, .table-wrap { border-color: #999; break-inside: avoid; }
+}
+
+/* ---- fallback: keep content usable without the JS drawer ---- */
+@media (max-width: 992px) {
+  .no-js .sidebar { position: static; transform: none; height: auto; }
+}

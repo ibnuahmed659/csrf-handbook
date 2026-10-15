@@ -1,0 +1,20 @@
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+*~
+
+# Python (extractor/build tooling)
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Local / scratch files
+*.log
+*.tmp
+
+# Secrets — never commit tokens
+github.txt
+.env

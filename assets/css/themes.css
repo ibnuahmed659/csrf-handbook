@@ -1,0 +1,204 @@
+/* ==========================================================================
+   themes.css — design tokens, base reset and typography
+   Two complete themes: dark (default) and light. All colours are exposed as
+   CSS custom properties so every component adapts automatically.
+   ========================================================================== */
+
+:root {
+  /* ---- palette: dark cybersecurity theme ---- */
+  --c-bg:        #070b14;
+  --c-bg-2:      #0a1020;
+  --c-surface:   #0f1729;
+  --c-surface-2: #131d33;
+  --c-panel:     #0d1526;
+  --c-border:    #1e2a44;
+  --c-border-soft:#172033;
+  --c-text:      #dce6f6;
+  --c-text-soft: #9db0cd;
+  --c-text-dim:  #6d7f9c;
+  --c-accent:    #2fd6c0;
+  --c-accent-2:  #4f8bff;
+  --c-accent-ink:#03151a;
+  --c-accent-soft: rgba(47, 214, 192, .12);
+  --c-good:      #37d39b;
+  --c-warn:      #f2b24b;
+  --c-danger:    #ff6b6b;
+  --c-code-bg:   #0a1020;
+  --c-code-head: #0d1526;
+  --c-scrim:     rgba(3, 6, 12, .66);
+  --c-selection: rgba(47, 214, 192, .28);
+  --shadow-sm:   0 1px 2px rgba(0,0,0,.4);
+  --shadow-md:   0 10px 30px -12px rgba(0,0,0,.7);
+  --shadow-lg:   0 30px 60px -24px rgba(0,0,0,.8);
+  --glow:        0 0 0 1px rgba(47,214,192,.18), 0 12px 40px -18px rgba(47,214,192,.5);
+
+  /* ---- syntax token colours (dark) ---- */
+  --t-comment: #5b6d8c;
+  --t-punct:   #8ea2c0;
+  --t-tag:     #ff7b9c;
+  --t-attr:    #ffd479;
+  --t-string:  #9be89b;
+  --t-keyword: #7cb0ff;
+  --t-function:#6fe0d0;
+  --t-number:  #f0a868;
+  --t-operator:#a9b7cf;
+  --t-property:#9cc7ff;
+  --t-builtin: #c9a6ff;
+  --t-variable:#e6edf9;
+
+  /* ---- typography ---- */
+  --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "JetBrains Mono", "Fira Code", "Cascadia Code", Consolas, "SFMono-Regular", Menlo, monospace;
+  --fs-base: 1.0625rem;
+  --lh-base: 1.75;
+
+  /* ---- spacing & shape ---- */
+  --sp-1: .25rem; --sp-2: .5rem; --sp-3: .75rem; --sp-4: 1rem;
+  --sp-5: 1.5rem; --sp-6: 2rem; --sp-7: 3rem; --sp-8: 4rem;
+  --radius-sm: 8px; --radius: 12px; --radius-lg: 18px; --radius-xl: 26px;
+  --header-h: 64px;
+  --sidebar-w: 312px;
+  --onthispage-w: 260px;
+  --content-w: 780px;
+  --transition: 200ms cubic-bezier(.22,.61,.36,1);
+
+  /* ---- extended palette & motion (premium layer) ---- */
+  --c-accent-3:  #a97bff;
+  --c-accent-4:  #ff7bb0;
+  --c-ink-2:     #04121b;
+  --grad-accent: linear-gradient(120deg, var(--c-accent), var(--c-accent-2));
+  --grad-cta:    linear-gradient(135deg, var(--c-accent), var(--c-accent-2) 55%, var(--c-accent-3));
+  --grad-warm:   linear-gradient(135deg, var(--c-accent-4), var(--c-accent-3));
+  --grad-sheen:  linear-gradient(100deg, transparent 20%, rgba(255,255,255,.28) 45%, transparent 70%);
+  --ring:        0 0 0 1px rgba(255,255,255,.06) inset;
+  --shadow-glow: 0 24px 70px -26px var(--c-accent);
+  --card-top:    linear-gradient(90deg, var(--c-accent), var(--c-accent-2) 55%, var(--c-accent-3));
+  --ease:        cubic-bezier(.22,.61,.36,1);
+  --ease-out:    cubic-bezier(.16,1,.3,1);
+  --ease-spring: cubic-bezier(.34,1.56,.64,1);
+  --dur-1: 180ms; --dur-2: 420ms; --dur-3: 760ms; --dur-4: 1200ms;
+  --radius-2xl: 30px;
+  --radius-pill: 999px;
+  --aurora-opacity: .55;
+}
+
+[data-theme="light"] {
+  --c-bg:        #f4f7fb;
+  --c-bg-2:      #eaf0f8;
+  --c-surface:   #ffffff;
+  --c-surface-2: #f6f9fd;
+  --c-panel:     #ffffff;
+  --c-border:    #d6e0ee;
+  --c-border-soft:#e6edf6;
+  --c-text:      #12202f;
+  --c-text-soft: #46586f;
+  --c-text-dim:  #6b7b90;
+  --c-accent:    #0e8f7e;
+  --c-accent-2:  #2f5fd0;
+  --c-accent-ink:#ffffff;
+  --c-accent-soft: rgba(14, 143, 126, .10);
+  --c-good:      #12855f;
+  --c-warn:      #a96800;
+  --c-danger:    #c0392b;
+  --c-code-bg:   #f7f9fc;
+  --c-code-head: #eef3f9;
+  --c-scrim:     rgba(20, 32, 48, .5);
+  --c-selection: rgba(14, 143, 126, .22);
+  --shadow-sm:   0 1px 2px rgba(23, 43, 77, .08);
+  --shadow-md:   0 12px 28px -16px rgba(23, 43, 77, .35);
+  --shadow-lg:   0 30px 60px -30px rgba(23, 43, 77, .4);
+  --glow:        0 0 0 1px rgba(14,143,126,.16), 0 14px 34px -20px rgba(14,143,126,.5);
+
+  --t-comment: #7a8aa0;
+  --t-punct:   #5a6b82;
+  --t-tag:     #c0392b;
+  --t-attr:    #8a6d00;
+  --t-string:  #1a7f4b;
+  --t-keyword: #1f5fd0;
+  --t-function:#0e8f8f;
+  --t-number:  #b5651d;
+  --t-operator:#44546a;
+  --t-property:#1f5fd0;
+  --t-builtin: #7a3fbf;
+  --t-variable:#12202f;
+
+  --c-accent-3:  #6f3fd6;
+  --c-accent-4:  #d6417a;
+  --shadow-glow: 0 24px 60px -30px rgba(14,143,126,.55);
+  --ring:        0 0 0 1px rgba(20,40,70,.05) inset;
+  --aurora-opacity: .5;
+}
+
+/* ---------------------------- reset ----------------------------------- */
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--header-h) + 16px);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--c-bg);
+  color: var(--c-text);
+  font-family: var(--font-sans);
+  font-size: var(--fs-base);
+  line-height: var(--lh-base);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  transition: background-color var(--transition), color var(--transition);
+}
+
+::selection { background: var(--c-selection); }
+
+img, svg { max-width: 100%; height: auto; }
+
+a { color: var(--c-accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 700; color: var(--c-text); }
+
+:focus-visible {
+  outline: 2px solid var(--c-accent);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+
+.skip-link {
+  position: fixed; left: 12px; top: -60px; z-index: 2000;
+  background: var(--c-accent); color: var(--c-accent-ink);
+  padding: .6rem 1rem; border-radius: var(--radius-sm); font-weight: 600;
+  transition: top var(--transition);
+}
+.skip-link:focus { top: 12px; text-decoration: none; }
+
+/* ---------------------------- scrollbars ------------------------------ */
+* { scrollbar-width: thin; scrollbar-color: var(--c-border) transparent; }
+*::-webkit-scrollbar { width: 10px; height: 10px; }
+*::-webkit-scrollbar-thumb { background: var(--c-border); border-radius: 8px; border: 2px solid transparent; background-clip: padding-box; }
+*::-webkit-scrollbar-thumb:hover { background: var(--c-text-dim); background-clip: padding-box; }
+
+/* ---------------------------- code tokens ----------------------------- */
+.token.comment, .token.prolog, .token.doctype, .token.cdata { color: var(--t-comment); font-style: italic; }
+.token.punctuation { color: var(--t-punct); }
+.token.tag, .token.deleted, .token.important { color: var(--t-tag); }
+.token.attr-name, .token.attr-value, .token.builtin, .token.char, .token.inserted, .token.selector { color: var(--t-attr); }
+.token.string { color: var(--t-string); }
+.token.keyword, .token.rule, .token.atrule, .token.important { color: var(--t-keyword); }
+.token.function, .token.class-name { color: var(--t-function); }
+.token.number, .token.boolean, .token.constant, .token.symbol { color: var(--t-number); }
+.token.operator, .token.entity, .token.url { color: var(--t-operator); }
+.token.property, .token.parameter { color: var(--t-property); }
+.token.variable { color: var(--t-variable); }
+.token.namespace { opacity: .7; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
+}

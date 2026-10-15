@@ -1,0 +1,3789 @@
+{
+ "generatedAt": "2026-10-15T03:14:16.335160+00:00",
+ "source": "csrf_copy.docx",
+ "parts": [
+  {
+   "sourceTitle": "HORDHAC BUUGGA",
+   "destination": "chapters/part-intro.html",
+   "blockCount": 2,
+   "blocks": [
+    {
+     "id": "part-intro-b0",
+     "type": "para",
+     "destination": "chapters/part-intro.html#part-intro-b0",
+     "verified": true
+    },
+    {
+     "id": "part-intro-b1",
+     "type": "para",
+     "destination": "chapters/part-intro.html#part-intro-b1",
+     "verified": true
+    }
+   ]
+  },
+  {
+   "sourceTitle": "QAYBTA I — FALSAFADDA CSRF",
+   "destination": "chapters/part-1.html",
+   "blockCount": 36,
+   "blocks": [
+    {
+     "id": "part-1-b0",
+     "type": "para",
+     "destination": "chapters/part-1.html#part-1-b0",
+     "verified": true
+    },
+    {
+     "id": "part-1-b1",
+     "type": "para",
+     "destination": "chapters/part-1.html#part-1-b1",
+     "verified": true
+    },
+    {
+     "id": "part-1-b2",
+     "type": "para",
+     "destination": "chapters/part-1.html#part-1-b2",
+     "verified": true
+    },
+    {
+     "id": "part-1-b3",
+     "type": "para",
+     "destination": "chapters/part-1.html#part-1-b3",
+     "verified": true
+    },
+    {
+     "id": "part-1-b4",
+     "type": "para",
+     "destination": "chapters/part-1.html#part-1-b4",
+     "verified": true
+    },
+    {
+     "id": "part-1-b5",
+     "type": "pseudoheading",
+     "destination": "chapters/part-1.html#part-1-b5",
+     "verified": true
+    },
+    {
+     "id": "part-1-b6",
+     "type": "para",
+     "destination": "chapters/part-1.html#part-1-b6",
+     "verified": true
+    },
+    {
+     "id": "part-1-b7",
+     "type": "para",
+     "destination": "chapters/part-1.html#part-1-b7",
+     "verified": true
+    },
+    {
+     "id": "part-1-b8",
+     "type": "list",
+     "destination": "chapters/part-1.html#part-1-b8",
+     "verified": true
+    },
+    {
+     "id": "part-1-b9",
+     "type": "para",
+     "destination": "chapters/part-1.html#part-1-b9",
+     "verified": true
+    },
+    {
+     "id": "part-1-b10",
+     "type": "para",
+     "destination": "chapters/part-1.html#part-1-b10",
+     "verified": true
+    },
+    {
+     "id": "part-1-b11",
+     "type": "para",
+     "destination": "chapters/part-1.html#part-1-b11",
+     "verified": true
+    },
+    {
+     "id": "part-1-b12",
+     "type": "pseudoheading",
+     "destination": "chapters/part-1.html#part-1-b12",
+     "verified": true
+    },
+    {
+     "id": "part-1-b13",
+     "type": "para",
+     "destination": "chapters/part-1.html#part-1-b13",
+     "verified": true
+    },
+    {
+     "id": "part-1-b14",
+     "type": "para",
+     "destination": "chapters/part-1.html#part-1-b14",
+     "verified": true
+    },
+    {
+     "id": "part-1-b15",
+     "type": "para",
+     "destination": "chapters/part-1.html#part-1-b15",
+     "verified": true
+    },
+    {
+     "id": "part-1-b16",
+     "type": "list",
+     "destination": "chapters/part-1.html#part-1-b16",
+     "verified": true
+    },
+    {
+     "id": "part-1-b17",
+     "type": "para",
+     "destination": "chapters/part-1.html#part-1-b17",
+     "verified": true
+    },
+    {
+     "id": "part-1-b18",
+     "type": "para",
+     "destination": "chapters/part-1.html#part-1-b18",
+     "verified": true
+    },
+    {
+     "id": "part-1-b19",
+     "type": "para",
+     "destination": "chapters/part-1.html#part-1-b19",
+     "verified": true
+    },
+    {
+     "id": "part-1-b20",
+     "type": "para",
+     "destination": "chapters/part-1.html#part-1-b20",
+     "verified": true
+    },
+    {
+     "id": "part-1-b21",
+     "type": "para",
+     "destination": "chapters/part-1.html#part-1-b21",
+     "verified": true
+    },
+    {
+     "id": "part-1-b22",
+     "type": "para",
+     "destination": "chapters/part-1.html#part-1-b22",
+     "verified": true
+    },
+    {
+     "id": "part-1-b23",
+     "type": "para",
+     "destination": "chapters/part-1.html#part-1-b23",
+     "verified": true
+    },
+    {
+     "id": "part-1-b24",
+     "type": "para",
+     "destination": "chapters/part-1.html#part-1-b24",
+     "verified": true
+    },
+    {
+     "id": "part-1-b25",
+     "type": "para",
+     "destination": "chapters/part-1.html#part-1-b25",
+     "verified": true
+    },
+    {
+     "id": "part-1-b26",
+     "type": "pseudoheading",
+     "destination": "chapters/part-1.html#part-1-b26",
+     "verified": true
+    },
+    {
+     "id": "part-1-b27",
+     "type": "para",
+     "destination": "chapters/part-1.html#part-1-b27",
+     "verified": true
+    },
+    {
+     "id": "part-1-b28",
+     "type": "pseudoheading",
+     "destination": "chapters/part-1.html#part-1-b28",
+     "verified": true
+    },
+    {
+     "id": "part-1-b29",
+     "type": "code",
+     "destination": "chapters/part-1.html#part-1-b29",
+     "verified": true
+    },
+    {
+     "id": "part-1-b30",
+     "type": "pseudoheading",
+     "destination": "chapters/part-1.html#part-1-b30",
+     "verified": true
+    },
+    {
+     "id": "part-1-b31",
+     "type": "para",
+     "destination": "chapters/part-1.html#part-1-b31",
+     "verified": true
+    },
+    {
+     "id": "part-1-b32",
+     "type": "para",
+     "destination": "chapters/part-1.html#part-1-b32",
+     "verified": true
+    },
+    {
+     "id": "part-1-b33",
+     "type": "para",
+     "destination": "chapters/part-1.html#part-1-b33",
+     "verified": true
+    },
+    {
+     "id": "part-1-b34",
+     "type": "para",
+     "destination": "chapters/part-1.html#part-1-b34",
+     "verified": true
+    },
+    {
+     "id": "part-1-b35",
+     "type": "para",
+     "destination": "chapters/part-1.html#part-1-b35",
+     "verified": true
+    }
+   ]
+  },
+  {
+   "sourceTitle": "QAYBTA II — HTTP",
+   "destination": "chapters/part-2.html",
+   "blockCount": 67,
+   "blocks": [
+    {
+     "id": "part-2-b0",
+     "type": "heading",
+     "destination": "chapters/part-2.html#part-2-b0",
+     "verified": true
+    },
+    {
+     "id": "part-2-b1",
+     "type": "para",
+     "destination": "chapters/part-2.html#part-2-b1",
+     "verified": true
+    },
+    {
+     "id": "part-2-b2",
+     "type": "code",
+     "destination": "chapters/part-2.html#part-2-b2",
+     "verified": true
+    },
+    {
+     "id": "part-2-b3",
+     "type": "para",
+     "destination": "chapters/part-2.html#part-2-b3",
+     "verified": true
+    },
+    {
+     "id": "part-2-b4",
+     "type": "heading",
+     "destination": "chapters/part-2.html#part-2-b4",
+     "verified": true
+    },
+    {
+     "id": "part-2-b5",
+     "type": "para",
+     "destination": "chapters/part-2.html#part-2-b5",
+     "verified": true
+    },
+    {
+     "id": "part-2-b6",
+     "type": "para",
+     "destination": "chapters/part-2.html#part-2-b6",
+     "verified": true
+    },
+    {
+     "id": "part-2-b7",
+     "type": "para",
+     "destination": "chapters/part-2.html#part-2-b7",
+     "verified": true
+    },
+    {
+     "id": "part-2-b8",
+     "type": "para",
+     "destination": "chapters/part-2.html#part-2-b8",
+     "verified": true
+    },
+    {
+     "id": "part-2-b9",
+     "type": "heading",
+     "destination": "chapters/part-2.html#part-2-b9",
+     "verified": true
+    },
+    {
+     "id": "part-2-b10",
+     "type": "para",
+     "destination": "chapters/part-2.html#part-2-b10",
+     "verified": true
+    },
+    {
+     "id": "part-2-b11",
+     "type": "para",
+     "destination": "chapters/part-2.html#part-2-b11",
+     "verified": true
+    },
+    {
+     "id": "part-2-b12",
+     "type": "heading",
+     "destination": "chapters/part-2.html#part-2-b12",
+     "verified": true
+    },
+    {
+     "id": "part-2-b13",
+     "type": "para",
+     "destination": "chapters/part-2.html#part-2-b13",
+     "verified": true
+    },
+    {
+     "id": "part-2-b14",
+     "type": "heading",
+     "destination": "chapters/part-2.html#part-2-b14",
+     "verified": true
+    },
+    {
+     "id": "part-2-b15",
+     "type": "para",
+     "destination": "chapters/part-2.html#part-2-b15",
+     "verified": true
+    },
+    {
+     "id": "part-2-b16",
+     "type": "para",
+     "destination": "chapters/part-2.html#part-2-b16",
+     "verified": true
+    },
+    {
+     "id": "part-2-b17",
+     "type": "heading",
+     "destination": "chapters/part-2.html#part-2-b17",
+     "verified": true
+    },
+    {
+     "id": "part-2-b18",
+     "type": "para",
+     "destination": "chapters/part-2.html#part-2-b18",
+     "verified": true
+    },
+    {
+     "id": "part-2-b19",
+     "type": "para",
+     "destination": "chapters/part-2.html#part-2-b19",
+     "verified": true
+    },
+    {
+     "id": "part-2-b20",
+     "type": "heading",
+     "destination": "chapters/part-2.html#part-2-b20",
+     "verified": true
+    },
+    {
+     "id": "part-2-b21",
+     "type": "para",
+     "destination": "chapters/part-2.html#part-2-b21",
+     "verified": true
+    },
+    {
+     "id": "part-2-b22",
+     "type": "para",
+     "destination": "chapters/part-2.html#part-2-b22",
+     "verified": true
+    },
+    {
+     "id": "part-2-b23",
+     "type": "heading",
+     "destination": "chapters/part-2.html#part-2-b23",
+     "verified": true
+    },
+    {
+     "id": "part-2-b24",
+     "type": "para",
+     "destination": "chapters/part-2.html#part-2-b24",
+     "verified": true
+    },
+    {
+     "id": "part-2-b25",
+     "type": "code",
+     "destination": "chapters/part-2.html#part-2-b25",
+     "verified": true
+    },
+    {
+     "id": "part-2-b26",
+     "type": "heading",
+     "destination": "chapters/part-2.html#part-2-b26",
+     "verified": true
+    },
+    {
+     "id": "part-2-b27",
+     "type": "para",
+     "destination": "chapters/part-2.html#part-2-b27",
+     "verified": true
+    },
+    {
+     "id": "part-2-b28",
+     "type": "para",
+     "destination": "chapters/part-2.html#part-2-b28",
+     "verified": true
+    },
+    {
+     "id": "part-2-b29",
+     "type": "heading",
+     "destination": "chapters/part-2.html#part-2-b29",
+     "verified": true
+    },
+    {
+     "id": "part-2-b30",
+     "type": "para",
+     "destination": "chapters/part-2.html#part-2-b30",
+     "verified": true
+    },
+    {
+     "id": "part-2-b31",
+     "type": "para",
+     "destination": "chapters/part-2.html#part-2-b31",
+     "verified": true
+    },
+    {
+     "id": "part-2-b32",
+     "type": "list",
+     "destination": "chapters/part-2.html#part-2-b32",
+     "verified": true
+    },
+    {
+     "id": "part-2-b33",
+     "type": "para",
+     "destination": "chapters/part-2.html#part-2-b33",
+     "verified": true
+    },
+    {
+     "id": "part-2-b34",
+     "type": "heading",
+     "destination": "chapters/part-2.html#part-2-b34",
+     "verified": true
+    },
+    {
+     "id": "part-2-b35",
+     "type": "para",
+     "destination": "chapters/part-2.html#part-2-b35",
+     "verified": true
+    },
+    {
+     "id": "part-2-b36",
+     "type": "para",
+     "destination": "chapters/part-2.html#part-2-b36",
+     "verified": true
+    },
+    {
+     "id": "part-2-b37",
+     "type": "para",
+     "destination": "chapters/part-2.html#part-2-b37",
+     "verified": true
+    },
+    {
+     "id": "part-2-b38",
+     "type": "para",
+     "destination": "chapters/part-2.html#part-2-b38",
+     "verified": true
+    },
+    {
+     "id": "part-2-b39",
+     "type": "para",
+     "destination": "chapters/part-2.html#part-2-b39",
+     "verified": true
+    },
+    {
+     "id": "part-2-b40",
+     "type": "code",
+     "destination": "chapters/part-2.html#part-2-b40",
+     "verified": true
+    },
+    {
+     "id": "part-2-b41",
+     "type": "para",
+     "destination": "chapters/part-2.html#part-2-b41",
+     "verified": true
+    },
+    {
+     "id": "part-2-b42",
+     "type": "para",
+     "destination": "chapters/part-2.html#part-2-b42",
+     "verified": true
+    },
+    {
+     "id": "part-2-b43",
+     "type": "code",
+     "destination": "chapters/part-2.html#part-2-b43",
+     "verified": true
+    },
+    {
+     "id": "part-2-b44",
+     "type": "para",
+     "destination": "chapters/part-2.html#part-2-b44",
+     "verified": true
+    },
+    {
+     "id": "part-2-b45",
+     "type": "code",
+     "destination": "chapters/part-2.html#part-2-b45",
+     "verified": true
+    },
+    {
+     "id": "part-2-b46",
+     "type": "heading",
+     "destination": "chapters/part-2.html#part-2-b46",
+     "verified": true
+    },
+    {
+     "id": "part-2-b47",
+     "type": "para",
+     "destination": "chapters/part-2.html#part-2-b47",
+     "verified": true
+    },
+    {
+     "id": "part-2-b48",
+     "type": "code",
+     "destination": "chapters/part-2.html#part-2-b48",
+     "verified": true
+    },
+    {
+     "id": "part-2-b49",
+     "type": "list",
+     "destination": "chapters/part-2.html#part-2-b49",
+     "verified": true
+    },
+    {
+     "id": "part-2-b50",
+     "type": "para",
+     "destination": "chapters/part-2.html#part-2-b50",
+     "verified": true
+    },
+    {
+     "id": "part-2-b51",
+     "type": "code",
+     "destination": "chapters/part-2.html#part-2-b51",
+     "verified": true
+    },
+    {
+     "id": "part-2-b52",
+     "type": "para",
+     "destination": "chapters/part-2.html#part-2-b52",
+     "verified": true
+    },
+    {
+     "id": "part-2-b53",
+     "type": "heading",
+     "destination": "chapters/part-2.html#part-2-b53",
+     "verified": true
+    },
+    {
+     "id": "part-2-b54",
+     "type": "para",
+     "destination": "chapters/part-2.html#part-2-b54",
+     "verified": true
+    },
+    {
+     "id": "part-2-b55",
+     "type": "list",
+     "destination": "chapters/part-2.html#part-2-b55",
+     "verified": true
+    },
+    {
+     "id": "part-2-b56",
+     "type": "heading",
+     "destination": "chapters/part-2.html#part-2-b56",
+     "verified": true
+    },
+    {
+     "id": "part-2-b57",
+     "type": "para",
+     "destination": "chapters/part-2.html#part-2-b57",
+     "verified": true
+    },
+    {
+     "id": "part-2-b58",
+     "type": "heading",
+     "destination": "chapters/part-2.html#part-2-b58",
+     "verified": true
+    },
+    {
+     "id": "part-2-b59",
+     "type": "list",
+     "destination": "chapters/part-2.html#part-2-b59",
+     "verified": true
+    },
+    {
+     "id": "part-2-b60",
+     "type": "heading",
+     "destination": "chapters/part-2.html#part-2-b60",
+     "verified": true
+    },
+    {
+     "id": "part-2-b61",
+     "type": "list",
+     "destination": "chapters/part-2.html#part-2-b61",
+     "verified": true
+    },
+    {
+     "id": "part-2-b62",
+     "type": "heading",
+     "destination": "chapters/part-2.html#part-2-b62",
+     "verified": true
+    },
+    {
+     "id": "part-2-b63",
+     "type": "para",
+     "destination": "chapters/part-2.html#part-2-b63",
+     "verified": true
+    },
+    {
+     "id": "part-2-b64",
+     "type": "para",
+     "destination": "chapters/part-2.html#part-2-b64",
+     "verified": true
+    },
+    {
+     "id": "part-2-b65",
+     "type": "para",
+     "destination": "chapters/part-2.html#part-2-b65",
+     "verified": true
+    },
+    {
+     "id": "part-2-b66",
+     "type": "code",
+     "destination": "chapters/part-2.html#part-2-b66",
+     "verified": true
+    }
+   ]
+  },
+  {
+   "sourceTitle": "QAYBTA III  ANATOMY OF CSRF",
+   "destination": "chapters/part-3.html",
+   "blockCount": 94,
+   "blocks": [
+    {
+     "id": "part-3-b0",
+     "type": "para",
+     "destination": "chapters/part-3.html#part-3-b0",
+     "verified": true
+    },
+    {
+     "id": "part-3-b1",
+     "type": "heading",
+     "destination": "chapters/part-3.html#part-3-b1",
+     "verified": true
+    },
+    {
+     "id": "part-3-b2",
+     "type": "para",
+     "destination": "chapters/part-3.html#part-3-b2",
+     "verified": true
+    },
+    {
+     "id": "part-3-b3",
+     "type": "heading",
+     "destination": "chapters/part-3.html#part-3-b3",
+     "verified": true
+    },
+    {
+     "id": "part-3-b4",
+     "type": "para",
+     "destination": "chapters/part-3.html#part-3-b4",
+     "verified": true
+    },
+    {
+     "id": "part-3-b5",
+     "type": "para",
+     "destination": "chapters/part-3.html#part-3-b5",
+     "verified": true
+    },
+    {
+     "id": "part-3-b6",
+     "type": "list",
+     "destination": "chapters/part-3.html#part-3-b6",
+     "verified": true
+    },
+    {
+     "id": "part-3-b7",
+     "type": "para",
+     "destination": "chapters/part-3.html#part-3-b7",
+     "verified": true
+    },
+    {
+     "id": "part-3-b8",
+     "type": "para",
+     "destination": "chapters/part-3.html#part-3-b8",
+     "verified": true
+    },
+    {
+     "id": "part-3-b9",
+     "type": "heading",
+     "destination": "chapters/part-3.html#part-3-b9",
+     "verified": true
+    },
+    {
+     "id": "part-3-b10",
+     "type": "para",
+     "destination": "chapters/part-3.html#part-3-b10",
+     "verified": true
+    },
+    {
+     "id": "part-3-b11",
+     "type": "para",
+     "destination": "chapters/part-3.html#part-3-b11",
+     "verified": true
+    },
+    {
+     "id": "part-3-b12",
+     "type": "list",
+     "destination": "chapters/part-3.html#part-3-b12",
+     "verified": true
+    },
+    {
+     "id": "part-3-b13",
+     "type": "para",
+     "destination": "chapters/part-3.html#part-3-b13",
+     "verified": true
+    },
+    {
+     "id": "part-3-b14",
+     "type": "para",
+     "destination": "chapters/part-3.html#part-3-b14",
+     "verified": true
+    },
+    {
+     "id": "part-3-b15",
+     "type": "heading",
+     "destination": "chapters/part-3.html#part-3-b15",
+     "verified": true
+    },
+    {
+     "id": "part-3-b16",
+     "type": "para",
+     "destination": "chapters/part-3.html#part-3-b16",
+     "verified": true
+    },
+    {
+     "id": "part-3-b17",
+     "type": "para",
+     "destination": "chapters/part-3.html#part-3-b17",
+     "verified": true
+    },
+    {
+     "id": "part-3-b18",
+     "type": "list",
+     "destination": "chapters/part-3.html#part-3-b18",
+     "verified": true
+    },
+    {
+     "id": "part-3-b19",
+     "type": "para",
+     "destination": "chapters/part-3.html#part-3-b19",
+     "verified": true
+    },
+    {
+     "id": "part-3-b20",
+     "type": "para",
+     "destination": "chapters/part-3.html#part-3-b20",
+     "verified": true
+    },
+    {
+     "id": "part-3-b21",
+     "type": "heading",
+     "destination": "chapters/part-3.html#part-3-b21",
+     "verified": true
+    },
+    {
+     "id": "part-3-b22",
+     "type": "para",
+     "destination": "chapters/part-3.html#part-3-b22",
+     "verified": true
+    },
+    {
+     "id": "part-3-b23",
+     "type": "para",
+     "destination": "chapters/part-3.html#part-3-b23",
+     "verified": true
+    },
+    {
+     "id": "part-3-b24",
+     "type": "list",
+     "destination": "chapters/part-3.html#part-3-b24",
+     "verified": true
+    },
+    {
+     "id": "part-3-b25",
+     "type": "para",
+     "destination": "chapters/part-3.html#part-3-b25",
+     "verified": true
+    },
+    {
+     "id": "part-3-b26",
+     "type": "para",
+     "destination": "chapters/part-3.html#part-3-b26",
+     "verified": true
+    },
+    {
+     "id": "part-3-b27",
+     "type": "heading",
+     "destination": "chapters/part-3.html#part-3-b27",
+     "verified": true
+    },
+    {
+     "id": "part-3-b28",
+     "type": "para",
+     "destination": "chapters/part-3.html#part-3-b28",
+     "verified": true
+    },
+    {
+     "id": "part-3-b29",
+     "type": "heading",
+     "destination": "chapters/part-3.html#part-3-b29",
+     "verified": true
+    },
+    {
+     "id": "part-3-b30",
+     "type": "para",
+     "destination": "chapters/part-3.html#part-3-b30",
+     "verified": true
+    },
+    {
+     "id": "part-3-b31",
+     "type": "para",
+     "destination": "chapters/part-3.html#part-3-b31",
+     "verified": true
+    },
+    {
+     "id": "part-3-b32",
+     "type": "code",
+     "destination": "chapters/part-3.html#part-3-b32",
+     "verified": true
+    },
+    {
+     "id": "part-3-b33",
+     "type": "para",
+     "destination": "chapters/part-3.html#part-3-b33",
+     "verified": true
+    },
+    {
+     "id": "part-3-b34",
+     "type": "para",
+     "destination": "chapters/part-3.html#part-3-b34",
+     "verified": true
+    },
+    {
+     "id": "part-3-b35",
+     "type": "para",
+     "destination": "chapters/part-3.html#part-3-b35",
+     "verified": true
+    },
+    {
+     "id": "part-3-b36",
+     "type": "heading",
+     "destination": "chapters/part-3.html#part-3-b36",
+     "verified": true
+    },
+    {
+     "id": "part-3-b37",
+     "type": "para",
+     "destination": "chapters/part-3.html#part-3-b37",
+     "verified": true
+    },
+    {
+     "id": "part-3-b38",
+     "type": "para",
+     "destination": "chapters/part-3.html#part-3-b38",
+     "verified": true
+    },
+    {
+     "id": "part-3-b39",
+     "type": "code",
+     "destination": "chapters/part-3.html#part-3-b39",
+     "verified": true
+    },
+    {
+     "id": "part-3-b40",
+     "type": "para",
+     "destination": "chapters/part-3.html#part-3-b40",
+     "verified": true
+    },
+    {
+     "id": "part-3-b41",
+     "type": "para",
+     "destination": "chapters/part-3.html#part-3-b41",
+     "verified": true
+    },
+    {
+     "id": "part-3-b42",
+     "type": "heading",
+     "destination": "chapters/part-3.html#part-3-b42",
+     "verified": true
+    },
+    {
+     "id": "part-3-b43",
+     "type": "para",
+     "destination": "chapters/part-3.html#part-3-b43",
+     "verified": true
+    },
+    {
+     "id": "part-3-b44",
+     "type": "para",
+     "destination": "chapters/part-3.html#part-3-b44",
+     "verified": true
+    },
+    {
+     "id": "part-3-b45",
+     "type": "code",
+     "destination": "chapters/part-3.html#part-3-b45",
+     "verified": true
+    },
+    {
+     "id": "part-3-b46",
+     "type": "para",
+     "destination": "chapters/part-3.html#part-3-b46",
+     "verified": true
+    },
+    {
+     "id": "part-3-b47",
+     "type": "para",
+     "destination": "chapters/part-3.html#part-3-b47",
+     "verified": true
+    },
+    {
+     "id": "part-3-b48",
+     "type": "para",
+     "destination": "chapters/part-3.html#part-3-b48",
+     "verified": true
+    },
+    {
+     "id": "part-3-b49",
+     "type": "heading",
+     "destination": "chapters/part-3.html#part-3-b49",
+     "verified": true
+    },
+    {
+     "id": "part-3-b50",
+     "type": "para",
+     "destination": "chapters/part-3.html#part-3-b50",
+     "verified": true
+    },
+    {
+     "id": "part-3-b51",
+     "type": "para",
+     "destination": "chapters/part-3.html#part-3-b51",
+     "verified": true
+    },
+    {
+     "id": "part-3-b52",
+     "type": "code",
+     "destination": "chapters/part-3.html#part-3-b52",
+     "verified": true
+    },
+    {
+     "id": "part-3-b53",
+     "type": "para",
+     "destination": "chapters/part-3.html#part-3-b53",
+     "verified": true
+    },
+    {
+     "id": "part-3-b54",
+     "type": "para",
+     "destination": "chapters/part-3.html#part-3-b54",
+     "verified": true
+    },
+    {
+     "id": "part-3-b55",
+     "type": "para",
+     "destination": "chapters/part-3.html#part-3-b55",
+     "verified": true
+    },
+    {
+     "id": "part-3-b56",
+     "type": "heading",
+     "destination": "chapters/part-3.html#part-3-b56",
+     "verified": true
+    },
+    {
+     "id": "part-3-b57",
+     "type": "para",
+     "destination": "chapters/part-3.html#part-3-b57",
+     "verified": true
+    },
+    {
+     "id": "part-3-b58",
+     "type": "para",
+     "destination": "chapters/part-3.html#part-3-b58",
+     "verified": true
+    },
+    {
+     "id": "part-3-b59",
+     "type": "code",
+     "destination": "chapters/part-3.html#part-3-b59",
+     "verified": true
+    },
+    {
+     "id": "part-3-b60",
+     "type": "para",
+     "destination": "chapters/part-3.html#part-3-b60",
+     "verified": true
+    },
+    {
+     "id": "part-3-b61",
+     "type": "para",
+     "destination": "chapters/part-3.html#part-3-b61",
+     "verified": true
+    },
+    {
+     "id": "part-3-b62",
+     "type": "heading",
+     "destination": "chapters/part-3.html#part-3-b62",
+     "verified": true
+    },
+    {
+     "id": "part-3-b63",
+     "type": "para",
+     "destination": "chapters/part-3.html#part-3-b63",
+     "verified": true
+    },
+    {
+     "id": "part-3-b64",
+     "type": "heading",
+     "destination": "chapters/part-3.html#part-3-b64",
+     "verified": true
+    },
+    {
+     "id": "part-3-b65",
+     "type": "para",
+     "destination": "chapters/part-3.html#part-3-b65",
+     "verified": true
+    },
+    {
+     "id": "part-3-b66",
+     "type": "list",
+     "destination": "chapters/part-3.html#part-3-b66",
+     "verified": true
+    },
+    {
+     "id": "part-3-b67",
+     "type": "para",
+     "destination": "chapters/part-3.html#part-3-b67",
+     "verified": true
+    },
+    {
+     "id": "part-3-b68",
+     "type": "heading",
+     "destination": "chapters/part-3.html#part-3-b68",
+     "verified": true
+    },
+    {
+     "id": "part-3-b69",
+     "type": "para",
+     "destination": "chapters/part-3.html#part-3-b69",
+     "verified": true
+    },
+    {
+     "id": "part-3-b70",
+     "type": "list",
+     "destination": "chapters/part-3.html#part-3-b70",
+     "verified": true
+    },
+    {
+     "id": "part-3-b71",
+     "type": "heading",
+     "destination": "chapters/part-3.html#part-3-b71",
+     "verified": true
+    },
+    {
+     "id": "part-3-b72",
+     "type": "para",
+     "destination": "chapters/part-3.html#part-3-b72",
+     "verified": true
+    },
+    {
+     "id": "part-3-b73",
+     "type": "para",
+     "destination": "chapters/part-3.html#part-3-b73",
+     "verified": true
+    },
+    {
+     "id": "part-3-b74",
+     "type": "list",
+     "destination": "chapters/part-3.html#part-3-b74",
+     "verified": true
+    },
+    {
+     "id": "part-3-b75",
+     "type": "para",
+     "destination": "chapters/part-3.html#part-3-b75",
+     "verified": true
+    },
+    {
+     "id": "part-3-b76",
+     "type": "heading",
+     "destination": "chapters/part-3.html#part-3-b76",
+     "verified": true
+    },
+    {
+     "id": "part-3-b77",
+     "type": "para",
+     "destination": "chapters/part-3.html#part-3-b77",
+     "verified": true
+    },
+    {
+     "id": "part-3-b78",
+     "type": "para",
+     "destination": "chapters/part-3.html#part-3-b78",
+     "verified": true
+    },
+    {
+     "id": "part-3-b79",
+     "type": "list",
+     "destination": "chapters/part-3.html#part-3-b79",
+     "verified": true
+    },
+    {
+     "id": "part-3-b80",
+     "type": "heading",
+     "destination": "chapters/part-3.html#part-3-b80",
+     "verified": true
+    },
+    {
+     "id": "part-3-b81",
+     "type": "para",
+     "destination": "chapters/part-3.html#part-3-b81",
+     "verified": true
+    },
+    {
+     "id": "part-3-b82",
+     "type": "para",
+     "destination": "chapters/part-3.html#part-3-b82",
+     "verified": true
+    },
+    {
+     "id": "part-3-b83",
+     "type": "code",
+     "destination": "chapters/part-3.html#part-3-b83",
+     "verified": true
+    },
+    {
+     "id": "part-3-b84",
+     "type": "para",
+     "destination": "chapters/part-3.html#part-3-b84",
+     "verified": true
+    },
+    {
+     "id": "part-3-b85",
+     "type": "code",
+     "destination": "chapters/part-3.html#part-3-b85",
+     "verified": true
+    },
+    {
+     "id": "part-3-b86",
+     "type": "para",
+     "destination": "chapters/part-3.html#part-3-b86",
+     "verified": true
+    },
+    {
+     "id": "part-3-b87",
+     "type": "code",
+     "destination": "chapters/part-3.html#part-3-b87",
+     "verified": true
+    },
+    {
+     "id": "part-3-b88",
+     "type": "para",
+     "destination": "chapters/part-3.html#part-3-b88",
+     "verified": true
+    },
+    {
+     "id": "part-3-b89",
+     "type": "heading",
+     "destination": "chapters/part-3.html#part-3-b89",
+     "verified": true
+    },
+    {
+     "id": "part-3-b90",
+     "type": "para",
+     "destination": "chapters/part-3.html#part-3-b90",
+     "verified": true
+    },
+    {
+     "id": "part-3-b91",
+     "type": "para",
+     "destination": "chapters/part-3.html#part-3-b91",
+     "verified": true
+    },
+    {
+     "id": "part-3-b92",
+     "type": "para",
+     "destination": "chapters/part-3.html#part-3-b92",
+     "verified": true
+    },
+    {
+     "id": "part-3-b93",
+     "type": "para",
+     "destination": "chapters/part-3.html#part-3-b93",
+     "verified": true
+    }
+   ]
+  },
+  {
+   "sourceTitle": "QAYBTA IV  DEFENSES",
+   "destination": "chapters/part-4.html",
+   "blockCount": 67,
+   "blocks": [
+    {
+     "id": "part-4-b0",
+     "type": "para",
+     "destination": "chapters/part-4.html#part-4-b0",
+     "verified": true
+    },
+    {
+     "id": "part-4-b1",
+     "type": "para",
+     "destination": "chapters/part-4.html#part-4-b1",
+     "verified": true
+    },
+    {
+     "id": "part-4-b2",
+     "type": "para",
+     "destination": "chapters/part-4.html#part-4-b2",
+     "verified": true
+    },
+    {
+     "id": "part-4-b3",
+     "type": "heading",
+     "destination": "chapters/part-4.html#part-4-b3",
+     "verified": true
+    },
+    {
+     "id": "part-4-b4",
+     "type": "para",
+     "destination": "chapters/part-4.html#part-4-b4",
+     "verified": true
+    },
+    {
+     "id": "part-4-b5",
+     "type": "para",
+     "destination": "chapters/part-4.html#part-4-b5",
+     "verified": true
+    },
+    {
+     "id": "part-4-b6",
+     "type": "para",
+     "destination": "chapters/part-4.html#part-4-b6",
+     "verified": true
+    },
+    {
+     "id": "part-4-b7",
+     "type": "list",
+     "destination": "chapters/part-4.html#part-4-b7",
+     "verified": true
+    },
+    {
+     "id": "part-4-b8",
+     "type": "para",
+     "destination": "chapters/part-4.html#part-4-b8",
+     "verified": true
+    },
+    {
+     "id": "part-4-b9",
+     "type": "heading",
+     "destination": "chapters/part-4.html#part-4-b9",
+     "verified": true
+    },
+    {
+     "id": "part-4-b10",
+     "type": "para",
+     "destination": "chapters/part-4.html#part-4-b10",
+     "verified": true
+    },
+    {
+     "id": "part-4-b11",
+     "type": "code",
+     "destination": "chapters/part-4.html#part-4-b11",
+     "verified": true
+    },
+    {
+     "id": "part-4-b12",
+     "type": "para",
+     "destination": "chapters/part-4.html#part-4-b12",
+     "verified": true
+    },
+    {
+     "id": "part-4-b13",
+     "type": "para",
+     "destination": "chapters/part-4.html#part-4-b13",
+     "verified": true
+    },
+    {
+     "id": "part-4-b14",
+     "type": "para",
+     "destination": "chapters/part-4.html#part-4-b14",
+     "verified": true
+    },
+    {
+     "id": "part-4-b15",
+     "type": "code",
+     "destination": "chapters/part-4.html#part-4-b15",
+     "verified": true
+    },
+    {
+     "id": "part-4-b16",
+     "type": "para",
+     "destination": "chapters/part-4.html#part-4-b16",
+     "verified": true
+    },
+    {
+     "id": "part-4-b17",
+     "type": "para",
+     "destination": "chapters/part-4.html#part-4-b17",
+     "verified": true
+    },
+    {
+     "id": "part-4-b18",
+     "type": "code",
+     "destination": "chapters/part-4.html#part-4-b18",
+     "verified": true
+    },
+    {
+     "id": "part-4-b19",
+     "type": "para",
+     "destination": "chapters/part-4.html#part-4-b19",
+     "verified": true
+    },
+    {
+     "id": "part-4-b20",
+     "type": "code",
+     "destination": "chapters/part-4.html#part-4-b20",
+     "verified": true
+    },
+    {
+     "id": "part-4-b21",
+     "type": "heading",
+     "destination": "chapters/part-4.html#part-4-b21",
+     "verified": true
+    },
+    {
+     "id": "part-4-b22",
+     "type": "para",
+     "destination": "chapters/part-4.html#part-4-b22",
+     "verified": true
+    },
+    {
+     "id": "part-4-b23",
+     "type": "table",
+     "destination": "chapters/part-4.html#part-4-b23",
+     "verified": true
+    },
+    {
+     "id": "part-4-b24",
+     "type": "para",
+     "destination": "chapters/part-4.html#part-4-b24",
+     "verified": true
+    },
+    {
+     "id": "part-4-b25",
+     "type": "heading",
+     "destination": "chapters/part-4.html#part-4-b25",
+     "verified": true
+    },
+    {
+     "id": "part-4-b26",
+     "type": "para",
+     "destination": "chapters/part-4.html#part-4-b26",
+     "verified": true
+    },
+    {
+     "id": "part-4-b27",
+     "type": "para",
+     "destination": "chapters/part-4.html#part-4-b27",
+     "verified": true
+    },
+    {
+     "id": "part-4-b28",
+     "type": "code",
+     "destination": "chapters/part-4.html#part-4-b28",
+     "verified": true
+    },
+    {
+     "id": "part-4-b29",
+     "type": "para",
+     "destination": "chapters/part-4.html#part-4-b29",
+     "verified": true
+    },
+    {
+     "id": "part-4-b30",
+     "type": "list",
+     "destination": "chapters/part-4.html#part-4-b30",
+     "verified": true
+    },
+    {
+     "id": "part-4-b31",
+     "type": "list",
+     "destination": "chapters/part-4.html#part-4-b31",
+     "verified": true
+    },
+    {
+     "id": "part-4-b32",
+     "type": "para",
+     "destination": "chapters/part-4.html#part-4-b32",
+     "verified": true
+    },
+    {
+     "id": "part-4-b33",
+     "type": "code",
+     "destination": "chapters/part-4.html#part-4-b33",
+     "verified": true
+    },
+    {
+     "id": "part-4-b34",
+     "type": "list",
+     "destination": "chapters/part-4.html#part-4-b34",
+     "verified": true
+    },
+    {
+     "id": "part-4-b35",
+     "type": "para",
+     "destination": "chapters/part-4.html#part-4-b35",
+     "verified": true
+    },
+    {
+     "id": "part-4-b36",
+     "type": "code",
+     "destination": "chapters/part-4.html#part-4-b36",
+     "verified": true
+    },
+    {
+     "id": "part-4-b37",
+     "type": "list",
+     "destination": "chapters/part-4.html#part-4-b37",
+     "verified": true
+    },
+    {
+     "id": "part-4-b38",
+     "type": "heading",
+     "destination": "chapters/part-4.html#part-4-b38",
+     "verified": true
+    },
+    {
+     "id": "part-4-b39",
+     "type": "table",
+     "destination": "chapters/part-4.html#part-4-b39",
+     "verified": true
+    },
+    {
+     "id": "part-4-b40",
+     "type": "para",
+     "destination": "chapters/part-4.html#part-4-b40",
+     "verified": true
+    },
+    {
+     "id": "part-4-b41",
+     "type": "heading",
+     "destination": "chapters/part-4.html#part-4-b41",
+     "verified": true
+    },
+    {
+     "id": "part-4-b42",
+     "type": "heading",
+     "destination": "chapters/part-4.html#part-4-b42",
+     "verified": true
+    },
+    {
+     "id": "part-4-b43",
+     "type": "para",
+     "destination": "chapters/part-4.html#part-4-b43",
+     "verified": true
+    },
+    {
+     "id": "part-4-b44",
+     "type": "para",
+     "destination": "chapters/part-4.html#part-4-b44",
+     "verified": true
+    },
+    {
+     "id": "part-4-b45",
+     "type": "code",
+     "destination": "chapters/part-4.html#part-4-b45",
+     "verified": true
+    },
+    {
+     "id": "part-4-b46",
+     "type": "para",
+     "destination": "chapters/part-4.html#part-4-b46",
+     "verified": true
+    },
+    {
+     "id": "part-4-b47",
+     "type": "code",
+     "destination": "chapters/part-4.html#part-4-b47",
+     "verified": true
+    },
+    {
+     "id": "part-4-b48",
+     "type": "list",
+     "destination": "chapters/part-4.html#part-4-b48",
+     "verified": true
+    },
+    {
+     "id": "part-4-b49",
+     "type": "heading",
+     "destination": "chapters/part-4.html#part-4-b49",
+     "verified": true
+    },
+    {
+     "id": "part-4-b50",
+     "type": "para",
+     "destination": "chapters/part-4.html#part-4-b50",
+     "verified": true
+    },
+    {
+     "id": "part-4-b51",
+     "type": "code",
+     "destination": "chapters/part-4.html#part-4-b51",
+     "verified": true
+    },
+    {
+     "id": "part-4-b52",
+     "type": "para",
+     "destination": "chapters/part-4.html#part-4-b52",
+     "verified": true
+    },
+    {
+     "id": "part-4-b53",
+     "type": "code",
+     "destination": "chapters/part-4.html#part-4-b53",
+     "verified": true
+    },
+    {
+     "id": "part-4-b54",
+     "type": "para",
+     "destination": "chapters/part-4.html#part-4-b54",
+     "verified": true
+    },
+    {
+     "id": "part-4-b55",
+     "type": "para",
+     "destination": "chapters/part-4.html#part-4-b55",
+     "verified": true
+    },
+    {
+     "id": "part-4-b56",
+     "type": "para",
+     "destination": "chapters/part-4.html#part-4-b56",
+     "verified": true
+    },
+    {
+     "id": "part-4-b57",
+     "type": "heading",
+     "destination": "chapters/part-4.html#part-4-b57",
+     "verified": true
+    },
+    {
+     "id": "part-4-b58",
+     "type": "para",
+     "destination": "chapters/part-4.html#part-4-b58",
+     "verified": true
+    },
+    {
+     "id": "part-4-b59",
+     "type": "code",
+     "destination": "chapters/part-4.html#part-4-b59",
+     "verified": true
+    },
+    {
+     "id": "part-4-b60",
+     "type": "para",
+     "destination": "chapters/part-4.html#part-4-b60",
+     "verified": true
+    },
+    {
+     "id": "part-4-b61",
+     "type": "para",
+     "destination": "chapters/part-4.html#part-4-b61",
+     "verified": true
+    },
+    {
+     "id": "part-4-b62",
+     "type": "list",
+     "destination": "chapters/part-4.html#part-4-b62",
+     "verified": true
+    },
+    {
+     "id": "part-4-b63",
+     "type": "heading",
+     "destination": "chapters/part-4.html#part-4-b63",
+     "verified": true
+    },
+    {
+     "id": "part-4-b64",
+     "type": "para",
+     "destination": "chapters/part-4.html#part-4-b64",
+     "verified": true
+    },
+    {
+     "id": "part-4-b65",
+     "type": "para",
+     "destination": "chapters/part-4.html#part-4-b65",
+     "verified": true
+    },
+    {
+     "id": "part-4-b66",
+     "type": "list",
+     "destination": "chapters/part-4.html#part-4-b66",
+     "verified": true
+    }
+   ]
+  },
+  {
+   "sourceTitle": "QAYBTA V — BILOW: LABS-KA FUDUD",
+   "destination": "chapters/part-5.html",
+   "blockCount": 78,
+   "blocks": [
+    {
+     "id": "part-5-b0",
+     "type": "para",
+     "destination": "chapters/part-5.html#part-5-b0",
+     "verified": true
+    },
+    {
+     "id": "part-5-b1",
+     "type": "para",
+     "destination": "chapters/part-5.html#part-5-b1",
+     "verified": true
+    },
+    {
+     "id": "part-5-b2",
+     "type": "para",
+     "destination": "chapters/part-5.html#part-5-b2",
+     "verified": true
+    },
+    {
+     "id": "part-5-b3",
+     "type": "para",
+     "destination": "chapters/part-5.html#part-5-b3",
+     "verified": true
+    },
+    {
+     "id": "part-5-b4",
+     "type": "heading",
+     "destination": "chapters/part-5.html#part-5-b4",
+     "verified": true
+    },
+    {
+     "id": "part-5-b5",
+     "type": "para",
+     "destination": "chapters/part-5.html#part-5-b5",
+     "verified": true
+    },
+    {
+     "id": "part-5-b6",
+     "type": "para",
+     "destination": "chapters/part-5.html#part-5-b6",
+     "verified": true
+    },
+    {
+     "id": "part-5-b7",
+     "type": "para",
+     "destination": "chapters/part-5.html#part-5-b7",
+     "verified": true
+    },
+    {
+     "id": "part-5-b8",
+     "type": "para",
+     "destination": "chapters/part-5.html#part-5-b8",
+     "verified": true
+    },
+    {
+     "id": "part-5-b9",
+     "type": "list",
+     "destination": "chapters/part-5.html#part-5-b9",
+     "verified": true
+    },
+    {
+     "id": "part-5-b10",
+     "type": "para",
+     "destination": "chapters/part-5.html#part-5-b10",
+     "verified": true
+    },
+    {
+     "id": "part-5-b11",
+     "type": "list",
+     "destination": "chapters/part-5.html#part-5-b11",
+     "verified": true
+    },
+    {
+     "id": "part-5-b12",
+     "type": "para",
+     "destination": "chapters/part-5.html#part-5-b12",
+     "verified": true
+    },
+    {
+     "id": "part-5-b13",
+     "type": "list",
+     "destination": "chapters/part-5.html#part-5-b13",
+     "verified": true
+    },
+    {
+     "id": "part-5-b14",
+     "type": "para",
+     "destination": "chapters/part-5.html#part-5-b14",
+     "verified": true
+    },
+    {
+     "id": "part-5-b15",
+     "type": "list",
+     "destination": "chapters/part-5.html#part-5-b15",
+     "verified": true
+    },
+    {
+     "id": "part-5-b16",
+     "type": "para",
+     "destination": "chapters/part-5.html#part-5-b16",
+     "verified": true
+    },
+    {
+     "id": "part-5-b17",
+     "type": "list",
+     "destination": "chapters/part-5.html#part-5-b17",
+     "verified": true
+    },
+    {
+     "id": "part-5-b18",
+     "type": "para",
+     "destination": "chapters/part-5.html#part-5-b18",
+     "verified": true
+    },
+    {
+     "id": "part-5-b19",
+     "type": "heading",
+     "destination": "chapters/part-5.html#part-5-b19",
+     "verified": true
+    },
+    {
+     "id": "part-5-b20",
+     "type": "para",
+     "destination": "chapters/part-5.html#part-5-b20",
+     "verified": true
+    },
+    {
+     "id": "part-5-b21",
+     "type": "para",
+     "destination": "chapters/part-5.html#part-5-b21",
+     "verified": true
+    },
+    {
+     "id": "part-5-b22",
+     "type": "list",
+     "destination": "chapters/part-5.html#part-5-b22",
+     "verified": true
+    },
+    {
+     "id": "part-5-b23",
+     "type": "para",
+     "destination": "chapters/part-5.html#part-5-b23",
+     "verified": true
+    },
+    {
+     "id": "part-5-b24",
+     "type": "list",
+     "destination": "chapters/part-5.html#part-5-b24",
+     "verified": true
+    },
+    {
+     "id": "part-5-b25",
+     "type": "code",
+     "destination": "chapters/part-5.html#part-5-b25",
+     "verified": true
+    },
+    {
+     "id": "part-5-b26",
+     "type": "para",
+     "destination": "chapters/part-5.html#part-5-b26",
+     "verified": true
+    },
+    {
+     "id": "part-5-b27",
+     "type": "list",
+     "destination": "chapters/part-5.html#part-5-b27",
+     "verified": true
+    },
+    {
+     "id": "part-5-b28",
+     "type": "para",
+     "destination": "chapters/part-5.html#part-5-b28",
+     "verified": true
+    },
+    {
+     "id": "part-5-b29",
+     "type": "list",
+     "destination": "chapters/part-5.html#part-5-b29",
+     "verified": true
+    },
+    {
+     "id": "part-5-b30",
+     "type": "code",
+     "destination": "chapters/part-5.html#part-5-b30",
+     "verified": true
+    },
+    {
+     "id": "part-5-b31",
+     "type": "list",
+     "destination": "chapters/part-5.html#part-5-b31",
+     "verified": true
+    },
+    {
+     "id": "part-5-b32",
+     "type": "para",
+     "destination": "chapters/part-5.html#part-5-b32",
+     "verified": true
+    },
+    {
+     "id": "part-5-b33",
+     "type": "list",
+     "destination": "chapters/part-5.html#part-5-b33",
+     "verified": true
+    },
+    {
+     "id": "part-5-b34",
+     "type": "para",
+     "destination": "chapters/part-5.html#part-5-b34",
+     "verified": true
+    },
+    {
+     "id": "part-5-b35",
+     "type": "para",
+     "destination": "chapters/part-5.html#part-5-b35",
+     "verified": true
+    },
+    {
+     "id": "part-5-b36",
+     "type": "para",
+     "destination": "chapters/part-5.html#part-5-b36",
+     "verified": true
+    },
+    {
+     "id": "part-5-b37",
+     "type": "heading",
+     "destination": "chapters/part-5.html#part-5-b37",
+     "verified": true
+    },
+    {
+     "id": "part-5-b38",
+     "type": "heading",
+     "destination": "chapters/part-5.html#part-5-b38",
+     "verified": true
+    },
+    {
+     "id": "part-5-b39",
+     "type": "para",
+     "destination": "chapters/part-5.html#part-5-b39",
+     "verified": true
+    },
+    {
+     "id": "part-5-b40",
+     "type": "para",
+     "destination": "chapters/part-5.html#part-5-b40",
+     "verified": true
+    },
+    {
+     "id": "part-5-b41",
+     "type": "heading",
+     "destination": "chapters/part-5.html#part-5-b41",
+     "verified": true
+    },
+    {
+     "id": "part-5-b42",
+     "type": "para",
+     "destination": "chapters/part-5.html#part-5-b42",
+     "verified": true
+    },
+    {
+     "id": "part-5-b43",
+     "type": "table",
+     "destination": "chapters/part-5.html#part-5-b43",
+     "verified": true
+    },
+    {
+     "id": "part-5-b44",
+     "type": "para",
+     "destination": "chapters/part-5.html#part-5-b44",
+     "verified": true
+    },
+    {
+     "id": "part-5-b45",
+     "type": "list",
+     "destination": "chapters/part-5.html#part-5-b45",
+     "verified": true
+    },
+    {
+     "id": "part-5-b46",
+     "type": "para",
+     "destination": "chapters/part-5.html#part-5-b46",
+     "verified": true
+    },
+    {
+     "id": "part-5-b47",
+     "type": "heading",
+     "destination": "chapters/part-5.html#part-5-b47",
+     "verified": true
+    },
+    {
+     "id": "part-5-b48",
+     "type": "para",
+     "destination": "chapters/part-5.html#part-5-b48",
+     "verified": true
+    },
+    {
+     "id": "part-5-b49",
+     "type": "list",
+     "destination": "chapters/part-5.html#part-5-b49",
+     "verified": true
+    },
+    {
+     "id": "part-5-b50",
+     "type": "para",
+     "destination": "chapters/part-5.html#part-5-b50",
+     "verified": true
+    },
+    {
+     "id": "part-5-b51",
+     "type": "list",
+     "destination": "chapters/part-5.html#part-5-b51",
+     "verified": true
+    },
+    {
+     "id": "part-5-b52",
+     "type": "para",
+     "destination": "chapters/part-5.html#part-5-b52",
+     "verified": true
+    },
+    {
+     "id": "part-5-b53",
+     "type": "list",
+     "destination": "chapters/part-5.html#part-5-b53",
+     "verified": true
+    },
+    {
+     "id": "part-5-b54",
+     "type": "para",
+     "destination": "chapters/part-5.html#part-5-b54",
+     "verified": true
+    },
+    {
+     "id": "part-5-b55",
+     "type": "code",
+     "destination": "chapters/part-5.html#part-5-b55",
+     "verified": true
+    },
+    {
+     "id": "part-5-b56",
+     "type": "para",
+     "destination": "chapters/part-5.html#part-5-b56",
+     "verified": true
+    },
+    {
+     "id": "part-5-b57",
+     "type": "para",
+     "destination": "chapters/part-5.html#part-5-b57",
+     "verified": true
+    },
+    {
+     "id": "part-5-b58",
+     "type": "list",
+     "destination": "chapters/part-5.html#part-5-b58",
+     "verified": true
+    },
+    {
+     "id": "part-5-b59",
+     "type": "para",
+     "destination": "chapters/part-5.html#part-5-b59",
+     "verified": true
+    },
+    {
+     "id": "part-5-b60",
+     "type": "heading",
+     "destination": "chapters/part-5.html#part-5-b60",
+     "verified": true
+    },
+    {
+     "id": "part-5-b61",
+     "type": "para",
+     "destination": "chapters/part-5.html#part-5-b61",
+     "verified": true
+    },
+    {
+     "id": "part-5-b62",
+     "type": "para",
+     "destination": "chapters/part-5.html#part-5-b62",
+     "verified": true
+    },
+    {
+     "id": "part-5-b63",
+     "type": "para",
+     "destination": "chapters/part-5.html#part-5-b63",
+     "verified": true
+    },
+    {
+     "id": "part-5-b64",
+     "type": "code",
+     "destination": "chapters/part-5.html#part-5-b64",
+     "verified": true
+    },
+    {
+     "id": "part-5-b65",
+     "type": "para",
+     "destination": "chapters/part-5.html#part-5-b65",
+     "verified": true
+    },
+    {
+     "id": "part-5-b66",
+     "type": "heading",
+     "destination": "chapters/part-5.html#part-5-b66",
+     "verified": true
+    },
+    {
+     "id": "part-5-b67",
+     "type": "para",
+     "destination": "chapters/part-5.html#part-5-b67",
+     "verified": true
+    },
+    {
+     "id": "part-5-b68",
+     "type": "list",
+     "destination": "chapters/part-5.html#part-5-b68",
+     "verified": true
+    },
+    {
+     "id": "part-5-b69",
+     "type": "para",
+     "destination": "chapters/part-5.html#part-5-b69",
+     "verified": true
+    },
+    {
+     "id": "part-5-b70",
+     "type": "list",
+     "destination": "chapters/part-5.html#part-5-b70",
+     "verified": true
+    },
+    {
+     "id": "part-5-b71",
+     "type": "para",
+     "destination": "chapters/part-5.html#part-5-b71",
+     "verified": true
+    },
+    {
+     "id": "part-5-b72",
+     "type": "list",
+     "destination": "chapters/part-5.html#part-5-b72",
+     "verified": true
+    },
+    {
+     "id": "part-5-b73",
+     "type": "para",
+     "destination": "chapters/part-5.html#part-5-b73",
+     "verified": true
+    },
+    {
+     "id": "part-5-b74",
+     "type": "code",
+     "destination": "chapters/part-5.html#part-5-b74",
+     "verified": true
+    },
+    {
+     "id": "part-5-b75",
+     "type": "para",
+     "destination": "chapters/part-5.html#part-5-b75",
+     "verified": true
+    },
+    {
+     "id": "part-5-b76",
+     "type": "para",
+     "destination": "chapters/part-5.html#part-5-b76",
+     "verified": true
+    },
+    {
+     "id": "part-5-b77",
+     "type": "list",
+     "destination": "chapters/part-5.html#part-5-b77",
+     "verified": true
+    }
+   ]
+  },
+  {
+   "sourceTitle": "QAYBTA VI — DHEXDHEXAAD BYPASSES",
+   "destination": "chapters/part-6.html",
+   "blockCount": 103,
+   "blocks": [
+    {
+     "id": "part-6-b0",
+     "type": "para",
+     "destination": "chapters/part-6.html#part-6-b0",
+     "verified": true
+    },
+    {
+     "id": "part-6-b1",
+     "type": "para",
+     "destination": "chapters/part-6.html#part-6-b1",
+     "verified": true
+    },
+    {
+     "id": "part-6-b2",
+     "type": "list",
+     "destination": "chapters/part-6.html#part-6-b2",
+     "verified": true
+    },
+    {
+     "id": "part-6-b3",
+     "type": "para",
+     "destination": "chapters/part-6.html#part-6-b3",
+     "verified": true
+    },
+    {
+     "id": "part-6-b4",
+     "type": "para",
+     "destination": "chapters/part-6.html#part-6-b4",
+     "verified": true
+    },
+    {
+     "id": "part-6-b5",
+     "type": "para",
+     "destination": "chapters/part-6.html#part-6-b5",
+     "verified": true
+    },
+    {
+     "id": "part-6-b6",
+     "type": "heading",
+     "destination": "chapters/part-6.html#part-6-b6",
+     "verified": true
+    },
+    {
+     "id": "part-6-b7",
+     "type": "para",
+     "destination": "chapters/part-6.html#part-6-b7",
+     "verified": true
+    },
+    {
+     "id": "part-6-b8",
+     "type": "para",
+     "destination": "chapters/part-6.html#part-6-b8",
+     "verified": true
+    },
+    {
+     "id": "part-6-b9",
+     "type": "para",
+     "destination": "chapters/part-6.html#part-6-b9",
+     "verified": true
+    },
+    {
+     "id": "part-6-b10",
+     "type": "para",
+     "destination": "chapters/part-6.html#part-6-b10",
+     "verified": true
+    },
+    {
+     "id": "part-6-b11",
+     "type": "para",
+     "destination": "chapters/part-6.html#part-6-b11",
+     "verified": true
+    },
+    {
+     "id": "part-6-b12",
+     "type": "para",
+     "destination": "chapters/part-6.html#part-6-b12",
+     "verified": true
+    },
+    {
+     "id": "part-6-b13",
+     "type": "para",
+     "destination": "chapters/part-6.html#part-6-b13",
+     "verified": true
+    },
+    {
+     "id": "part-6-b14",
+     "type": "para",
+     "destination": "chapters/part-6.html#part-6-b14",
+     "verified": true
+    },
+    {
+     "id": "part-6-b15",
+     "type": "para",
+     "destination": "chapters/part-6.html#part-6-b15",
+     "verified": true
+    },
+    {
+     "id": "part-6-b16",
+     "type": "para",
+     "destination": "chapters/part-6.html#part-6-b16",
+     "verified": true
+    },
+    {
+     "id": "part-6-b17",
+     "type": "para",
+     "destination": "chapters/part-6.html#part-6-b17",
+     "verified": true
+    },
+    {
+     "id": "part-6-b18",
+     "type": "para",
+     "destination": "chapters/part-6.html#part-6-b18",
+     "verified": true
+    },
+    {
+     "id": "part-6-b19",
+     "type": "para",
+     "destination": "chapters/part-6.html#part-6-b19",
+     "verified": true
+    },
+    {
+     "id": "part-6-b20",
+     "type": "code",
+     "destination": "chapters/part-6.html#part-6-b20",
+     "verified": true
+    },
+    {
+     "id": "part-6-b21",
+     "type": "para",
+     "destination": "chapters/part-6.html#part-6-b21",
+     "verified": true
+    },
+    {
+     "id": "part-6-b22",
+     "type": "heading",
+     "destination": "chapters/part-6.html#part-6-b22",
+     "verified": true
+    },
+    {
+     "id": "part-6-b23",
+     "type": "para",
+     "destination": "chapters/part-6.html#part-6-b23",
+     "verified": true
+    },
+    {
+     "id": "part-6-b24",
+     "type": "list",
+     "destination": "chapters/part-6.html#part-6-b24",
+     "verified": true
+    },
+    {
+     "id": "part-6-b25",
+     "type": "para",
+     "destination": "chapters/part-6.html#part-6-b25",
+     "verified": true
+    },
+    {
+     "id": "part-6-b26",
+     "type": "list",
+     "destination": "chapters/part-6.html#part-6-b26",
+     "verified": true
+    },
+    {
+     "id": "part-6-b27",
+     "type": "para",
+     "destination": "chapters/part-6.html#part-6-b27",
+     "verified": true
+    },
+    {
+     "id": "part-6-b28",
+     "type": "list",
+     "destination": "chapters/part-6.html#part-6-b28",
+     "verified": true
+    },
+    {
+     "id": "part-6-b29",
+     "type": "para",
+     "destination": "chapters/part-6.html#part-6-b29",
+     "verified": true
+    },
+    {
+     "id": "part-6-b30",
+     "type": "code",
+     "destination": "chapters/part-6.html#part-6-b30",
+     "verified": true
+    },
+    {
+     "id": "part-6-b31",
+     "type": "para",
+     "destination": "chapters/part-6.html#part-6-b31",
+     "verified": true
+    },
+    {
+     "id": "part-6-b32",
+     "type": "list",
+     "destination": "chapters/part-6.html#part-6-b32",
+     "verified": true
+    },
+    {
+     "id": "part-6-b33",
+     "type": "heading",
+     "destination": "chapters/part-6.html#part-6-b33",
+     "verified": true
+    },
+    {
+     "id": "part-6-b34",
+     "type": "para",
+     "destination": "chapters/part-6.html#part-6-b34",
+     "verified": true
+    },
+    {
+     "id": "part-6-b35",
+     "type": "list",
+     "destination": "chapters/part-6.html#part-6-b35",
+     "verified": true
+    },
+    {
+     "id": "part-6-b36",
+     "type": "para",
+     "destination": "chapters/part-6.html#part-6-b36",
+     "verified": true
+    },
+    {
+     "id": "part-6-b37",
+     "type": "para",
+     "destination": "chapters/part-6.html#part-6-b37",
+     "verified": true
+    },
+    {
+     "id": "part-6-b38",
+     "type": "para",
+     "destination": "chapters/part-6.html#part-6-b38",
+     "verified": true
+    },
+    {
+     "id": "part-6-b39",
+     "type": "para",
+     "destination": "chapters/part-6.html#part-6-b39",
+     "verified": true
+    },
+    {
+     "id": "part-6-b40",
+     "type": "para",
+     "destination": "chapters/part-6.html#part-6-b40",
+     "verified": true
+    },
+    {
+     "id": "part-6-b41",
+     "type": "para",
+     "destination": "chapters/part-6.html#part-6-b41",
+     "verified": true
+    },
+    {
+     "id": "part-6-b42",
+     "type": "para",
+     "destination": "chapters/part-6.html#part-6-b42",
+     "verified": true
+    },
+    {
+     "id": "part-6-b43",
+     "type": "list",
+     "destination": "chapters/part-6.html#part-6-b43",
+     "verified": true
+    },
+    {
+     "id": "part-6-b44",
+     "type": "para",
+     "destination": "chapters/part-6.html#part-6-b44",
+     "verified": true
+    },
+    {
+     "id": "part-6-b45",
+     "type": "heading",
+     "destination": "chapters/part-6.html#part-6-b45",
+     "verified": true
+    },
+    {
+     "id": "part-6-b46",
+     "type": "para",
+     "destination": "chapters/part-6.html#part-6-b46",
+     "verified": true
+    },
+    {
+     "id": "part-6-b47",
+     "type": "para",
+     "destination": "chapters/part-6.html#part-6-b47",
+     "verified": true
+    },
+    {
+     "id": "part-6-b48",
+     "type": "para",
+     "destination": "chapters/part-6.html#part-6-b48",
+     "verified": true
+    },
+    {
+     "id": "part-6-b49",
+     "type": "code",
+     "destination": "chapters/part-6.html#part-6-b49",
+     "verified": true
+    },
+    {
+     "id": "part-6-b50",
+     "type": "para",
+     "destination": "chapters/part-6.html#part-6-b50",
+     "verified": true
+    },
+    {
+     "id": "part-6-b51",
+     "type": "para",
+     "destination": "chapters/part-6.html#part-6-b51",
+     "verified": true
+    },
+    {
+     "id": "part-6-b52",
+     "type": "heading",
+     "destination": "chapters/part-6.html#part-6-b52",
+     "verified": true
+    },
+    {
+     "id": "part-6-b53",
+     "type": "para",
+     "destination": "chapters/part-6.html#part-6-b53",
+     "verified": true
+    },
+    {
+     "id": "part-6-b54",
+     "type": "list",
+     "destination": "chapters/part-6.html#part-6-b54",
+     "verified": true
+    },
+    {
+     "id": "part-6-b55",
+     "type": "para",
+     "destination": "chapters/part-6.html#part-6-b55",
+     "verified": true
+    },
+    {
+     "id": "part-6-b56",
+     "type": "list",
+     "destination": "chapters/part-6.html#part-6-b56",
+     "verified": true
+    },
+    {
+     "id": "part-6-b57",
+     "type": "para",
+     "destination": "chapters/part-6.html#part-6-b57",
+     "verified": true
+    },
+    {
+     "id": "part-6-b58",
+     "type": "list",
+     "destination": "chapters/part-6.html#part-6-b58",
+     "verified": true
+    },
+    {
+     "id": "part-6-b59",
+     "type": "para",
+     "destination": "chapters/part-6.html#part-6-b59",
+     "verified": true
+    },
+    {
+     "id": "part-6-b60",
+     "type": "list",
+     "destination": "chapters/part-6.html#part-6-b60",
+     "verified": true
+    },
+    {
+     "id": "part-6-b61",
+     "type": "para",
+     "destination": "chapters/part-6.html#part-6-b61",
+     "verified": true
+    },
+    {
+     "id": "part-6-b62",
+     "type": "code",
+     "destination": "chapters/part-6.html#part-6-b62",
+     "verified": true
+    },
+    {
+     "id": "part-6-b63",
+     "type": "para",
+     "destination": "chapters/part-6.html#part-6-b63",
+     "verified": true
+    },
+    {
+     "id": "part-6-b64",
+     "type": "list",
+     "destination": "chapters/part-6.html#part-6-b64",
+     "verified": true
+    },
+    {
+     "id": "part-6-b65",
+     "type": "heading",
+     "destination": "chapters/part-6.html#part-6-b65",
+     "verified": true
+    },
+    {
+     "id": "part-6-b66",
+     "type": "para",
+     "destination": "chapters/part-6.html#part-6-b66",
+     "verified": true
+    },
+    {
+     "id": "part-6-b67",
+     "type": "para",
+     "destination": "chapters/part-6.html#part-6-b67",
+     "verified": true
+    },
+    {
+     "id": "part-6-b68",
+     "type": "heading",
+     "destination": "chapters/part-6.html#part-6-b68",
+     "verified": true
+    },
+    {
+     "id": "part-6-b69",
+     "type": "para",
+     "destination": "chapters/part-6.html#part-6-b69",
+     "verified": true
+    },
+    {
+     "id": "part-6-b70",
+     "type": "para",
+     "destination": "chapters/part-6.html#part-6-b70",
+     "verified": true
+    },
+    {
+     "id": "part-6-b71",
+     "type": "list",
+     "destination": "chapters/part-6.html#part-6-b71",
+     "verified": true
+    },
+    {
+     "id": "part-6-b72",
+     "type": "para",
+     "destination": "chapters/part-6.html#part-6-b72",
+     "verified": true
+    },
+    {
+     "id": "part-6-b73",
+     "type": "para",
+     "destination": "chapters/part-6.html#part-6-b73",
+     "verified": true
+    },
+    {
+     "id": "part-6-b74",
+     "type": "para",
+     "destination": "chapters/part-6.html#part-6-b74",
+     "verified": true
+    },
+    {
+     "id": "part-6-b75",
+     "type": "para",
+     "destination": "chapters/part-6.html#part-6-b75",
+     "verified": true
+    },
+    {
+     "id": "part-6-b76",
+     "type": "para",
+     "destination": "chapters/part-6.html#part-6-b76",
+     "verified": true
+    },
+    {
+     "id": "part-6-b77",
+     "type": "list",
+     "destination": "chapters/part-6.html#part-6-b77",
+     "verified": true
+    },
+    {
+     "id": "part-6-b78",
+     "type": "para",
+     "destination": "chapters/part-6.html#part-6-b78",
+     "verified": true
+    },
+    {
+     "id": "part-6-b79",
+     "type": "heading",
+     "destination": "chapters/part-6.html#part-6-b79",
+     "verified": true
+    },
+    {
+     "id": "part-6-b80",
+     "type": "para",
+     "destination": "chapters/part-6.html#part-6-b80",
+     "verified": true
+    },
+    {
+     "id": "part-6-b81",
+     "type": "list",
+     "destination": "chapters/part-6.html#part-6-b81",
+     "verified": true
+    },
+    {
+     "id": "part-6-b82",
+     "type": "para",
+     "destination": "chapters/part-6.html#part-6-b82",
+     "verified": true
+    },
+    {
+     "id": "part-6-b83",
+     "type": "list",
+     "destination": "chapters/part-6.html#part-6-b83",
+     "verified": true
+    },
+    {
+     "id": "part-6-b84",
+     "type": "para",
+     "destination": "chapters/part-6.html#part-6-b84",
+     "verified": true
+    },
+    {
+     "id": "part-6-b85",
+     "type": "list",
+     "destination": "chapters/part-6.html#part-6-b85",
+     "verified": true
+    },
+    {
+     "id": "part-6-b86",
+     "type": "para",
+     "destination": "chapters/part-6.html#part-6-b86",
+     "verified": true
+    },
+    {
+     "id": "part-6-b87",
+     "type": "code",
+     "destination": "chapters/part-6.html#part-6-b87",
+     "verified": true
+    },
+    {
+     "id": "part-6-b88",
+     "type": "para",
+     "destination": "chapters/part-6.html#part-6-b88",
+     "verified": true
+    },
+    {
+     "id": "part-6-b89",
+     "type": "list",
+     "destination": "chapters/part-6.html#part-6-b89",
+     "verified": true
+    },
+    {
+     "id": "part-6-b90",
+     "type": "heading",
+     "destination": "chapters/part-6.html#part-6-b90",
+     "verified": true
+    },
+    {
+     "id": "part-6-b91",
+     "type": "para",
+     "destination": "chapters/part-6.html#part-6-b91",
+     "verified": true
+    },
+    {
+     "id": "part-6-b92",
+     "type": "para",
+     "destination": "chapters/part-6.html#part-6-b92",
+     "verified": true
+    },
+    {
+     "id": "part-6-b93",
+     "type": "para",
+     "destination": "chapters/part-6.html#part-6-b93",
+     "verified": true
+    },
+    {
+     "id": "part-6-b94",
+     "type": "para",
+     "destination": "chapters/part-6.html#part-6-b94",
+     "verified": true
+    },
+    {
+     "id": "part-6-b95",
+     "type": "code",
+     "destination": "chapters/part-6.html#part-6-b95",
+     "verified": true
+    },
+    {
+     "id": "part-6-b96",
+     "type": "para",
+     "destination": "chapters/part-6.html#part-6-b96",
+     "verified": true
+    },
+    {
+     "id": "part-6-b97",
+     "type": "heading",
+     "destination": "chapters/part-6.html#part-6-b97",
+     "verified": true
+    },
+    {
+     "id": "part-6-b98",
+     "type": "para",
+     "destination": "chapters/part-6.html#part-6-b98",
+     "verified": true
+    },
+    {
+     "id": "part-6-b99",
+     "type": "para",
+     "destination": "chapters/part-6.html#part-6-b99",
+     "verified": true
+    },
+    {
+     "id": "part-6-b100",
+     "type": "para",
+     "destination": "chapters/part-6.html#part-6-b100",
+     "verified": true
+    },
+    {
+     "id": "part-6-b101",
+     "type": "list",
+     "destination": "chapters/part-6.html#part-6-b101",
+     "verified": true
+    },
+    {
+     "id": "part-6-b102",
+     "type": "para",
+     "destination": "chapters/part-6.html#part-6-b102",
+     "verified": true
+    }
+   ]
+  },
+  {
+   "sourceTitle": "QAYBTA VII SAMESITE, WEBSOCKET, IYO BEYOND",
+   "destination": "chapters/part-7.html",
+   "blockCount": 174,
+   "blocks": [
+    {
+     "id": "part-7-b0",
+     "type": "para",
+     "destination": "chapters/part-7.html#part-7-b0",
+     "verified": true
+    },
+    {
+     "id": "part-7-b1",
+     "type": "para",
+     "destination": "chapters/part-7.html#part-7-b1",
+     "verified": true
+    },
+    {
+     "id": "part-7-b2",
+     "type": "para",
+     "destination": "chapters/part-7.html#part-7-b2",
+     "verified": true
+    },
+    {
+     "id": "part-7-b3",
+     "type": "para",
+     "destination": "chapters/part-7.html#part-7-b3",
+     "verified": true
+    },
+    {
+     "id": "part-7-b4",
+     "type": "para",
+     "destination": "chapters/part-7.html#part-7-b4",
+     "verified": true
+    },
+    {
+     "id": "part-7-b5",
+     "type": "para",
+     "destination": "chapters/part-7.html#part-7-b5",
+     "verified": true
+    },
+    {
+     "id": "part-7-b6",
+     "type": "para",
+     "destination": "chapters/part-7.html#part-7-b6",
+     "verified": true
+    },
+    {
+     "id": "part-7-b7",
+     "type": "para",
+     "destination": "chapters/part-7.html#part-7-b7",
+     "verified": true
+    },
+    {
+     "id": "part-7-b8",
+     "type": "para",
+     "destination": "chapters/part-7.html#part-7-b8",
+     "verified": true
+    },
+    {
+     "id": "part-7-b9",
+     "type": "heading",
+     "destination": "chapters/part-7.html#part-7-b9",
+     "verified": true
+    },
+    {
+     "id": "part-7-b10",
+     "type": "heading",
+     "destination": "chapters/part-7.html#part-7-b10",
+     "verified": true
+    },
+    {
+     "id": "part-7-b11",
+     "type": "para",
+     "destination": "chapters/part-7.html#part-7-b11",
+     "verified": true
+    },
+    {
+     "id": "part-7-b12",
+     "type": "list",
+     "destination": "chapters/part-7.html#part-7-b12",
+     "verified": true
+    },
+    {
+     "id": "part-7-b13",
+     "type": "para",
+     "destination": "chapters/part-7.html#part-7-b13",
+     "verified": true
+    },
+    {
+     "id": "part-7-b14",
+     "type": "list",
+     "destination": "chapters/part-7.html#part-7-b14",
+     "verified": true
+    },
+    {
+     "id": "part-7-b15",
+     "type": "para",
+     "destination": "chapters/part-7.html#part-7-b15",
+     "verified": true
+    },
+    {
+     "id": "part-7-b16",
+     "type": "para",
+     "destination": "chapters/part-7.html#part-7-b16",
+     "verified": true
+    },
+    {
+     "id": "part-7-b17",
+     "type": "para",
+     "destination": "chapters/part-7.html#part-7-b17",
+     "verified": true
+    },
+    {
+     "id": "part-7-b18",
+     "type": "para",
+     "destination": "chapters/part-7.html#part-7-b18",
+     "verified": true
+    },
+    {
+     "id": "part-7-b19",
+     "type": "para",
+     "destination": "chapters/part-7.html#part-7-b19",
+     "verified": true
+    },
+    {
+     "id": "part-7-b20",
+     "type": "heading",
+     "destination": "chapters/part-7.html#part-7-b20",
+     "verified": true
+    },
+    {
+     "id": "part-7-b21",
+     "type": "para",
+     "destination": "chapters/part-7.html#part-7-b21",
+     "verified": true
+    },
+    {
+     "id": "part-7-b22",
+     "type": "para",
+     "destination": "chapters/part-7.html#part-7-b22",
+     "verified": true
+    },
+    {
+     "id": "part-7-b23",
+     "type": "para",
+     "destination": "chapters/part-7.html#part-7-b23",
+     "verified": true
+    },
+    {
+     "id": "part-7-b24",
+     "type": "para",
+     "destination": "chapters/part-7.html#part-7-b24",
+     "verified": true
+    },
+    {
+     "id": "part-7-b25",
+     "type": "list",
+     "destination": "chapters/part-7.html#part-7-b25",
+     "verified": true
+    },
+    {
+     "id": "part-7-b26",
+     "type": "para",
+     "destination": "chapters/part-7.html#part-7-b26",
+     "verified": true
+    },
+    {
+     "id": "part-7-b27",
+     "type": "para",
+     "destination": "chapters/part-7.html#part-7-b27",
+     "verified": true
+    },
+    {
+     "id": "part-7-b28",
+     "type": "list",
+     "destination": "chapters/part-7.html#part-7-b28",
+     "verified": true
+    },
+    {
+     "id": "part-7-b29",
+     "type": "heading",
+     "destination": "chapters/part-7.html#part-7-b29",
+     "verified": true
+    },
+    {
+     "id": "part-7-b30",
+     "type": "para",
+     "destination": "chapters/part-7.html#part-7-b30",
+     "verified": true
+    },
+    {
+     "id": "part-7-b31",
+     "type": "heading",
+     "destination": "chapters/part-7.html#part-7-b31",
+     "verified": true
+    },
+    {
+     "id": "part-7-b32",
+     "type": "para",
+     "destination": "chapters/part-7.html#part-7-b32",
+     "verified": true
+    },
+    {
+     "id": "part-7-b33",
+     "type": "para",
+     "destination": "chapters/part-7.html#part-7-b33",
+     "verified": true
+    },
+    {
+     "id": "part-7-b34",
+     "type": "heading",
+     "destination": "chapters/part-7.html#part-7-b34",
+     "verified": true
+    },
+    {
+     "id": "part-7-b35",
+     "type": "para",
+     "destination": "chapters/part-7.html#part-7-b35",
+     "verified": true
+    },
+    {
+     "id": "part-7-b36",
+     "type": "list",
+     "destination": "chapters/part-7.html#part-7-b36",
+     "verified": true
+    },
+    {
+     "id": "part-7-b37",
+     "type": "para",
+     "destination": "chapters/part-7.html#part-7-b37",
+     "verified": true
+    },
+    {
+     "id": "part-7-b38",
+     "type": "list",
+     "destination": "chapters/part-7.html#part-7-b38",
+     "verified": true
+    },
+    {
+     "id": "part-7-b39",
+     "type": "para",
+     "destination": "chapters/part-7.html#part-7-b39",
+     "verified": true
+    },
+    {
+     "id": "part-7-b40",
+     "type": "list",
+     "destination": "chapters/part-7.html#part-7-b40",
+     "verified": true
+    },
+    {
+     "id": "part-7-b41",
+     "type": "para",
+     "destination": "chapters/part-7.html#part-7-b41",
+     "verified": true
+    },
+    {
+     "id": "part-7-b42",
+     "type": "code",
+     "destination": "chapters/part-7.html#part-7-b42",
+     "verified": true
+    },
+    {
+     "id": "part-7-b43",
+     "type": "para",
+     "destination": "chapters/part-7.html#part-7-b43",
+     "verified": true
+    },
+    {
+     "id": "part-7-b44",
+     "type": "list",
+     "destination": "chapters/part-7.html#part-7-b44",
+     "verified": true
+    },
+    {
+     "id": "part-7-b45",
+     "type": "heading",
+     "destination": "chapters/part-7.html#part-7-b45",
+     "verified": true
+    },
+    {
+     "id": "part-7-b46",
+     "type": "para",
+     "destination": "chapters/part-7.html#part-7-b46",
+     "verified": true
+    },
+    {
+     "id": "part-7-b47",
+     "type": "heading",
+     "destination": "chapters/part-7.html#part-7-b47",
+     "verified": true
+    },
+    {
+     "id": "part-7-b48",
+     "type": "para",
+     "destination": "chapters/part-7.html#part-7-b48",
+     "verified": true
+    },
+    {
+     "id": "part-7-b49",
+     "type": "para",
+     "destination": "chapters/part-7.html#part-7-b49",
+     "verified": true
+    },
+    {
+     "id": "part-7-b50",
+     "type": "list",
+     "destination": "chapters/part-7.html#part-7-b50",
+     "verified": true
+    },
+    {
+     "id": "part-7-b51",
+     "type": "heading",
+     "destination": "chapters/part-7.html#part-7-b51",
+     "verified": true
+    },
+    {
+     "id": "part-7-b52",
+     "type": "para",
+     "destination": "chapters/part-7.html#part-7-b52",
+     "verified": true
+    },
+    {
+     "id": "part-7-b53",
+     "type": "list",
+     "destination": "chapters/part-7.html#part-7-b53",
+     "verified": true
+    },
+    {
+     "id": "part-7-b54",
+     "type": "para",
+     "destination": "chapters/part-7.html#part-7-b54",
+     "verified": true
+    },
+    {
+     "id": "part-7-b55",
+     "type": "para",
+     "destination": "chapters/part-7.html#part-7-b55",
+     "verified": true
+    },
+    {
+     "id": "part-7-b56",
+     "type": "code",
+     "destination": "chapters/part-7.html#part-7-b56",
+     "verified": true
+    },
+    {
+     "id": "part-7-b57",
+     "type": "para",
+     "destination": "chapters/part-7.html#part-7-b57",
+     "verified": true
+    },
+    {
+     "id": "part-7-b58",
+     "type": "list",
+     "destination": "chapters/part-7.html#part-7-b58",
+     "verified": true
+    },
+    {
+     "id": "part-7-b59",
+     "type": "para",
+     "destination": "chapters/part-7.html#part-7-b59",
+     "verified": true
+    },
+    {
+     "id": "part-7-b60",
+     "type": "list",
+     "destination": "chapters/part-7.html#part-7-b60",
+     "verified": true
+    },
+    {
+     "id": "part-7-b61",
+     "type": "para",
+     "destination": "chapters/part-7.html#part-7-b61",
+     "verified": true
+    },
+    {
+     "id": "part-7-b62",
+     "type": "list",
+     "destination": "chapters/part-7.html#part-7-b62",
+     "verified": true
+    },
+    {
+     "id": "part-7-b63",
+     "type": "para",
+     "destination": "chapters/part-7.html#part-7-b63",
+     "verified": true
+    },
+    {
+     "id": "part-7-b64",
+     "type": "code",
+     "destination": "chapters/part-7.html#part-7-b64",
+     "verified": true
+    },
+    {
+     "id": "part-7-b65",
+     "type": "para",
+     "destination": "chapters/part-7.html#part-7-b65",
+     "verified": true
+    },
+    {
+     "id": "part-7-b66",
+     "type": "para",
+     "destination": "chapters/part-7.html#part-7-b66",
+     "verified": true
+    },
+    {
+     "id": "part-7-b67",
+     "type": "list",
+     "destination": "chapters/part-7.html#part-7-b67",
+     "verified": true
+    },
+    {
+     "id": "part-7-b68",
+     "type": "heading",
+     "destination": "chapters/part-7.html#part-7-b68",
+     "verified": true
+    },
+    {
+     "id": "part-7-b69",
+     "type": "para",
+     "destination": "chapters/part-7.html#part-7-b69",
+     "verified": true
+    },
+    {
+     "id": "part-7-b70",
+     "type": "heading",
+     "destination": "chapters/part-7.html#part-7-b70",
+     "verified": true
+    },
+    {
+     "id": "part-7-b71",
+     "type": "para",
+     "destination": "chapters/part-7.html#part-7-b71",
+     "verified": true
+    },
+    {
+     "id": "part-7-b72",
+     "type": "para",
+     "destination": "chapters/part-7.html#part-7-b72",
+     "verified": true
+    },
+    {
+     "id": "part-7-b73",
+     "type": "para",
+     "destination": "chapters/part-7.html#part-7-b73",
+     "verified": true
+    },
+    {
+     "id": "part-7-b74",
+     "type": "list",
+     "destination": "chapters/part-7.html#part-7-b74",
+     "verified": true
+    },
+    {
+     "id": "part-7-b75",
+     "type": "heading",
+     "destination": "chapters/part-7.html#part-7-b75",
+     "verified": true
+    },
+    {
+     "id": "part-7-b76",
+     "type": "para",
+     "destination": "chapters/part-7.html#part-7-b76",
+     "verified": true
+    },
+    {
+     "id": "part-7-b77",
+     "type": "para",
+     "destination": "chapters/part-7.html#part-7-b77",
+     "verified": true
+    },
+    {
+     "id": "part-7-b78",
+     "type": "para",
+     "destination": "chapters/part-7.html#part-7-b78",
+     "verified": true
+    },
+    {
+     "id": "part-7-b79",
+     "type": "para",
+     "destination": "chapters/part-7.html#part-7-b79",
+     "verified": true
+    },
+    {
+     "id": "part-7-b80",
+     "type": "code",
+     "destination": "chapters/part-7.html#part-7-b80",
+     "verified": true
+    },
+    {
+     "id": "part-7-b81",
+     "type": "para",
+     "destination": "chapters/part-7.html#part-7-b81",
+     "verified": true
+    },
+    {
+     "id": "part-7-b82",
+     "type": "heading",
+     "destination": "chapters/part-7.html#part-7-b82",
+     "verified": true
+    },
+    {
+     "id": "part-7-b83",
+     "type": "para",
+     "destination": "chapters/part-7.html#part-7-b83",
+     "verified": true
+    },
+    {
+     "id": "part-7-b84",
+     "type": "list",
+     "destination": "chapters/part-7.html#part-7-b84",
+     "verified": true
+    },
+    {
+     "id": "part-7-b85",
+     "type": "para",
+     "destination": "chapters/part-7.html#part-7-b85",
+     "verified": true
+    },
+    {
+     "id": "part-7-b86",
+     "type": "list",
+     "destination": "chapters/part-7.html#part-7-b86",
+     "verified": true
+    },
+    {
+     "id": "part-7-b87",
+     "type": "para",
+     "destination": "chapters/part-7.html#part-7-b87",
+     "verified": true
+    },
+    {
+     "id": "part-7-b88",
+     "type": "list",
+     "destination": "chapters/part-7.html#part-7-b88",
+     "verified": true
+    },
+    {
+     "id": "part-7-b89",
+     "type": "para",
+     "destination": "chapters/part-7.html#part-7-b89",
+     "verified": true
+    },
+    {
+     "id": "part-7-b90",
+     "type": "code",
+     "destination": "chapters/part-7.html#part-7-b90",
+     "verified": true
+    },
+    {
+     "id": "part-7-b91",
+     "type": "para",
+     "destination": "chapters/part-7.html#part-7-b91",
+     "verified": true
+    },
+    {
+     "id": "part-7-b92",
+     "type": "list",
+     "destination": "chapters/part-7.html#part-7-b92",
+     "verified": true
+    },
+    {
+     "id": "part-7-b93",
+     "type": "heading",
+     "destination": "chapters/part-7.html#part-7-b93",
+     "verified": true
+    },
+    {
+     "id": "part-7-b94",
+     "type": "para",
+     "destination": "chapters/part-7.html#part-7-b94",
+     "verified": true
+    },
+    {
+     "id": "part-7-b95",
+     "type": "para",
+     "destination": "chapters/part-7.html#part-7-b95",
+     "verified": true
+    },
+    {
+     "id": "part-7-b96",
+     "type": "heading",
+     "destination": "chapters/part-7.html#part-7-b96",
+     "verified": true
+    },
+    {
+     "id": "part-7-b97",
+     "type": "para",
+     "destination": "chapters/part-7.html#part-7-b97",
+     "verified": true
+    },
+    {
+     "id": "part-7-b98",
+     "type": "para",
+     "destination": "chapters/part-7.html#part-7-b98",
+     "verified": true
+    },
+    {
+     "id": "part-7-b99",
+     "type": "list",
+     "destination": "chapters/part-7.html#part-7-b99",
+     "verified": true
+    },
+    {
+     "id": "part-7-b100",
+     "type": "para",
+     "destination": "chapters/part-7.html#part-7-b100",
+     "verified": true
+    },
+    {
+     "id": "part-7-b101",
+     "type": "heading",
+     "destination": "chapters/part-7.html#part-7-b101",
+     "verified": true
+    },
+    {
+     "id": "part-7-b102",
+     "type": "para",
+     "destination": "chapters/part-7.html#part-7-b102",
+     "verified": true
+    },
+    {
+     "id": "part-7-b103",
+     "type": "para",
+     "destination": "chapters/part-7.html#part-7-b103",
+     "verified": true
+    },
+    {
+     "id": "part-7-b104",
+     "type": "para",
+     "destination": "chapters/part-7.html#part-7-b104",
+     "verified": true
+    },
+    {
+     "id": "part-7-b105",
+     "type": "para",
+     "destination": "chapters/part-7.html#part-7-b105",
+     "verified": true
+    },
+    {
+     "id": "part-7-b106",
+     "type": "code",
+     "destination": "chapters/part-7.html#part-7-b106",
+     "verified": true
+    },
+    {
+     "id": "part-7-b107",
+     "type": "para",
+     "destination": "chapters/part-7.html#part-7-b107",
+     "verified": true
+    },
+    {
+     "id": "part-7-b108",
+     "type": "code",
+     "destination": "chapters/part-7.html#part-7-b108",
+     "verified": true
+    },
+    {
+     "id": "part-7-b109",
+     "type": "heading",
+     "destination": "chapters/part-7.html#part-7-b109",
+     "verified": true
+    },
+    {
+     "id": "part-7-b110",
+     "type": "para",
+     "destination": "chapters/part-7.html#part-7-b110",
+     "verified": true
+    },
+    {
+     "id": "part-7-b111",
+     "type": "list",
+     "destination": "chapters/part-7.html#part-7-b111",
+     "verified": true
+    },
+    {
+     "id": "part-7-b112",
+     "type": "para",
+     "destination": "chapters/part-7.html#part-7-b112",
+     "verified": true
+    },
+    {
+     "id": "part-7-b113",
+     "type": "list",
+     "destination": "chapters/part-7.html#part-7-b113",
+     "verified": true
+    },
+    {
+     "id": "part-7-b114",
+     "type": "para",
+     "destination": "chapters/part-7.html#part-7-b114",
+     "verified": true
+    },
+    {
+     "id": "part-7-b115",
+     "type": "list",
+     "destination": "chapters/part-7.html#part-7-b115",
+     "verified": true
+    },
+    {
+     "id": "part-7-b116",
+     "type": "para",
+     "destination": "chapters/part-7.html#part-7-b116",
+     "verified": true
+    },
+    {
+     "id": "part-7-b117",
+     "type": "list",
+     "destination": "chapters/part-7.html#part-7-b117",
+     "verified": true
+    },
+    {
+     "id": "part-7-b118",
+     "type": "para",
+     "destination": "chapters/part-7.html#part-7-b118",
+     "verified": true
+    },
+    {
+     "id": "part-7-b119",
+     "type": "code",
+     "destination": "chapters/part-7.html#part-7-b119",
+     "verified": true
+    },
+    {
+     "id": "part-7-b120",
+     "type": "para",
+     "destination": "chapters/part-7.html#part-7-b120",
+     "verified": true
+    },
+    {
+     "id": "part-7-b121",
+     "type": "list",
+     "destination": "chapters/part-7.html#part-7-b121",
+     "verified": true
+    },
+    {
+     "id": "part-7-b122",
+     "type": "heading",
+     "destination": "chapters/part-7.html#part-7-b122",
+     "verified": true
+    },
+    {
+     "id": "part-7-b123",
+     "type": "para",
+     "destination": "chapters/part-7.html#part-7-b123",
+     "verified": true
+    },
+    {
+     "id": "part-7-b124",
+     "type": "para",
+     "destination": "chapters/part-7.html#part-7-b124",
+     "verified": true
+    },
+    {
+     "id": "part-7-b125",
+     "type": "para",
+     "destination": "chapters/part-7.html#part-7-b125",
+     "verified": true
+    },
+    {
+     "id": "part-7-b126",
+     "type": "code",
+     "destination": "chapters/part-7.html#part-7-b126",
+     "verified": true
+    },
+    {
+     "id": "part-7-b127",
+     "type": "para",
+     "destination": "chapters/part-7.html#part-7-b127",
+     "verified": true
+    },
+    {
+     "id": "part-7-b128",
+     "type": "heading",
+     "destination": "chapters/part-7.html#part-7-b128",
+     "verified": true
+    },
+    {
+     "id": "part-7-b129",
+     "type": "para",
+     "destination": "chapters/part-7.html#part-7-b129",
+     "verified": true
+    },
+    {
+     "id": "part-7-b130",
+     "type": "para",
+     "destination": "chapters/part-7.html#part-7-b130",
+     "verified": true
+    },
+    {
+     "id": "part-7-b131",
+     "type": "code",
+     "destination": "chapters/part-7.html#part-7-b131",
+     "verified": true
+    },
+    {
+     "id": "part-7-b132",
+     "type": "heading",
+     "destination": "chapters/part-7.html#part-7-b132",
+     "verified": true
+    },
+    {
+     "id": "part-7-b133",
+     "type": "para",
+     "destination": "chapters/part-7.html#part-7-b133",
+     "verified": true
+    },
+    {
+     "id": "part-7-b134",
+     "type": "para",
+     "destination": "chapters/part-7.html#part-7-b134",
+     "verified": true
+    },
+    {
+     "id": "part-7-b135",
+     "type": "para",
+     "destination": "chapters/part-7.html#part-7-b135",
+     "verified": true
+    },
+    {
+     "id": "part-7-b136",
+     "type": "heading",
+     "destination": "chapters/part-7.html#part-7-b136",
+     "verified": true
+    },
+    {
+     "id": "part-7-b137",
+     "type": "para",
+     "destination": "chapters/part-7.html#part-7-b137",
+     "verified": true
+    },
+    {
+     "id": "part-7-b138",
+     "type": "list",
+     "destination": "chapters/part-7.html#part-7-b138",
+     "verified": true
+    },
+    {
+     "id": "part-7-b139",
+     "type": "para",
+     "destination": "chapters/part-7.html#part-7-b139",
+     "verified": true
+    },
+    {
+     "id": "part-7-b140",
+     "type": "list",
+     "destination": "chapters/part-7.html#part-7-b140",
+     "verified": true
+    },
+    {
+     "id": "part-7-b141",
+     "type": "para",
+     "destination": "chapters/part-7.html#part-7-b141",
+     "verified": true
+    },
+    {
+     "id": "part-7-b142",
+     "type": "list",
+     "destination": "chapters/part-7.html#part-7-b142",
+     "verified": true
+    },
+    {
+     "id": "part-7-b143",
+     "type": "para",
+     "destination": "chapters/part-7.html#part-7-b143",
+     "verified": true
+    },
+    {
+     "id": "part-7-b144",
+     "type": "list",
+     "destination": "chapters/part-7.html#part-7-b144",
+     "verified": true
+    },
+    {
+     "id": "part-7-b145",
+     "type": "para",
+     "destination": "chapters/part-7.html#part-7-b145",
+     "verified": true
+    },
+    {
+     "id": "part-7-b146",
+     "type": "code",
+     "destination": "chapters/part-7.html#part-7-b146",
+     "verified": true
+    },
+    {
+     "id": "part-7-b147",
+     "type": "para",
+     "destination": "chapters/part-7.html#part-7-b147",
+     "verified": true
+    },
+    {
+     "id": "part-7-b148",
+     "type": "list",
+     "destination": "chapters/part-7.html#part-7-b148",
+     "verified": true
+    },
+    {
+     "id": "part-7-b149",
+     "type": "heading",
+     "destination": "chapters/part-7.html#part-7-b149",
+     "verified": true
+    },
+    {
+     "id": "part-7-b150",
+     "type": "para",
+     "destination": "chapters/part-7.html#part-7-b150",
+     "verified": true
+    },
+    {
+     "id": "part-7-b151",
+     "type": "heading",
+     "destination": "chapters/part-7.html#part-7-b151",
+     "verified": true
+    },
+    {
+     "id": "part-7-b152",
+     "type": "para",
+     "destination": "chapters/part-7.html#part-7-b152",
+     "verified": true
+    },
+    {
+     "id": "part-7-b153",
+     "type": "para",
+     "destination": "chapters/part-7.html#part-7-b153",
+     "verified": true
+    },
+    {
+     "id": "part-7-b154",
+     "type": "para",
+     "destination": "chapters/part-7.html#part-7-b154",
+     "verified": true
+    },
+    {
+     "id": "part-7-b155",
+     "type": "para",
+     "destination": "chapters/part-7.html#part-7-b155",
+     "verified": true
+    },
+    {
+     "id": "part-7-b156",
+     "type": "code",
+     "destination": "chapters/part-7.html#part-7-b156",
+     "verified": true
+    },
+    {
+     "id": "part-7-b157",
+     "type": "heading",
+     "destination": "chapters/part-7.html#part-7-b157",
+     "verified": true
+    },
+    {
+     "id": "part-7-b158",
+     "type": "para",
+     "destination": "chapters/part-7.html#part-7-b158",
+     "verified": true
+    },
+    {
+     "id": "part-7-b159",
+     "type": "list",
+     "destination": "chapters/part-7.html#part-7-b159",
+     "verified": true
+    },
+    {
+     "id": "part-7-b160",
+     "type": "para",
+     "destination": "chapters/part-7.html#part-7-b160",
+     "verified": true
+    },
+    {
+     "id": "part-7-b161",
+     "type": "list",
+     "destination": "chapters/part-7.html#part-7-b161",
+     "verified": true
+    },
+    {
+     "id": "part-7-b162",
+     "type": "para",
+     "destination": "chapters/part-7.html#part-7-b162",
+     "verified": true
+    },
+    {
+     "id": "part-7-b163",
+     "type": "list",
+     "destination": "chapters/part-7.html#part-7-b163",
+     "verified": true
+    },
+    {
+     "id": "part-7-b164",
+     "type": "para",
+     "destination": "chapters/part-7.html#part-7-b164",
+     "verified": true
+    },
+    {
+     "id": "part-7-b165",
+     "type": "code",
+     "destination": "chapters/part-7.html#part-7-b165",
+     "verified": true
+    },
+    {
+     "id": "part-7-b166",
+     "type": "para",
+     "destination": "chapters/part-7.html#part-7-b166",
+     "verified": true
+    },
+    {
+     "id": "part-7-b167",
+     "type": "list",
+     "destination": "chapters/part-7.html#part-7-b167",
+     "verified": true
+    },
+    {
+     "id": "part-7-b168",
+     "type": "para",
+     "destination": "chapters/part-7.html#part-7-b168",
+     "verified": true
+    },
+    {
+     "id": "part-7-b169",
+     "type": "heading",
+     "destination": "chapters/part-7.html#part-7-b169",
+     "verified": true
+    },
+    {
+     "id": "part-7-b170",
+     "type": "heading",
+     "destination": "chapters/part-7.html#part-7-b170",
+     "verified": true
+    },
+    {
+     "id": "part-7-b171",
+     "type": "table",
+     "destination": "chapters/part-7.html#part-7-b171",
+     "verified": true
+    },
+    {
+     "id": "part-7-b172",
+     "type": "para",
+     "destination": "chapters/part-7.html#part-7-b172",
+     "verified": true
+    },
+    {
+     "id": "part-7-b173",
+     "type": "para",
+     "destination": "chapters/part-7.html#part-7-b173",
+     "verified": true
+    }
+   ]
+  }
+ ],
+ "searchEntries": 621
+}
